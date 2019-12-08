@@ -1,0 +1,12 @@
+{
+  "database": {
+    "username": "forum",
+    "password": "forum1",
+    "connection": "mysql: host=localhost; dbname=forum; charset=utf8",
+    "options": {
+    }
+  },
+  "image": {
+    "src": "config/img/"
+  }
+}
