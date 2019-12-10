@@ -60,7 +60,7 @@ class CategoryController extends AbstractController
             $categoriesNavbar = $categoryModel->getAllCategories();
             $category = $categoryModel->getCategoryById($id_category);
 
-        $propierties = ["category" => $category, "target_dir" => $target_dir, 'title' => "Foro Programacion &bull; " . $category->getTitle()];
+        $propierties = ["category" => $category, "session" => $_SESSION, "target_dir" => $target_dir, 'title' => "Foro Programacion &bull; " . $category->getTitle()];
         return $this->render('show.category.twig', $propierties);
 //        require("views/front-office/category.view.php");
 
