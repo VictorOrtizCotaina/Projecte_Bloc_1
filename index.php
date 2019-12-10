@@ -27,10 +27,20 @@ $di->set('PDO', $db->getConnection());
 $config = new Config();
 $di->set("Config", $config);
 
+// Carreguem l'entorn de Twig
+$loader = new \Twig\Loader\FilesystemLoader(__DIR__ . '/templates');
+$twig = new \Twig\Environment($loader);
+// Afegim una instància de Router a la plantilla.
+// La utilitzarem en les plantilles per a generar URL.
+$twig->addGlobal('router', new Router(new \App\Utils\DependencyInjector()));
+//l'incloem al contenidor de serveis
+$di->set('Twig', $twig);
+
+
 $request = new Request();
 
 $route = new Router($di);
-$route->route($request);
+echo $route->route($request);
 
 $page = $_GET['action'] ?? "indexARR";
 

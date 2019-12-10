@@ -1,16 +1,16 @@
 {
-  "daw/dwes/Projecte_Bloc_1/": {
+  "Projecte_Bloc_1/": {
     "controller": "Category",
     "method": "index"
   },
-  "daw/dwes/Projecte_Bloc_1/:id_category": {
+  "Projecte_Bloc_1/:id_category": {
     "controller": "Category",
     "method": "getCategory",
     "params": {
       "id_category": "number"
     }
   },
-  "daw/dwes/Projecte_Bloc_1/:id_category/:id_forum": {
+  "Projecte_Bloc_1/:id_category/:id_forum": {
     "controller": "Forum",
     "method": "getForum",
     "params": {
@@ -18,7 +18,7 @@
       "id_forum": "number"
     }
   },
-  "daw/dwes/Projecte_Bloc_1/:id_category/:id_forum/:id_topic": {
+  "Projecte_Bloc_1/:id_category/:id_forum/:id_topic": {
     "controller": "Topic",
     "method": "getTopic",
     "params": {
@@ -27,15 +27,15 @@
       "id_topic": "number"
     }
   },
-  "daw/dwes/Projecte_Bloc_1/login": {
+  "Projecte_Bloc_1/login": {
     "controller": "User",
     "method": "login"
   },
-  "daw/dwes/Projecte_Bloc_1/register": {
+  "Projecte_Bloc_1/register": {
     "controller": "User",
     "method": "register"
   },
-  "daw/dwes/Projecte_Bloc_1/user": {
+  "Projecte_Bloc_1/user": {
     "controller": "User",
     "method": "getUser"
   }
