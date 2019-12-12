@@ -19,12 +19,11 @@
                 </tr>
                 </thead>
                 <tbody class="topiclist forums">
-                {{ category.id_category }}
-                {#            {{ router.generateURL('Forum', 'getForum', {id_category: category.id_category, id_forum: forum.id_forum}) }}#}
+
                 <tr>
                     <td class="forum-name" title="No unread posts">
 						<span class="pull-left forum-icon">
-							<a href="{{ router.generateURL('Forum', 'getForum', {id_category: category.id_category, id_forum: forum.id_forum}) }}"
+							<a href="{{ router.generateURL('Forum', 'getForum', {id_category: category.idCategory, id_forum: forum.idForum}) }}"
                                class="btn btn-lg btn-default tooltip-link" title="No unread posts">
                                 <div class="">
                                     <img width="32" height="32" src="{{ target_dir }}{{ forum.image }}">
@@ -36,7 +35,7 @@
                             <i class="fa fa-folder fa-fw"></i>
 
                         </div>
-                        <a href="{{ router.generateURL('Forum', 'getForum', {id_category: category.id_category, id_forum: forum.id_forum}) }}"
+                        <a href="{{ router.generateURL('Forum', 'getForum', {id_category: category.idCategory, id_forum: forum.idForum}) }}"
                            class="forumtitle">{{ forum.title }}</a><br/>
                         <small>{{ forum.description }}</small>
 

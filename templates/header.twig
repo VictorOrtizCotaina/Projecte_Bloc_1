@@ -21,8 +21,8 @@
                        href="{{ router.generateURL('User', 'getUser') }}">
                         {{ user.username }}
                     </a>
-                    {{ dump(user) }}
-                    {% if user.id_user_group == 1 %}
+
+                    {% if user.idUserGroup == 1 %}
                         <a class="navbar-form navbar-left ng-pristine ng-valid"
                            href="{#<?php echo $_SERVER["PHP_SELF"] . "?page=category_list"; ?>#}">
                             Back-Office
@@ -45,7 +45,7 @@
                     <div class="btn-group">
                         <div class="btn-group dropright">
                             <a type="button" class="btn btn-secondary"
-                               href="{{ router.generateURL('Category', 'getCategory', {id_category: categoryNavbar.id_category}) }}">
+                               href="{{ router.generateURL('Category', 'getCategory', {id_category: categoryNavbar.idCategory}) }}">
                                 {{ categoryNavbar.title }}
                             </a>
                             <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split"
@@ -54,7 +54,7 @@
                             </button>
                             <ul class="dropdown-menu">
                                 {% for forumNavbar in categoryNavbar.forums %}
-                                    <li><a href="{{ router.generateURL('Forum', 'getForum', {id_category: categoryNavbar.id_category, forumNavbar: forum.id_forum}) }}">
+                                    <li><a href="{{ router.generateURL('Forum', 'getForum', {id_category: categoryNavbar.idCategory, forumNavbar: forum.idForum}) }}">
                                             {{ forumNavbar.title }}
                                         </a></li>
                                     <li class="divider"></li>

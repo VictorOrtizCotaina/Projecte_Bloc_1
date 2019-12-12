@@ -38,5 +38,21 @@
   "Projecte_Bloc_1/user": {
     "controller": "User",
     "method": "getUser"
+  },
+
+  "Projecte_Bloc_1/category_list": {
+    "controller": "Category",
+    "method": "getAdminCategory"
+  },
+  "Projecte_Bloc_1/category_add": {
+    "controller": "Category",
+    "method": "adminCategoryAdd"
+  },
+  "Projecte_Bloc_1/category_edit/:id_category": {
+    "controller": "Category",
+    "method": "getAdminCategory",
+    "params": {
+      "id_category": "number"
+    }
   }
 }

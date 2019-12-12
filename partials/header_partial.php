@@ -31,7 +31,7 @@
                     if ($user->getIdUserGroup() === 1) {
                         ?>
                         <a class="navbar-form navbar-left ng-pristine ng-valid"
-                           href="<?php echo $_SERVER["PHP_SELF"] . "?page=category_list"; ?>">
+                           href="<?= $route->generateURL('Category', 'getAdminCategory') ?>">
                             Back-Office
                         </a>
                     <?php } ?>
@@ -42,7 +42,9 @@
                         $url .= $_SERVER["QUERY_STRING"] . "&";
                     }
                     $url .= "cerrar_sesion=1";
+                    //Añadir en el controlador del usuario, y redirigir al login.
                     echo $url;
+
                     ?>">
                         <i class="fas fa-power-off"></i>
                     </a>
@@ -58,7 +60,7 @@
                     <div class="btn-group">
                         <div class="btn-group dropright">
                             <a type="button" class="btn btn-secondary"
-                               href="<?php echo $_SERVER["PHP_SELF"] . "?page=category&id_category={$categoryNavbar->getIdCategory()}"; ?>">
+                               href="<?= $route->generateURL('Category', 'getCategory', ['id_category' => $categoryNavbar->getIdCategory()]) ?>">
                                 <?php echo $categoryNavbar->getTitle(); ?>
                             </a>
                             <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split"
@@ -69,7 +71,7 @@
                                 <?php
                                 foreach ($categoryNavbar->getForums() as $forumNavbar) {
                                     ?>
-                                    <li><a href="<?php echo $_SERVER["PHP_SELF"] . "?page=forum&id_forum={$forumNavbar->getIdForum()}"; ?>">
+                                    <li><a href="<?= $route->generateURL('Forum', 'getForum', ['id_category' => $categoryNavbar->getIdCategory(), 'id_forum' => $forumNavbar->getIdForum()]) ?>">
                                             <?php echo $forumNavbar->getTitle(); ?>
                                         </a></li>
                                     <li class="divider"></li>

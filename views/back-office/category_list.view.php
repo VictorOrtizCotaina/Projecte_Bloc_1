@@ -191,7 +191,7 @@
                         } ?>
                     </ul>
 
-                    <a class="btn" href="<?php echo $_SERVER["PHP_SELF"] . "?page=category_add"; ?>">
+                    <a class="btn" href="<?= $_SERVER["PHP_SELF"] . "?page=category&id_category={$categoryNavbar->getIdCategory()}"; ?>">
                         <i class="fas fa-plus"></i>
                         Añadir Categoria
                     </a>
