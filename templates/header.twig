@@ -3,82 +3,66 @@
         <div class="container-fluid">
 
             <div id="search-menu">
-                <a class="navbar-brand" href="<?= $route->generateURL('Category', 'index') ?>">Foro Programacion</a>
+                <a class="navbar-brand" href="{{ router.generateURL('Category', 'index') }}">Foro Programacion</a>
 
-                {% if isset{session.user} %}
+                {% if not session.user %}
+                    <a class="btn navbar-form navbar-left ng-pristine ng-valid"
+                       href="<{{ router.generateURL('User', 'login') }}">
+                        <i class="fa fa-user"></i>
+                    </a>
+                    <a class="btn navbar-form navbar-left ng-pristine ng-valid"
+                       href="{{ router.generateURL('User', 'register') }}">
+                        <i class="fa fa-user-plus"></i>
+                    </a>
                 {% endif %}
-                <?php
-                if (!isset($_SESSION["user"])) {
-                    ?>
-                <a class="btn navbar-form navbar-left ng-pristine ng-valid"
-                   href="<?= $route->generateURL('User', 'login') ?>">
-                    <i class="fa fa-user"></i>
-                </a>
-                <a class="btn navbar-form navbar-left ng-pristine ng-valid"
-                   href="<?= $route->generateURL('User', 'register') ?>">
-                    <i class="fa fa-user-plus"></i>
-                </a>
-                <?php } ?>
 
-                <?php
-                if (isset($_SESSION["user"])) {
-                    ?>
-                <a class="navbar-form navbar-left ng-pristine ng-valid"
-                   href="<?= $route->generateURL('User', 'getUser') ?>">
-                    <?php echo $user->getUsername(); ?>
-                </a>
-
-                <?php
-                    if ($user->getIdUserGroup() === 1) {
-                ?>
-                <a class="navbar-form navbar-left ng-pristine ng-valid"
-                   href="<?php echo $_SERVER["PHP_SELF"] . "?page=category_list"; ?>">
-                Back-Office
-                </a>
-                <?php } ?>
-
-                <a class="btn navbar-form navbar-left ng-pristine ng-valid" href="<?php
-                    $url = $_SERVER["PHP_SELF"] . "?";
-                if (!empty($_SERVER["QUERY_STRING"])) {
-                $url .= $_SERVER["QUERY_STRING"] . "&";
-                }
-                $url .= "cerrar_sesion=1";
-                echo $url;
-                ?>">
-                <i class="fas fa-power-off"></i>
-                </a>
-                <?php } ?>
-                <?php
-                if (isset($_SESSION["user"])) {
-                    ?>
-                <?php } ?>
-
-                <?php
-                foreach ($categoriesNavbar as $categoryNavbar) {
-                    ?>
-                <div class="btn-group">
-                    <div class="btn-group dropright">
-                        <a type="button" class="btn btn-secondary"
-                           href="<?php echo $_SERVER["PHP_SELF"] . "?page=category&id_category={$categoryNavbar->getIdCategory()}"; ?>">
-                        <?php echo $categoryNavbar->getTitle(); ?>
+                {% if session.user %}
+                    <a class="navbar-form navbar-left ng-pristine ng-valid"
+                       href="{{ router.generateURL('User', 'getUser') }}">
+                        {{ user.username }}
+                    </a>
+                    {{ dump(user) }}
+                    {% if user.id_user_group == 1 %}
+                        <a class="navbar-form navbar-left ng-pristine ng-valid"
+                           href="{#<?php echo $_SERVER["PHP_SELF"] . "?page=category_list"; ?>#}">
+                            Back-Office
                         </a>
-                        <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="sr-only">Toggle Dropright</span>
-                        </button>
-                        <ul class="dropdown-menu">
-                            <?php
-                                foreach ($categoryNavbar->getForums() as $forumNavbar) {
-                            ?>
-                            <li><a href="<?php echo $_SERVER["PHP_SELF"] . "?page=forum&id_forum={$forumNavbar->getIdForum()}"; ?>">
-                                <?php echo $forumNavbar->getTitle(); ?>
-                                </a></li>
-                            <li class="divider"></li>
-                            <?php } ?>
-                        </ul>
+                    {% endif %}
+
+                    <a class="btn navbar-form navbar-left ng-pristine ng-valid" href="{#<?php
+                        $url = $_SERVER["PHP_SELF"] . "?";
+                    if (!empty($_SERVER["QUERY_STRING"])) {
+                    $url .= $_SERVER["QUERY_STRING"] . "&";
+                    }
+                    $url .= "cerrar_sesion=1";
+                    echo $url;
+                    ?>#}">
+                        <i class="fas fa-power-off"></i>
+                    </a>
+                {% endif %}
+
+                {% for categoryNavbar in categoriesNavbar %}
+                    <div class="btn-group">
+                        <div class="btn-group dropright">
+                            <a type="button" class="btn btn-secondary"
+                               href="{{ router.generateURL('Category', 'getCategory', {id_category: categoryNavbar.id_category}) }}">
+                                {{ categoryNavbar.title }}
+                            </a>
+                            <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="sr-only">Toggle Dropright</span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                {% for forumNavbar in categoryNavbar.forums %}
+                                    <li><a href="{{ router.generateURL('Forum', 'getForum', {id_category: categoryNavbar.id_category, forumNavbar: forum.id_forum}) }}">
+                                            {{ forumNavbar.title }}
+                                        </a></li>
+                                    <li class="divider"></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
                     </div>
-                </div>
-                <?php } ?>
+                {% endfor %}
             </div>
 
         </div>
@@ -86,7 +70,7 @@
 
     <div class="jumbotron no-margin-bottom no-padding-bottom">
         <div class="container text-center">
-            <div id="site-logo"><a href="<?= $route->generateURL('Category', 'index') ?>"
+            <div id="site-logo"><a href="{{ router.generateURL('Category', 'index') }}"
                                    title="Board index"><h2>Foro Programacion</h2></a></div>
 
         </div>

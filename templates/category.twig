@@ -49,83 +49,13 @@
 
 <body class="section-index ltr">
 
-<header>
-    <nav class="navbar navbar-default navbar-fixed-top navbar-fix" id="header-nav" role="navigation">
-        <div class="container-fluid">
-
-            <div id="search-menu">
-                <a class="navbar-brand" href="/Projecte_Bloc_1/">Foro Programacion</a>
-
-
-                <a class="navbar-form navbar-left ng-pristine ng-valid"
-                   href="/Projecte_Bloc_1/user">
-                    admin </a>
-
-                <a class="navbar-form navbar-left ng-pristine ng-valid"
-                   href="/Projecte_Bloc_1/index.php?page=category_list">
-                    Back-Office
-                </a>
-
-                <a class="btn navbar-form navbar-left ng-pristine ng-valid"
-                   href="/Projecte_Bloc_1/index.php?cerrar_sesion=1">
-                    <i class="fas fa-power-off"></i>
-                </a>
-
-                <div class="btn-group">
-                    <div class="btn-group dropright">
-                        <a type="button" class="btn btn-secondary"
-                           href="/Projecte_Bloc_1/index.php?page=category&id_category=1">
-                            Php </a>
-                        <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="sr-only">Toggle Dropright</span>
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a href="/Projecte_Bloc_1/index.php?page=forum&id_forum=1">
-                                    Clases </a></li>
-                            <li class="divider"></li>
-                            <li><a href="/Projecte_Bloc_1/index.php?page=forum&id_forum=2">
-                                    Bases de Datos </a></li>
-                            <li class="divider"></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="btn-group">
-                    <div class="btn-group dropright">
-                        <a type="button" class="btn btn-secondary"
-                           href="/Projecte_Bloc_1/index.php?page=category&id_category=4">
-                            prueba </a>
-                        <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="sr-only">Toggle Dropright</span>
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a href="/Projecte_Bloc_1/index.php?page=forum&id_forum=3">
-                                    prueba </a></li>
-                            <li class="divider"></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </nav>
-
-    <div class="jumbotron no-margin-bottom no-padding-bottom">
-        <div class="container text-center">
-            <div id="site-logo"><a href="/Projecte_Bloc_1/"
-                                   title="Board index"><h2>Foro Programacion</h2></a></div>
-
-        </div>
-    </div>
-</header>
-
+{% include 'header.twig' %}
 
 <div class="container" id="content-wrapper">
     {% block body %}
         <p>Contingut per defecte</p>
     {% endblock %}
-    </div>
+</div>
 
 </body>
 </html>

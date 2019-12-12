@@ -29,9 +29,12 @@ $di->set("Config", $config);
 
 // Carreguem l'entorn de Twig
 $loader = new \Twig\Loader\FilesystemLoader(__DIR__ . '/templates');
-$twig = new \Twig\Environment($loader);
+$twig = new \Twig\Environment($loader, [
+    'debug' => true,
+]);
 // Afegim una instància de Router a la plantilla.
 // La utilitzarem en les plantilles per a generar URL.
+$twig->addExtension(new \Twig\Extension\DebugExtension());
 $twig->addGlobal('router', new Router(new \App\Utils\DependencyInjector()));
 //l'incloem al contenidor de serveis
 $di->set('Twig', $twig);
