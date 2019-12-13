@@ -67,25 +67,25 @@
                 <div class="sidebar-sticky">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link" href="<?php echo $_SERVER["PHP_SELF"] . "?page=category_list"; ?>">
+                            <a class="nav-link" href="<?= $route->generateURL('Category', 'getAdminCategory'); ?>">
                                 <span data-feather="file"></span>
                                 Categories
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?php echo $_SERVER["PHP_SELF"] . "?page=forum_list"; ?>">
+                            <a class="nav-link" href="<?= $route->generateURL('Forum', 'getAdminForum'); ?>">
                                 <span data-feather="shopping-cart"></span>
                                 Forums
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?php echo $_SERVER["PHP_SELF"] . "?page=topic_list"; ?>">
+                            <a class="nav-link" href="<?= $route->generateURL('Forum', 'getAdminForum'); ?>">
                                 <span data-feather="users"></span>
                                 Topics
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?php echo $_SERVER["PHP_SELF"] . "?page=post_list"; ?>">
+                            <a class="nav-link" href="<?= $route->generateURL('Forum', 'getAdminForum'); ?>">
                                 <span data-feather="bar-chart-2"></span>
                                 Posts
                             </a>

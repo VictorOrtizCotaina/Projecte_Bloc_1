@@ -91,7 +91,6 @@
                                 Posts
                             </a>
                         </li>
-
                     </ul>
 
                 </div>
@@ -168,7 +167,7 @@
                             if ($Previous > 0) {
                                 ?>
                                 <li>
-                                    <a href="<?= $route->generateURL('Category', 'getAdminCategory') . "&num_page=" . $Previous; ?>"
+                                    <a href="<?= $route->generateURL('Category', 'getAdminCategory') . "?num_page=" . $Previous; ?>"
                                        aria-label="Previous">
                                         <span aria-hidden="true">&laquo; Previous</span>
                                     </a>
@@ -176,14 +175,14 @@
                             <?php } ?>
                             <?php for ($i = 1; $i <= $pages; $i++) : ?>
                                 <li>
-                                    <a href="<?= $route->generateURL('Category', 'getAdminCategory') . "&num_page=" . $i; ?>"><?= $i; ?></a>
+                                    <a href="<?= $route->generateURL('Category', 'getAdminCategory') . "?num_page=" . $i; ?>"><?= $i; ?></a>
                                 </li>
                             <?php endfor; ?>
                             <?php
                             if ($Next <= $pages) {
                                 ?>
                                 <li>
-                                    <a href="<?= $route->generateURL('Category', 'getAdminCategory') . "&num_page=" . $Next;  ?>"
+                                    <a href="<?= $route->generateURL('Category', 'getAdminCategory') . "?num_page=" . $Next;  ?>"
                                        aria-label="Next">
                                         <span aria-hidden="true">Next &raquo;</span>
                                     </a>

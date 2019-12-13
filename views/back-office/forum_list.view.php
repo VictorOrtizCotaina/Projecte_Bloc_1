@@ -80,13 +80,13 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?= $route->generateURL('Category', 'getAdminCategory'); ?>">
+                            <a class="nav-link" href="<?= $route->generateURL('Forum', 'getAdminForum'); ?>">
                                 <span data-feather="users"></span>
                                 Topics
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?= $route->generateURL('Category', 'getAdminCategory'); ?>">
+                            <a class="nav-link" href="<?= $route->generateURL('Forum', 'getAdminForum'); ?>">
                                 <span data-feather="bar-chart-2"></span>
                                 Posts
                             </a>
@@ -166,7 +166,7 @@
                             if ($Previous > 0) {
                                 ?>
                                 <li>
-                                    <a href="<?= $route->generateURL('Forum', 'getAdminForum') . "&num_page=" . $Previous; ?>"
+                                    <a href="<?= $route->generateURL('Forum', 'getAdminForum') . "?num_page=" . $Previous; ?>"
                                        aria-label="Previous">
                                         <span aria-hidden="true">&laquo; Previous</span>
                                     </a>
@@ -174,14 +174,14 @@
                             <?php } ?>
                             <?php for ($i = 1; $i <= $pages; $i++) : ?>
                                 <li>
-                                    <a href="<?= $route->generateURL('Forum', 'getAdminForum') . "&num_page=" . $i; ?>"><?= $i; ?></a>
+                                    <a href="<?= $route->generateURL('Forum', 'getAdminForum') . "?num_page=" . $i; ?>"><?= $i; ?></a>
                                 </li>
                             <?php endfor; ?>
                             <?php
                             if ($Next <= $pages) {
                                 ?>
                                 <li>
-                                    <a href="<?= $route->generateURL('Forum', 'getAdminForum') . "&num_page=" . $Next;  ?>"
+                                    <a href="<?= $route->generateURL('Forum', 'getAdminForum') . "?num_page=" . $Next;  ?>"
                                        aria-label="Next">
                                         <span aria-hidden="true">Next &raquo;</span>
                                     </a>

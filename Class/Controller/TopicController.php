@@ -44,6 +44,9 @@ class TopicController extends AbstractController
         $limit = 2;
         $num_page = filter_input(INPUT_GET, 'num_page', FILTER_SANITIZE_STRING);
         $num_page = isset($num_page) ? $num_page : 1;
+        if (isset($_GET["submitFilter"])) {
+            $num_page = 1;
+        }
         $start = ($num_page - 1) * $limit;
 
         /*

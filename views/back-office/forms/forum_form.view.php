@@ -1,3 +1,4 @@
+<?php global $route; ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-gb" xml:lang="en-gb" data-ng-app>
 
@@ -66,25 +67,25 @@
                 <div class="sidebar-sticky">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link" href="<?php echo $_SERVER["PHP_SELF"] . "?page=category_list"; ?>">
+                            <a class="nav-link" href="<?= $route->generateURL('Category', 'getAdminCategory'); ?>">
                                 <span data-feather="file"></span>
                                 Categories
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?php echo $_SERVER["PHP_SELF"] . "?page=forum_list"; ?>">
+                            <a class="nav-link" href="<?= $route->generateURL('Forum', 'getAdminForum'); ?>">
                                 <span data-feather="shopping-cart"></span>
                                 Forums
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?php echo $_SERVER["PHP_SELF"] . "?page=topic_list"; ?>">
+                            <a class="nav-link" href="<?= $route->generateURL('Forum', 'getAdminForum'); ?>">
                                 <span data-feather="users"></span>
                                 Topics
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?php echo $_SERVER["PHP_SELF"] . "?page=post_list"; ?>">
+                            <a class="nav-link" href="<?= $route->generateURL('Forum', 'getAdminForum'); ?>">
                                 <span data-feather="bar-chart-2"></span>
                                 Posts
                             </a>
@@ -163,7 +164,7 @@
                             ?>
                             <input type="submit" class="btn btn-primary" name="edit" value="Aceptar">
                         <?php } ?>
-                        <a class="btn btn-primary" href="<?php echo $_SERVER['PHP_SELF'];?>">Volver</a>
+                        <a class="btn btn-primary" href="<?= $route->generateURL('Forum', 'getAdminForum');  ?>">Volver</a>
                     </form>
                 </div>
             </main>
