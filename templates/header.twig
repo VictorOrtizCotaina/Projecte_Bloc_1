@@ -29,14 +29,7 @@
                         </a>
                     {% endif %}
 
-                    <a class="btn navbar-form navbar-left ng-pristine ng-valid" href="{#<?php
-                        $url = $_SERVER["PHP_SELF"] . "?";
-                    if (!empty($_SERVER["QUERY_STRING"])) {
-                    $url .= $_SERVER["QUERY_STRING"] . "&";
-                    }
-                    $url .= "cerrar_sesion=1";
-                    echo $url;
-                    ?>#}">
+                    <a class="btn navbar-form navbar-left ng-pristine ng-valid" href="{{ router.generateURL('User', 'logout') }}">
                         <i class="fas fa-power-off"></i>
                     </a>
                 {% endif %}

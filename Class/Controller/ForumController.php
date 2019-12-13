@@ -14,7 +14,7 @@ class ForumController extends AbstractController
     {
         session_start();
 
-$target_dir = $this->config->get('image')['src'];
+        $target_dir = $this->config->get('image')['src'];
 
         /* Se comprueba si hay una sessión de usuario creada (se crea al iniciar sessión) y de ser así se añade un objecto usuario. */
         if (isset($_SESSION["user"])) {
