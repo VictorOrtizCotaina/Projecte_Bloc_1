@@ -132,6 +132,8 @@ class CategoryController extends AbstractController
 
         $target_dir = $this->config->get('image')['src'];
 
+        $page = "category_add";
+
         if (isset($_SESSION["user"])) {
             $id = $_SESSION["user"]->getIdUser();
             $userModel = new UserModel($this->db);
@@ -200,6 +202,7 @@ class CategoryController extends AbstractController
         }
 
         $target_dir = $this->config->get('image')['src'];
+        $page = "category_edit";
 
         if (isset($_SESSION["user"])) {
             $id = $_SESSION["user"]->getIdUser();
@@ -265,4 +268,71 @@ class CategoryController extends AbstractController
         require("views/back-office/forms/category_form.view.php");
 
     }
+
+
+    public function adminCategoryDelete($id_category)
+    {
+        session_start();
+
+        /* En caso de que se pase el parametro para cerrar sesion, se hace un unset de la sesion y se elimina. */
+        if (isset($_GET["cerrar_sesion"]) && $_GET["cerrar_sesion"] === "1") {
+            session_unset();
+            session_destroy();
+        }
+        
+        if (isset($_SESSION["user"])) {
+            $id = $_SESSION["user"]->getIdUser();
+            $userModel = new UserModel($this->db);
+            $user = $userModel->getUserById($id);
+            $userGroup = $user->getIdUserGroup();
+            if ($userGroup != 1) {
+                $url = $_SERVER["PHP_SELF"];
+                header("Location: $url");
+            }
+        } else {
+            $url = $_SERVER["PHP_SELF"] . "?page=login";
+            header("Location: $url");
+        }
+        if (isset($id_category)) {
+            $categoryModel = new CategoryModel($this->db);
+            $category = $categoryModel->getCategoryById($id_category);
+            $delete = $categoryModel->deleteCategory($category);
+            global $route;
+            header('Location: ' . $route->generateURL('Category', 'getAdminCategory'));
+        }
+    }
+
+
+    public function adminCategoryActive($id_category)
+    {
+        session_start();
+
+        /* En caso de que se pase el parametro para cerrar sesion, se hace un unset de la sesion y se elimina. */
+        if (isset($_GET["cerrar_sesion"]) && $_GET["cerrar_sesion"] === "1") {
+            session_unset();
+            session_destroy();
+        }
+
+        if (isset($_SESSION["user"])) {
+            $id = $_SESSION["user"]->getIdUser();
+            $userModel = new UserModel($this->db);
+            $user = $userModel->getUserById($id);
+            $userGroup = $user->getIdUserGroup();
+            if ($userGroup != 1) {
+                $url = $_SERVER["PHP_SELF"];
+                header("Location: $url");
+            }
+        } else {
+            $url = $_SERVER["PHP_SELF"] . "?page=login";
+            header("Location: $url");
+        }
+        if (isset($id_category)) {
+            $categoryModel = new CategoryModel($this->db);
+            $category = $categoryModel->getCategoryById($id_category);
+            $active = $categoryModel->activeCategory($category);
+            global $route;
+            header('Location: ' . $route->generateURL('Category', 'getAdminCategory'));
+        }
+    }
+
 }

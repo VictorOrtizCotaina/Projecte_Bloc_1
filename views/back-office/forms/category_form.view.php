@@ -1,3 +1,4 @@
+<?php global $route; ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-gb" xml:lang="en-gb" data-ng-app>
 
@@ -155,7 +156,7 @@
                             ?>
                             <input type="submit" class="btn btn-primary" name="edit" value="Aceptar">
                         <?php } ?>
-                        <a class="btn btn-primary" href="<?php echo $_SERVER['PHP_SELF'];?>">Volver</a>
+                        <a class="btn btn-primary" href="<?= $route->generateURL('Category', 'getAdminCategory');  ?>">Volver</a>
                     </form>
                 </div>
             </main>

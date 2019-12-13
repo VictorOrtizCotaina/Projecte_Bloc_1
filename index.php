@@ -99,70 +99,10 @@ switch ($page) {
         };
     case "category_delete":
         {
-            session_start();
-
-            /* En caso de que se pase el parametro para cerrar sesion, se hace un unset de la sesion y se elimina. */
-            if (isset($_GET["cerrar_sesion"]) && $_GET["cerrar_sesion"] === "1") {
-                session_unset();
-                session_destroy();
-            }
-
-            $pdo = new DBConnection();
-
-            if (isset($_SESSION["user"])) {
-                $id = $_SESSION["user"]->getIdUser();
-                $userModel = new UserModel($pdo->getConnection());
-                $user = $userModel->getUserById($id);
-                $userGroup = $user->getIdUserGroup();
-                if ($userGroup != 1) {
-                    $url = $_SERVER["PHP_SELF"];
-                    header("Location: $url");
-                }
-            } else {
-                $url = $_SERVER["PHP_SELF"] . "?page=login";
-                header("Location: $url");
-            }
-            if (isset($_GET['id_category'])) {
-                $id_cat = filter_input(INPUT_GET, 'id_category', FILTER_SANITIZE_NUMBER_INT);
-                $categoryModel = new CategoryModel($pdo->getConnection());
-                $category = $categoryModel->getCategoryById($id_cat);
-                $delete = $categoryModel->deleteCategory($category);
-                header('Location: ' . $_SERVER['HTTP_REFERER']);
-            }
             break;
         };
     case "category_active":
         {
-            session_start();
-
-            /* En caso de que se pase el parametro para cerrar sesion, se hace un unset de la sesion y se elimina. */
-            if (isset($_GET["cerrar_sesion"]) && $_GET["cerrar_sesion"] === "1") {
-                session_unset();
-                session_destroy();
-            }
-
-            $pdo = new DBConnection();
-
-            if (isset($_SESSION["user"])) {
-                $id = $_SESSION["user"]->getIdUser();
-                $userModel = new UserModel($pdo->getConnection());
-                $user = $userModel->getUserById($id);
-                $userGroup = $user->getIdUserGroup();
-                if ($userGroup != 1) {
-                    $url = $_SERVER["PHP_SELF"];
-                    header("Location: $url");
-                }
-            } else {
-                $url = $_SERVER["PHP_SELF"] . "?page=login";
-                header("Location: $url");
-            }
-            if (isset($_GET['id_category'])) {
-                $id_cat = filter_input(INPUT_GET, 'id_category', FILTER_SANITIZE_NUMBER_INT);
-                $categoryModel = new CategoryModel($pdo->getConnection());
-                $category = $categoryModel->getCategoryById($id_cat);
-                $active = $categoryModel->activeCategory($category);
-                header('Location: ' . $_SERVER['HTTP_REFERER']);
-            }
             break;
         };
 

@@ -1,3 +1,4 @@
+<?php global $route; ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-gb" xml:lang="en-gb" data-ng-app>
 
@@ -132,7 +133,7 @@
                                     <td><?php echo $category->getIdUser(); ?></td>
                                     <td>
                                         <a class="btn navbar-form navbar-left ng-pristine ng-valid"
-                                           href="<?php echo $_SERVER["PHP_SELF"] . "?page=category_edit&id_category=" . $category->getIdCategory(); ?>">
+                                           href="<?= $route->generateURL('Category', 'adminCategoryEdit', ["id_category" => $category->getIdCategory()]); ?>">
                                             <i class="fas fa-edit"></i>
                                         </a>
                                     </td>
@@ -141,12 +142,12 @@
                                         if ($category->getActive() === true) {
                                             ?>
                                             <a class="btn navbar-form navbar-left ng-pristine ng-valid"
-                                               href="<?php echo $_SERVER["PHP_SELF"] . "?page=category_delete&id_category=" . $category->getIdCategory(); ?>">
+                                               href="<?= $route->generateURL('Category', 'adminCategoryDelete', ["id_category" => $category->getIdCategory()]); ?>">
                                                 <i class="fas fa-trash-alt"></i>
                                             </a>
                                         <?php } else { ?>
                                             <a class="btn navbar-form navbar-left ng-pristine ng-valid"
-                                               href="<?php echo $_SERVER["PHP_SELF"] . "?page=category_active&id_category=" . $category->getIdCategory(); ?>">
+                                               href="<?= $route->generateURL('Category', 'adminCategoryActive', ["id_category" => $category->getIdCategory()]); ?>">
                                                 <i class="fas fa-unlock-alt"></i>
                                             </a>
                                         <?php } ?>
@@ -167,7 +168,7 @@
                             if ($Previous > 0) {
                                 ?>
                                 <li>
-                                    <a href="<?php echo $_SERVER["PHP_SELF"] . "?" . "page=category_list&num_page=" . $Previous; ?>"
+                                    <a href="<?= $route->generateURL('Category', 'getAdminCategory') . "&num_page=" . $Previous; ?>"
                                        aria-label="Previous">
                                         <span aria-hidden="true">&laquo; Previous</span>
                                     </a>
@@ -175,14 +176,14 @@
                             <?php } ?>
                             <?php for ($i = 1; $i <= $pages; $i++) : ?>
                                 <li>
-                                    <a href="<?php echo $_SERVER["PHP_SELF"] . "?" . "page=category_list&num_page=" . $i; ?>"><?= $i; ?></a>
+                                    <a href="<?= $route->generateURL('Category', 'getAdminCategory') . "&num_page=" . $i; ?>"><?= $i; ?></a>
                                 </li>
                             <?php endfor; ?>
                             <?php
                             if ($Next <= $pages) {
                                 ?>
                                 <li>
-                                    <a href="<?php echo $_SERVER["PHP_SELF"] . "?" . "page=category_list&num_page=" . $Next; ?>"
+                                    <a href="<?= $route->generateURL('Category', 'getAdminCategory') . "&num_page=" . $Next;  ?>"
                                        aria-label="Next">
                                         <span aria-hidden="true">Next &raquo;</span>
                                     </a>
@@ -190,8 +191,7 @@
                             <?php }
                         } ?>
                     </ul>
-
-                    <a class="btn" href="<?= $_SERVER["PHP_SELF"] . "?page=category&id_category={$categoryNavbar->getIdCategory()}"; ?>">
+                    <a class="btn" href="<?= $route->generateURL('Category', 'adminCategoryAdd') ?>">
                         <i class="fas fa-plus"></i>
                         Añadir Categoria
                     </a>

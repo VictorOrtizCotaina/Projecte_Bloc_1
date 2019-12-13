@@ -50,7 +50,21 @@
   },
   "Projecte_Bloc_1/category_edit/:id_category": {
     "controller": "Category",
-    "method": "getAdminCategory",
+    "method": "adminCategoryEdit",
+    "params": {
+      "id_category": "number"
+    }
+  },
+  "Projecte_Bloc_1/category_delete/:id_category": {
+    "controller": "Category",
+    "method": "adminCategoryDelete",
+    "params": {
+      "id_category": "number"
+    }
+  },
+  "Projecte_Bloc_1/category_active/:id_category": {
+    "controller": "Category",
+    "method": "adminCategoryActive",
     "params": {
       "id_category": "number"
     }
