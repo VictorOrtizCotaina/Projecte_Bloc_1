@@ -1,3 +1,4 @@
+<?php global $route; ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-gb" xml:lang="en-gb" data-ng-app>
 
@@ -67,25 +68,25 @@
                 <div class="sidebar-sticky">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link" href="<?php echo $_SERVER["PHP_SELF"] . "?page=category_list"; ?>">
+                            <a class="nav-link" href="<?= $route->generateURL('Category', 'getAdminCategory'); ?>">
                                 <span data-feather="file"></span>
                                 Categories
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?php echo $_SERVER["PHP_SELF"] . "?page=forum_list"; ?>">
+                            <a class="nav-link" href="<?= $route->generateURL('Forum', 'getAdminForum'); ?>">
                                 <span data-feather="shopping-cart"></span>
                                 Forums
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?php echo $_SERVER["PHP_SELF"] . "?page=topic_list"; ?>">
+                            <a class="nav-link" href="<?= $route->generateURL('Category', 'getAdminCategory'); ?>">
                                 <span data-feather="users"></span>
                                 Topics
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?php echo $_SERVER["PHP_SELF"] . "?page=post_list"; ?>">
+                            <a class="nav-link" href="<?= $route->generateURL('Category', 'getAdminCategory'); ?>">
                                 <span data-feather="bar-chart-2"></span>
                                 Posts
                             </a>
@@ -130,7 +131,7 @@
                                     <td><?php echo $forum->getIdUser(); ?></td>
                                     <td>
                                         <a class="btn navbar-form navbar-left ng-pristine ng-valid"
-                                           href="<?php echo $_SERVER["PHP_SELF"] . "?page=forum_edit&id_forum=" . $forum->getIdForum(); ?>">
+                                           href="<?= $route->generateURL('Forum', 'adminForumEdit', ["id_forum" => $forum->getIdForum()]); ?>">
                                             <i class="fas fa-edit"></i>
                                         </a>
                                     </td>
@@ -139,12 +140,12 @@
                                         if ($forum->getActive() === true) {
                                             ?>
                                             <a class="btn navbar-form navbar-left ng-pristine ng-valid"
-                                               href="<?php echo $_SERVER["PHP_SELF"] . "?page=forum_delete&id_forum=" . $forum->getIdForum(); ?>">
+                                               href="<?= $route->generateURL('Forum', 'adminForumDelete', ["id_forum" => $forum->getIdForum()]); ?>">
                                                 <i class="fas fa-trash-alt"></i>
                                             </a>
                                         <?php } else { ?>
                                             <a class="btn navbar-form navbar-left ng-pristine ng-valid"
-                                               href="<?php echo $_SERVER["PHP_SELF"] . "?page=forum_active&id_forum=" . $forum->getIdForum(); ?>">
+                                               href="<?= $route->generateURL('Forum', 'adminForumActive', ["id_forum" => $forum->getIdForum()]); ?>">
                                                 <i class="fas fa-unlock-alt"></i>
                                             </a>
                                         <?php } ?>
@@ -165,7 +166,7 @@
                             if ($Previous > 0) {
                                 ?>
                                 <li>
-                                    <a href="<?php echo $_SERVER["PHP_SELF"] . "?" . "page=forum_list&num_page=" . $Previous; ?>"
+                                    <a href="<?= $route->generateURL('Forum', 'getAdminForum') . "&num_page=" . $Previous; ?>"
                                        aria-label="Previous">
                                         <span aria-hidden="true">&laquo; Previous</span>
                                     </a>
@@ -173,14 +174,14 @@
                             <?php } ?>
                             <?php for ($i = 1; $i <= $pages; $i++) : ?>
                                 <li>
-                                    <a href="<?php echo $_SERVER["PHP_SELF"] . "?" . "page=forum_list&num_page=" . $i; ?>"><?= $i; ?></a>
+                                    <a href="<?= $route->generateURL('Forum', 'getAdminForum') . "&num_page=" . $i; ?>"><?= $i; ?></a>
                                 </li>
                             <?php endfor; ?>
                             <?php
                             if ($Next <= $pages) {
                                 ?>
                                 <li>
-                                    <a href="<?php echo $_SERVER["PHP_SELF"] . "?" . "page=forum_list&num_page=" . $Next; ?>"
+                                    <a href="<?= $route->generateURL('Forum', 'getAdminForum') . "&num_page=" . $Next;  ?>"
                                        aria-label="Next">
                                         <span aria-hidden="true">Next &raquo;</span>
                                     </a>
@@ -189,7 +190,7 @@
                         } ?>
                     </ul>
 
-                    <a class="btn" href="<?php echo $_SERVER["PHP_SELF"] . "?page=forum_add"; ?>">
+                    <a class="btn" href="<?= $route->generateURL('Forum', 'adminForumAdd') ?>">
                         <i class="fas fa-plus"></i>
                         Añadir Forum
                     </a>

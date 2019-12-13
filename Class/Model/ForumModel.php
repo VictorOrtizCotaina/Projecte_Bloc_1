@@ -51,6 +51,8 @@ class ForumModel extends AbstractModel
             $stmt->execute();
             $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, $this->className);
             $forum = $stmt->fetch();
+            $tM = new TopicModel($this->pdo);
+            $forum->setTopics($tM->getAllTopicsByForum($forum->getIdForum()));
             return $forum;
 
         } catch (PDOException $e) {

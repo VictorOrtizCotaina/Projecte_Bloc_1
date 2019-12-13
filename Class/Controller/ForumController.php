@@ -114,4 +114,265 @@ class ForumController extends AbstractController
         require("views/front-office/forum.view.php");
     }
 
+
+    public function getAdminForum()
+    {
+        session_start();
+
+        /* En caso de que se pase el parametro para cerrar sesion, se hace un unset de la sesion y se elimina. */
+        if (isset($_GET["cerrar_sesion"]) && $_GET["cerrar_sesion"] === "1") {
+            session_unset();
+            session_destroy();
+        }
+
+        if (isset($_SESSION["user"])) {
+            $id = $_SESSION["user"]->getIdUser();
+            $userModel = new UserModel($this->db);
+            $user = $userModel->getUserById($id);
+            $userGroup = $user->getIdUserGroup();
+            if ($userGroup != 1) {
+                $forumModel = new ForumModel($this->db);
+                $limit = 2;
+                $num_page = isset($_GET['num_page']) ? $_GET['num_page'] : 1;
+                $start = ($num_page - 1) * $limit;
+
+                $forums = $forumModel->getForumsPageByUser($start, $limit, $user->getIdUser());
+                $forumCount = $forumModel->getPagesForumsByUser($user->getIdUser());
+                $total = $forumCount;
+                $pages = ceil($total / $limit);
+                $Previous = $num_page - 1;
+                $Next = $num_page + 1;
+            } else {
+                $forumModel = new ForumModel($this->db);
+                $limit = 2;
+                $num_page = isset($_GET['num_page']) ? $_GET['num_page'] : 1;
+                $start = ($num_page - 1) * $limit;
+
+                $forums = $forumModel->getAllForumsPage($start, $limit);
+                $forumCount = $forumModel->getPagesForums();
+                $total = $forumCount;
+                $pages = ceil($total / $limit);
+                $Previous = $num_page - 1;
+                $Next = $num_page + 1;
+            }
+        } else {
+            $url = $_SERVER["PHP_SELF"] . "?page=login";
+            header("Location: $url");
+        }
+
+        require("views/back-office/forum_list.view.php");
+    }
+
+
+    public function adminForumAdd()
+    {
+        session_start();
+
+        /* En caso de que se pase el parametro para cerrar sesion, se hace un unset de la sesion y se elimina. */
+        if (isset($_GET["cerrar_sesion"]) && $_GET["cerrar_sesion"] === "1") {
+            session_unset();
+            session_destroy();
+        }
+
+        $target_dir = $this->config->get('image')['src'];
+        $page = "forum_add";
+
+        if (isset($_SESSION["user"])) {
+            $id = $_SESSION["user"]->getIdUser();
+            $userModel = new UserModel($this->db);
+            $user = $userModel->getUserById($id);
+            $userGroup = $user->getIdUserGroup();
+            if ($userGroup != 1) {
+                $url = $_SERVER["PHP_SELF"];
+                header("Location: $url");
+            }
+        } else {
+            $url = $_SERVER["PHP_SELF"] . "?page=login";
+            header("Location: $url");
+        }
+
+
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            if (isset($_POST["image"])) {
+                $target_file = $target_dir . basename($_FILES["image"]["name"]);
+                $uploadOk = 0;
+                $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+                if ($_FILES["image"]["size"] > 0 && $_FILES["image"]["size"] < 100000) {
+                    $uploadOk = 1;
+                }
+                if ($imageFileType == "jpg" && $imageFileType == "png") {
+                    $uploadOk = 1;
+                }
+                $check = getimagesize($_FILES["image"]["tmp_name"]);
+                if ($check !== false) {
+                    $uploadOk = 1;
+                } else {
+                    $uploadOk = 0;
+                }
+                if ($uploadOk) {
+                    move_uploaded_file($_FILES["image"]["tmp_name"], $target_file);
+                }
+            }
+
+
+            $forumModel = new ForumModel($this->db);
+            $forum = $forumModel->getData();
+            $errors = $forumModel->validate($forum);
+
+            if (!($errors)) {
+                $insert = $forumModel->insertForum($forum);
+
+                if ($insert) {
+                    $url = $_SERVER["PHP_SELF"] . "?page=forum_list";
+                    header("Location: $url");
+                }
+            }
+        }
+
+        require("views/back-office/forms/forum_form.view.php");
+    }
+
+
+    public function adminForumEdit($id_forum)
+    {
+        session_start();
+
+        /* En caso de que se pase el parametro para cerrar sesion, se hace un unset de la sesion y se elimina. */
+        if (isset($_GET["cerrar_sesion"]) && $_GET["cerrar_sesion"] === "1") {
+            session_unset();
+            session_destroy();
+        }
+
+        $target_dir = $this->config->get('image')['src'];
+        $page = "forum_edit";
+
+        if (isset($_SESSION["user"])) {
+            $id = $_SESSION["user"]->getIdUser();
+            $userModel = new UserModel($this->db);
+            $user = $userModel->getUserById($id);
+            $userGroup = $user->getIdUserGroup();
+            if ($userGroup != 1) {
+                $url = $_SERVER["PHP_SELF"];
+                header("Location: $url");
+            }
+        } else {
+            $url = $_SERVER["PHP_SELF"] . "?page=login";
+            header("Location: $url");
+        }
+
+
+        $forumModel = new ForumModel($this->db);
+        $forum = $forumModel->getForumById($id_forum);
+        $title = $forum->getTitle();
+        $description = $forum->getDescription();
+        $image = $target_dir . $forum->getImage();
+        $date = $forum->getDateAdd()->format('Y-m-d');
+        $id_user = $forum->getIdUser();
+
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            if (isset($_POST["image"])) {
+                $target_file = $target_dir . basename($_FILES["image"]["name"]);
+                $uploadOk = 0;
+                $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+                if ($_FILES["image"]["size"] > 0 && $_FILES["image"]["size"] < 100000) {
+                    $uploadOk = 1;
+                }
+                if ($imageFileType == "jpg" && $imageFileType == "png") {
+                    $uploadOk = 1;
+                }
+                $check = getimagesize($_FILES["image"]["tmp_name"]);
+                if ($check !== false) {
+                    $uploadOk = 1;
+                } else {
+                    $uploadOk = 0;
+                }
+                if ($uploadOk) {
+                    move_uploaded_file($_FILES["image"]["tmp_name"], $target_file);
+                }
+            }
+
+            $forumModel = new ForumModel($this->db);
+            $forum = $forumModel->getData();
+            $errors = $forumModel->validate($forum);
+
+            if (!empty($errors)) {
+                $forum->setIdForum($id_forum);
+                $insert = $forumModel->updateForum($forum);
+
+                if ($insert) {
+                    $url = $_SERVER["PHP_SELF"] . "?page=forum_list";
+                    header("Location: $url");
+                }
+            }
+        }
+
+        require("views/back-office/forms/forum_form.view.php");
+    }
+
+
+    public function adminForumDelete($id_forum)
+    {
+        session_start();
+
+        /* En caso de que se pase el parametro para cerrar sesion, se hace un unset de la sesion y se elimina. */
+        if (isset($_GET["cerrar_sesion"]) && $_GET["cerrar_sesion"] === "1") {
+            session_unset();
+            session_destroy();
+        }
+
+        if (isset($_SESSION["user"])) {
+            $id = $_SESSION["user"]->getIdUser();
+            $userModel = new UserModel($this->db);
+            $user = $userModel->getUserById($id);
+            $userGroup = $user->getIdUserGroup();
+            if ($userGroup != 1) {
+                $url = $_SERVER["PHP_SELF"];
+                header("Location: $url");
+            }
+        } else {
+            $url = $_SERVER["PHP_SELF"] . "?page=login";
+            header("Location: $url");
+        }
+        if (isset($id_forum)) {
+            $forumModel = new ForumModel($this->db);
+            $forum = $forumModel->getForumById($id_forum);
+            $delete = $forumModel->deleteForum($forum);
+            global $route;
+            header('Location: ' . $route->generateURL('Forum', 'getAdminForum'));
+        }
+    }
+
+
+    public function adminForumActive($id_forum)
+    {
+        session_start();
+
+        /* En caso de que se pase el parametro para cerrar sesion, se hace un unset de la sesion y se elimina. */
+        if (isset($_GET["cerrar_sesion"]) && $_GET["cerrar_sesion"] === "1") {
+            session_unset();
+            session_destroy();
+        }
+        
+        if (isset($_SESSION["user"])) {
+            $id = $_SESSION["user"]->getIdUser();
+            $userModel = new UserModel($this->db);
+            $user = $userModel->getUserById($id);
+            $userGroup = $user->getIdUserGroup();
+            if ($userGroup != 1) {
+                $url = $_SERVER["PHP_SELF"];
+                header("Location: $url");
+            }
+        } else {
+            $url = $_SERVER["PHP_SELF"] . "?page=login";
+            header("Location: $url");
+        }
+        if (isset($id_forum)) {
+            $forumModel = new ForumModel($this->db);
+            $forum = $forumModel->getForumById($id_forum);
+            $active = $forumModel->activeForum($forum);
+            global $route;
+            header('Location: ' . $route->generateURL('Forum', 'getAdminForum'));
+        }
+    }
+
 }

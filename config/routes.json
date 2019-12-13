@@ -68,5 +68,35 @@
     "params": {
       "id_category": "number"
     }
+  },
+
+  "Projecte_Bloc_1/forum_list": {
+    "controller": "Forum",
+    "method": "getAdminForum"
+  },
+  "Projecte_Bloc_1/forum_add": {
+    "controller": "Forum",
+    "method": "adminForumAdd"
+  },
+  "Projecte_Bloc_1/forum_edit/:id_forum": {
+    "controller": "Forum",
+    "method": "adminForumEdit",
+    "params": {
+      "id_forum": "number"
+    }
+  },
+  "Projecte_Bloc_1/forum_delete/:id_forum": {
+    "controller": "Forum",
+    "method": "adminForumDelete",
+    "params": {
+      "id_forum": "number"
+    }
+  },
+  "Projecte_Bloc_1/forum_active/:id_forum": {
+    "controller": "Forum",
+    "method": "adminForumActive",
+    "params": {
+      "id_forum": "number"
+    }
   }
 }
