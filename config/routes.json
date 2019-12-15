@@ -98,5 +98,59 @@
     "params": {
       "id_forum": "number"
     }
+  },
+
+
+  "Projecte_Bloc_1/topic_list": {
+    "controller": "Topic",
+    "method": "getAdminTopic"
+  },
+  "Projecte_Bloc_1/topic_add": {
+    "controller": "Topic",
+    "method": "adminTopicAdd"
+  },
+  "Projecte_Bloc_1/topic_edit/:id_topic": {
+    "controller": "Topic",
+    "method": "adminTopicEdit",
+    "params": {
+      "id_forum": "number"
+    }
+  },
+  "Projecte_Bloc_1/topic_delete/:id_topic": {
+    "controller": "Topic",
+    "method": "adminTopicDelete",
+    "params": {
+      "id_forum": "number"
+    }
+  },
+  "Projecte_Bloc_1/topic_active/:id_topic": {
+    "controller": "Topic",
+    "method": "adminTopicActive",
+    "params": {
+      "id_forum": "number"
+    }
+  },
+
+  "Projecte_Bloc_1/post_list": {
+    "controller": "Post",
+    "method": "getAdminPost"
+  },
+  "Projecte_Bloc_1/post_add": {
+    "controller": "Post",
+    "method": "adminPostAdd"
+  },
+  "Projecte_Bloc_1/post_edit/:id_post": {
+    "controller": "Post",
+    "method": "adminPostEdit",
+    "params": {
+      "id_forum": "number"
+    }
+  },
+  "Projecte_Bloc_1/post_delete/:id_post": {
+    "controller": "Post",
+    "method": "adminPostDelete",
+    "params": {
+      "id_forum": "number"
+    }
   }
 }

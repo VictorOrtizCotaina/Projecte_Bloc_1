@@ -12,26 +12,227 @@ class PostController extends AbstractController
 
     public function getAdminPost()
     {
+        session_start();
+
+        /* En caso de que se pase el parametro para cerrar sesion, se hace un unset de la sesion y se elimina. */
+        if (isset($_GET["cerrar_sesion"]) && $_GET["cerrar_sesion"] === "1") {
+            session_unset();
+            session_destroy();
+        }
+
+        if (isset($_SESSION["user"])) {
+            $id = $_SESSION["user"]->getIdUser();
+
+            $userModel = new UserModel($this->db);
+            $user = $userModel->getUserById($id);
+            $userGroup = $user->getIdUserGroup();
+            if ($userGroup != 1) {
+                $id_user = $user->getIdUser();
+                $postModel = new PostModel($this->db);
+                $limit = 2;
+                $num_page = isset($_GET['num_page']) ? $_GET['num_page'] : 1;
+                $start = ($num_page - 1) * $limit;
+
+                $posts = $postModel->getPostsPageByUser($id_user, $start, $limit);
+                $postCount = $postModel->getPagesPostsByUser($id_user);
+                $total = $postCount;
+                $pages = ceil($total / $limit);
+                $Previous = $num_page - 1;
+                $Next = $num_page + 1;
+            } else {
+                $postModel = new PostModel($this->db);
+
+                $limit = 2;
+                $num_page = isset($_GET['num_page']) ? $_GET['num_page'] : 1;
+                $start = ($num_page - 1) * $limit;
+
+                $posts = $postModel->getAllPostsPage($start, $limit);
+                $postCount = $postModel->getPagesPosts();
+
+                $total = $postCount;
+                $pages = ceil($total / $limit);
+                $Previous = $num_page - 1;
+                $Next = $num_page + 1;
+            }
+        } else {
+            $url = $_SERVER["PHP_SELF"] . "?page=login";
+            header("Location: $url");
+        }
+
+        require("views/back-office/post_list.view.php");
+
     }
 
 
     public function adminPostAdd()
     {
+        session_start();
+
+        /* En caso de que se pase el parametro para cerrar sesion, se hace un unset de la sesion y se elimina. */
+        if (isset($_GET["cerrar_sesion"]) && $_GET["cerrar_sesion"] === "1") {
+            session_unset();
+            session_destroy();
+        }
+
+        $target_dir = $this->config->get('image')['src'];
+        $page = "post_add";
+
+        if (isset($_SESSION["user"])) {
+            $id = $_SESSION["user"]->getIdUser();
+            $userModel = new UserModel($this->db);
+            $user = $userModel->getUserById($id);
+            $userGroup = $user->getIdUserGroup();
+        } else {
+            $url = $_SERVER["PHP_SELF"] . "?page=login";
+            header("Location: $url");
+        }
+
+
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            if (isset($_POST["image"])) {
+                $target_file = $target_dir . basename($_FILES["image"]["name"]);
+                $uploadOk = 0;
+                $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+                if ($_FILES["image"]["size"] > 0 && $_FILES["image"]["size"] < 100000) {
+                    $uploadOk = 1;
+                }
+                if ($imageFileType == "jpg" && $imageFileType == "png") {
+                    $uploadOk = 1;
+                }
+                $check = getimagesize($_FILES["image"]["tmp_name"]);
+                if ($check !== false) {
+                    $uploadOk = 1;
+                } else {
+                    $uploadOk = 0;
+                }
+                if ($uploadOk) {
+                    move_uploaded_file($_FILES["image"]["tmp_name"], $target_file);
+                }
+            }
+
+            $postModel = new PostModel($this->db);
+            $post = $postModel->getData();
+            $errors = $postModel->validate($post);
+
+            if (!empty($errors)) {
+                $insert = $postModel->insertPost($post);
+
+                if ($insert) {
+                    $url = $_SERVER["PHP_SELF"] . "?page=topic_list";
+                    header("Location: $url");
+                }
+            }
+        }
+
+        require("views/back-office/forms/post_form.view.php");
+
     }
 
 
     public function adminPostEdit($id_post)
     {
+        session_start();
+
+        /* En caso de que se pase el parametro para cerrar sesion, se hace un unset de la sesion y se elimina. */
+        if (isset($_GET["cerrar_sesion"]) && $_GET["cerrar_sesion"] === "1") {
+            session_unset();
+            session_destroy();
+        }
+
+        $target_dir = $this->config->get('image')['src'];
+        $page = "post_edit";
+
+        if (isset($_SESSION["user"])) {
+            $id = $_SESSION["user"]->getIdUser();
+            $userModel = new UserModel($this->db);
+            $user = $userModel->getUserById($id);
+            $userGroup = $user->getIdUserGroup();
+        } else {
+            $url = $_SERVER["PHP_SELF"] . "?page=login";
+            header("Location: $url");
+        }
+
+
+        $postModel = new PostModel($this->db);
+        $post = $postModel->getPostById($id_post);
+        $title = $post->getTitle();
+        $text = $post->getText();
+        $image = $target_dir . $post->getImage();
+        $date = $post->getDateAdd()->format('Y-m-d');
+        $id_user = $post->getIdUser();
+        $id_category = $post->getIdCategory();
+        $id_forum = $post->getIdForum();
+        $id_topic = $post->getIdTopic();
+
+
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            if (isset($_POST["image"])) {
+                $target_file = $target_dir . basename($_FILES["image"]["name"]);
+                $uploadOk = 0;
+                $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+                if ($_FILES["image"]["size"] > 0 && $_FILES["image"]["size"] < 100000) {
+                    $uploadOk = 1;
+                }
+                if ($imageFileType == "jpg" && $imageFileType == "png") {
+                    $uploadOk = 1;
+                }
+                $check = getimagesize($_FILES["image"]["tmp_name"]);
+                if ($check !== false) {
+                    $uploadOk = 1;
+                } else {
+                    $uploadOk = 0;
+                }
+                if ($uploadOk) {
+                    move_uploaded_file($_FILES["image"]["tmp_name"], $target_file);
+                }
+            }
+
+            $post = $postModel->getData();
+            $errors = $postModel->validate($post);
+
+            if (!empty($errors)) {
+                $post->setIdPost($id_post);
+                $insert = $postModel->updatePost($post);
+
+                if ($insert) {
+                    $url = $_SERVER["PHP_SELF"] . "?page=topic_list";
+                    header("Location: $url");
+                }
+            }
+        }
+
+        require("views/back-office/forms/post_form.view.php");
+
     }
 
 
     public function adminPostDelete($id_post)
     {
+        session_start();
+
+        /* En caso de que se pase el parametro para cerrar sesion, se hace un unset de la sesion y se elimina. */
+        if (isset($_GET["cerrar_sesion"]) && $_GET["cerrar_sesion"] === "1") {
+            session_unset();
+            session_destroy();
+        }
+
+        if (isset($_SESSION["user"])) {
+            $id = $_SESSION["user"]->getIdUser();
+            $userModel = new UserModel($this->db);
+            $user = $userModel->getUserById($id);
+            $userGroup = $user->getIdUserGroup();
+        } else {
+            $url = $_SERVER["PHP_SELF"] . "?page=login";
+            header("Location: $url");
+        }
+        if (isset($id_post)) {
+            $postModel = new PostModel($this->db);
+            $post = $postModel->getPostById($id_post);
+            $delete = $postModel->deletePost($post);
+            global $route;
+            header('Location: ' . $route->generateURL('Forum', 'getAdminForum'));
+        }
     }
 
-
-    public function adminPostActive($id_post)
-    {
-    }
 
 }

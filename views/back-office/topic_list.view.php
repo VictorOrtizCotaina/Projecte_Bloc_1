@@ -1,3 +1,4 @@
+<?php global $route; ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-gb" xml:lang="en-gb" data-ng-app>
 
@@ -43,64 +44,16 @@
 
 </head>
 <body>
-    <nav class="navbar navbar-dark bg-dark flex-md-nowrap p-0 shadow">
-        <a class="navbar-brand col-sm-3 col-md-2 mr-0 navbar-right"
-           href="<?php echo $_SERVER["PHP_SELF"] . "?page=user"; ?>">
-            <?php echo $user->getUsername(); ?>
-        </a>
-        <a class="navbar-brand" href="<?php echo $_SERVER["PHP_SELF"] ?>">Foro Programacion</a>
-        <ul class="navbar-nav px-3">
-            <li class="nav-item text-nowrap navbar-left">
-                <a class="nav-link" href="<?php
-                $url = $_SERVER["PHP_SELF"] . "?cerrar_sesion=1";
-                echo $url;
-                ?>">
-                    Sign out
-                </a>
-            </li>
-        </ul>
-    </nav>
-
-    <div class="container-fluid">
-        <div class="row">
-            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-                <div class="sidebar-sticky">
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link" href="<?= $route->generateURL('Category', 'getAdminCategory'); ?>">
-                                <span data-feather="file"></span>
-                                Categories
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="<?= $route->generateURL('Forum', 'getAdminForum'); ?>">
-                                <span data-feather="shopping-cart"></span>
-                                Forums
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="<?= $route->generateURL('Forum', 'getAdminForum'); ?>">
-                                <span data-feather="users"></span>
-                                Topics
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="<?= $route->generateURL('Forum', 'getAdminForum'); ?>">
-                                <span data-feather="bar-chart-2"></span>
-                                Posts
-                            </a>
-                        </li>
-                    </ul>
-
-                </div>
-            </nav>
+    <?php
+    require 'partials/admin_header_partial.php';
+    ?>
 
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <h1 class="h2">Topics</h1></div>
-                <form action="<?php echo $_SERVER["PHP_SELF"]."?". "page=topic_list&num_page=" . $num_page; ?>"
+                <form action="<?= $route->generateURL('Topic', 'getAdminTopic') . "?num_page=" . $num_page; ?>"
                       method="GET" id="topic-search" class="topic-search pull-left" style="margin:0;">
-                    <input type = "hidden" name="page" value="<?php echo $_GET["page"]; ?>" />
+                    <input type = "hidden" name="page" value="<?php echo $_GET["num_page"]; ?>" />
                     <input type = "hidden" name="num_page" value="<?php echo $num_page; ?>" />
                     <div class="input-group">
                         <select class="form-control" id="forums" name="forums">
@@ -158,7 +111,7 @@
                                 <tr>
                                     <td>
                                         <a class="navbar-form navbar-left ng-pristine ng-valid"
-                                           href="<?php echo $_SERVER["PHP_SELF"]."?". "page=topic&id_topic=" . $topic->getIdTopic(); ?>">
+                                           href="<?= $route->generateURL('Topic', 'getTopic', ['id_category' => $forum->getIdCategory(), 'id_forum' => $forum->getIdForum(), 'id_topic' => $topic->getIdTopic()]) ?>">
                                             <?php echo $topic->getIdTopic(); ?>
                                         </a>
                                     </td>
@@ -170,7 +123,7 @@
                                     <td><?php echo $topic->getIdUser(); ?></td>
                                     <td>
                                         <a class="btn navbar-form navbar-left ng-pristine ng-valid"
-                                           href="<?php echo $_SERVER["PHP_SELF"] . "?page=topic_edit&id_topic=" . $topic->getIdTopic(); ?>">
+                                           href="<?= $route->generateURL('Topic', 'adminTopicEdit', ["id_topic" => $topic->getIdTopic()]); ?>">
                                             <i class="fas fa-edit"></i>
                                         </a>
                                     </td>
@@ -179,12 +132,12 @@
                                         if ($topic->getActive() === true) {
                                             ?>
                                             <a class="btn navbar-form navbar-left ng-pristine ng-valid"
-                                               href="<?php echo $_SERVER["PHP_SELF"] . "?page=topic_delete&id_topic=" . $topic->getIdTopic(); ?>">
+                                               href="<?= $route->generateURL('Topic', 'adminTopicDelete', ["id_topic" => $topic->getIdTopic()]); ?>">
                                                 <i class="fas fa-trash-alt"></i>
                                             </a>
                                         <?php } else { ?>
                                             <a class="btn navbar-form navbar-left ng-pristine ng-valid"
-                                               href="<?php echo $_SERVER["PHP_SELF"] . "?page=topic_active&id_topic=" . $topic->getIdTopic(); ?>">
+                                               href="<?= $route->generateURL('Topic', 'adminTopicActive', ["id_topic" => $topic->getIdTopic()]); ?>">
                                                 <i class="fas fa-unlock-alt"></i>
                                             </a>
                                         <?php } ?>
@@ -205,7 +158,7 @@
                             if ($Previous > 0) {
                                 ?>
                                 <li>
-                                    <a href="<?php echo $_SERVER["PHP_SELF"] . "?" . "page=topic_list&num_page=" . $Previous . $search . $dateIni . $dateFin; ?>"
+                                    <a href="<?= $route->generateURL('Topic', 'getAdminTopic') . '?' . "num_page=" . $Previous . $search . $dateIni . $dateFin;  ?>"
                                        aria-label="Previous">
                                         <span aria-hidden="true">&laquo; Previous</span>
                                     </a>
@@ -213,14 +166,14 @@
                             <?php } ?>
                             <?php for ($i = 1; $i <= $pages; $i++) : ?>
                                 <li>
-                                    <a href="<?php echo $_SERVER["PHP_SELF"] . "?" . "page=topic_list&num_page=" . $i . $search . $dateIni . $dateFin; ?>"><?= $i; ?></a>
+                                    <a href="<?= $route->generateURL('Topic', 'getAdminTopic') . '?' . "num_page=" . $i . $search . $dateIni . $dateFin; ?>"><?= $i; ?></a>
                                 </li>
                             <?php endfor; ?>
                             <?php
                             if ($Next <= $pages) {
                                 ?>
                                 <li>
-                                    <a href="<?php echo $_SERVER["PHP_SELF"] . "?" . "page=topic_list&num_page=" . $Next . $search . $dateIni . $dateFin; ?>"
+                                    <a href="<?= $route->generateURL('Topic', 'getAdminTopic') . '?' . "num_page=" . $Next . $search . $dateIni . $dateFin; ?>"
                                        aria-label="Next">
                                         <span aria-hidden="true">Next &raquo;</span>
                                     </a>

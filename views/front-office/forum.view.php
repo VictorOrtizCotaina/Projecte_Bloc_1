@@ -61,21 +61,18 @@
                             if ($Previous>0){
                                 ?>
                                 <li>
-                                    <!--                                    --><?php //echo $_SERVER["PHP_SELF"]."?". "page=forum" . $query_Forum . $query_User . "&num_page=" . $Previous . $search . $dateIni . $dateFin; ?>
                                     <a href="<?= $route->generateURL('Forum', 'getForum', ['id_category' => $forum->getIdCategory(), 'id_forum' => $forum->getIdForum()]) . '?' . "page=" . $Previous . $search . $dateIni . $dateFin;  ?>" aria-label="Previous">
                                         <span aria-hidden="true">&laquo; Previous</span>
                                     </a>
                                 </li>
                             <?php } ?>
                             <?php for($i = 1; $i<= $pages; $i++) : ?>
-                                <!--                                --><?php //echo $_SERVER["PHP_SELF"]."?". "page=forum" . $query_Forum . $query_User . "&num_page=" . $i . $search . $dateIni . $dateFin; ?>
                                 <li><a href="<?= $route->generateURL('Forum', 'getForum', ['id_category' => $forum->getIdCategory(), 'id_forum' => $forum->getIdForum()]) . '?' . "page=" . $i . $search . $dateIni . $dateFin; ?>"><?= $i; ?></a></li>
                             <?php endfor; ?>
                             <?php
                             if ($Next <= $pages){
                                 ?>
                                 <li>
-                                    <!--                                    --><?php //echo $_SERVER["PHP_SELF"]."?". "page=forum" . $query_Forum . $query_User . "&num_page=" . $Next . $search . $dateIni . $dateFin; ?>
                                     <a href="<?= $route->generateURL('Forum', 'getForum', ['id_category' => $forum->getIdCategory(), 'id_forum' => $forum->getIdForum()]) . '?' . "page=" . $Next . $search . $dateIni . $dateFin; ?>" aria-label="Next">
                                         <span aria-hidden="true">Next &raquo;</span>
                                     </a>
