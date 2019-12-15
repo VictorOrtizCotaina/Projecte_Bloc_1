@@ -36,16 +36,7 @@
                         </a>
                     <?php } ?>
 
-                    <a class="btn navbar-form navbar-left ng-pristine ng-valid" href="<?php
-                    $url = $_SERVER["PHP_SELF"] . "?";
-                    if (!empty($_SERVER["QUERY_STRING"])) {
-                        $url .= $_SERVER["QUERY_STRING"] . "&";
-                    }
-                    $url .= "cerrar_sesion=1";
-                    //Añadir en el controlador del usuario, y redirigir al login.
-                    echo $url;
-
-                    ?>">
+                    <a class="btn navbar-form navbar-left ng-pristine ng-valid" href="<?= $route->generateURL('User', 'logout') ?>">
                         <i class="fas fa-power-off"></i>
                     </a>
                 <?php } ?>

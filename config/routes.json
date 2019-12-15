@@ -34,6 +34,10 @@
       "id_topic": "number"
     }
   },
+  "Projecte_Bloc_1/logout": {
+    "controller": "User",
+    "method": "logout"
+  },
   "Projecte_Bloc_1/login": {
     "controller": "User",
     "method": "login"

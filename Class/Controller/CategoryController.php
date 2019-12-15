@@ -13,13 +13,6 @@ class CategoryController extends AbstractController
     {
         session_start();
 
-
-        /* En caso de que se pase el parametro para cerrar sesion, se hace un unset de la sesion y se elimina. */
-        if (isset($_GET["cerrar_sesion"]) && $_GET["cerrar_sesion"] === "1") {
-            session_unset();
-            session_destroy();
-        }
-
         $target_dir = $this->config->get('image')['src'];
 
         /* Se comprueba si hay una sessión de usuario creada (se crea al iniciar sessión) y de ser así se añade un objecto usuario. */
@@ -40,12 +33,6 @@ class CategoryController extends AbstractController
     public function getCategory($id_category)
     {
         session_start();
-
-        /* En caso de que se pase el parametro para cerrar sesion, se hace un unset de la sesion y se elimina. */
-        if (isset($_GET["cerrar_sesion"]) && $_GET["cerrar_sesion"] === "1") {
-            session_unset();
-            session_destroy();
-        }
 
         $target_dir = $this->config->get('image')['src'];
 
@@ -69,12 +56,6 @@ class CategoryController extends AbstractController
     public function getAdminCategory()
     {
         session_start();
-
-        /* En caso de que se pase el parametro para cerrar sesion, se hace un unset de la sesion y se elimina. */
-        if (isset($_GET["cerrar_sesion"]) && $_GET["cerrar_sesion"] === "1") {
-            session_unset();
-            session_destroy();
-        }
 
         if (isset($_SESSION["user"])) {
             $id = $_SESSION["user"]->getIdUser();
@@ -123,12 +104,6 @@ class CategoryController extends AbstractController
     public function adminCategoryAdd()
     {
         session_start();
-
-        /* En caso de que se pase el parametro para cerrar sesion, se hace un unset de la sesion y se elimina. */
-        if (isset($_GET["cerrar_sesion"]) && $_GET["cerrar_sesion"] === "1") {
-            session_unset();
-            session_destroy();
-        }
 
         $target_dir = $this->config->get('image')['src'];
 
@@ -194,12 +169,6 @@ class CategoryController extends AbstractController
     public function adminCategoryEdit($id_category)
     {
         session_start();
-
-        /* En caso de que se pase el parametro para cerrar sesion, se hace un unset de la sesion y se elimina. */
-        if (isset($_GET["cerrar_sesion"]) && $_GET["cerrar_sesion"] === "1") {
-            session_unset();
-            session_destroy();
-        }
 
         $target_dir = $this->config->get('image')['src'];
         $page = "category_edit";
@@ -274,12 +243,6 @@ class CategoryController extends AbstractController
     {
         session_start();
 
-        /* En caso de que se pase el parametro para cerrar sesion, se hace un unset de la sesion y se elimina. */
-        if (isset($_GET["cerrar_sesion"]) && $_GET["cerrar_sesion"] === "1") {
-            session_unset();
-            session_destroy();
-        }
-        
         if (isset($_SESSION["user"])) {
             $id = $_SESSION["user"]->getIdUser();
             $userModel = new UserModel($this->db);
@@ -306,12 +269,6 @@ class CategoryController extends AbstractController
     public function adminCategoryActive($id_category)
     {
         session_start();
-
-        /* En caso de que se pase el parametro para cerrar sesion, se hace un unset de la sesion y se elimina. */
-        if (isset($_GET["cerrar_sesion"]) && $_GET["cerrar_sesion"] === "1") {
-            session_unset();
-            session_destroy();
-        }
 
         if (isset($_SESSION["user"])) {
             $id = $_SESSION["user"]->getIdUser();

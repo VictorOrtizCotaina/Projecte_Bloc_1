@@ -16,12 +16,6 @@ class UserController extends AbstractController
 
         session_start();
 
-        /* En caso de que se pase el parametro para cerrar sesion, se hace un unset de la sesion y se elimina. */
-        if (isset($_GET["cerrar_sesion"]) && $_GET["cerrar_sesion"] === "1") {
-            session_unset();
-            session_destroy();
-        }
-
         /* Se recogen las categorias para el menú. */
         $categoryModel = new CategoryModel($this->db);
         $categoriesNavbar = $categoryModel->getAllCategories();
@@ -63,12 +57,6 @@ class UserController extends AbstractController
     {
         session_start();
 
-        /* En caso de que se pase el parametro para cerrar sesion, se hace un unset de la sesion y se elimina. */
-        if (isset($_GET["cerrar_sesion"]) && $_GET["cerrar_sesion"] === "1") {
-            session_unset();
-            session_destroy();
-        }
-        
         /* Se recogen las categorias para el menú. */
         $categoryModel = new CategoryModel($this->db);
         $categoriesNavbar = $categoryModel->getAllCategories();
@@ -106,12 +94,6 @@ class UserController extends AbstractController
     public function getUser()
     {
         session_start();
-
-        /* En caso de que se pase el parametro para cerrar sesion, se hace un unset de la sesion y se elimina. */
-        if (isset($_GET["cerrar_sesion"]) && $_GET["cerrar_sesion"] === "1") {
-            session_unset();
-            session_destroy();
-        }
 
         /* Se comprueba si hay una sessión de usuario creada (se crea al iniciar sessión) y de no ser así le envía al login. */
         if (!isset($_SESSION["user"])) {
@@ -189,5 +171,17 @@ class UserController extends AbstractController
 
 
         require("views/front-office/user.view.php");
+    }
+
+
+    public function logout()
+    {
+        session_start();
+
+        /* En caso de que se pase el parametro para cerrar sesion, se hace un unset de la sesion y se elimina. */
+        session_unset();
+        session_destroy();
+        global $route;
+        header('Location: ' . $route->generateURL('User', 'login'));
     }
 }

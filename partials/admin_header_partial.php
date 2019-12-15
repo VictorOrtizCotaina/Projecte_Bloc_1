@@ -6,10 +6,7 @@
     <a class="navbar-brand" href="<?= $route->generateURL('Category', 'index') ?>">Foro Programacion</a>
     <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap navbar-left">
-            <a class="nav-link" href="<?php
-            $url = $_SERVER["PHP_SELF"] . "?cerrar_sesion=1";
-            echo $url;
-            ?>">
+            <a class="nav-link" href="<?= $route->generateURL('User', 'logout') ?>">
                 Sign out
             </a>
         </li>

@@ -14,12 +14,6 @@ class PostController extends AbstractController
     {
         session_start();
 
-        /* En caso de que se pase el parametro para cerrar sesion, se hace un unset de la sesion y se elimina. */
-        if (isset($_GET["cerrar_sesion"]) && $_GET["cerrar_sesion"] === "1") {
-            session_unset();
-            session_destroy();
-        }
-
         if (isset($_SESSION["user"])) {
             $id = $_SESSION["user"]->getIdUser();
 
@@ -67,12 +61,6 @@ class PostController extends AbstractController
     public function adminPostAdd()
     {
         session_start();
-
-        /* En caso de que se pase el parametro para cerrar sesion, se hace un unset de la sesion y se elimina. */
-        if (isset($_GET["cerrar_sesion"]) && $_GET["cerrar_sesion"] === "1") {
-            session_unset();
-            session_destroy();
-        }
 
         $target_dir = $this->config->get('image')['src'];
         $page = "post_add";
@@ -132,12 +120,6 @@ class PostController extends AbstractController
     public function adminPostEdit($id_post)
     {
         session_start();
-
-        /* En caso de que se pase el parametro para cerrar sesion, se hace un unset de la sesion y se elimina. */
-        if (isset($_GET["cerrar_sesion"]) && $_GET["cerrar_sesion"] === "1") {
-            session_unset();
-            session_destroy();
-        }
 
         $target_dir = $this->config->get('image')['src'];
         $page = "post_edit";
@@ -209,12 +191,6 @@ class PostController extends AbstractController
     public function adminPostDelete($id_post)
     {
         session_start();
-
-        /* En caso de que se pase el parametro para cerrar sesion, se hace un unset de la sesion y se elimina. */
-        if (isset($_GET["cerrar_sesion"]) && $_GET["cerrar_sesion"] === "1") {
-            session_unset();
-            session_destroy();
-        }
 
         if (isset($_SESSION["user"])) {
             $id = $_SESSION["user"]->getIdUser();

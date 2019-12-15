@@ -16,12 +16,6 @@ class TopicController extends AbstractController
         /*Futuro cambio en la base de datos para que el topic tenga una descripcion completa, y los posts sean las respuestas al topic.*/
         session_start();
 
-        /* En caso de que se pase el parametro para cerrar sesion, se hace un unset de la sesion y se elimina. */
-        if (isset($_GET["cerrar_sesion"]) && $_GET["cerrar_sesion"] === "1") {
-            session_unset();
-            session_destroy();
-        }
-
         $target_dir = $this->config->get('image')['src'];
 
         /* Se comprueba si hay una sessión de usuario creada (se crea al iniciar sessión) y de ser así se añade un objecto usuario. */
@@ -75,12 +69,6 @@ class TopicController extends AbstractController
     public function getAdminTopic()
     {
         session_start();
-
-        /* En caso de que se pase el parametro para cerrar sesion, se hace un unset de la sesion y se elimina. */
-        if (isset($_GET["cerrar_sesion"]) && $_GET["cerrar_sesion"] === "1") {
-            session_unset();
-            session_destroy();
-        }
 
         /* Se comprueba si hay una sessión de usuario creada (se crea al iniciar sessión) y de no ser así le envía al login. */
         if (isset($_SESSION["user"])) {
@@ -221,12 +209,6 @@ class TopicController extends AbstractController
     {
         session_start();
 
-        /* En caso de que se pase el parametro para cerrar sesion, se hace un unset de la sesion y se elimina. */
-        if (isset($_GET["cerrar_sesion"]) && $_GET["cerrar_sesion"] === "1") {
-            session_unset();
-            session_destroy();
-        }
-
         $target_dir = $this->config->get('image')['src'];
         $page = "topic_add";
 
@@ -299,12 +281,6 @@ class TopicController extends AbstractController
     public function adminTopicEdit($id_topic)
     {
         session_start();
-
-        /* En caso de que se pase el parametro para cerrar sesion, se hace un unset de la sesion y se elimina. */
-        if (isset($_GET["cerrar_sesion"]) && $_GET["cerrar_sesion"] === "1") {
-            session_unset();
-            session_destroy();
-        }
 
         $target_dir = $this->config->get('image')['src'];
         $page = "topic_edit";
@@ -391,12 +367,6 @@ class TopicController extends AbstractController
     {
         session_start();
 
-        /* En caso de que se pase el parametro para cerrar sesion, se hace un unset de la sesion y se elimina. */
-        if (isset($_GET["cerrar_sesion"]) && $_GET["cerrar_sesion"] === "1") {
-            session_unset();
-            session_destroy();
-        }
-
         /* Se comprueba si hay una sessión de usuario creada (se crea al iniciar sessión) y de no ser así le envía al login. */
         if (isset($_SESSION["user"])) {
             $id = $_SESSION["user"]->getIdUser();
@@ -424,12 +394,6 @@ class TopicController extends AbstractController
     public function adminTopicActive($id_topic)
     {
         session_start();
-
-        /* En caso de que se pase el parametro para cerrar sesion, se hace un unset de la sesion y se elimina. */
-        if (isset($_GET["cerrar_sesion"]) && $_GET["cerrar_sesion"] === "1") {
-            session_unset();
-            session_destroy();
-        }
 
         /* Se comprueba si hay una sessión de usuario creada (se crea al iniciar sessión) y de no ser así le envía al login. */
         if (isset($_SESSION["user"])) {
