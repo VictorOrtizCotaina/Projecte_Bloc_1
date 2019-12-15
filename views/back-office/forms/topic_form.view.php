@@ -134,7 +134,7 @@
                             ?>
                             <input type="submit" class="btn btn-primary" name="edit" value="Aceptar">
                         <?php } ?>
-                        <a class="btn btn-primary" href="<?php echo $_SERVER['PHP_SELF'];?>">Volver</a>
+                        <a class="btn btn-primary" href="<?= $route->generateURL('Topic', 'getAdminTopic'); ?>">Volver</a>
                     </form>
                 </div>
             </main>

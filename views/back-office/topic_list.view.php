@@ -182,7 +182,7 @@
                         } ?>
                     </ul>
 
-                    <a class="btn" href="<?php echo $_SERVER["PHP_SELF"] . "?page=topic_add"; ?>">
+                    <a class="btn" href="<?= $route->generateURL('Topic', 'adminTopicAdd'); ?>">
                         <i class="fas fa-plus"></i>
                         Añadir Topic
                     </a>

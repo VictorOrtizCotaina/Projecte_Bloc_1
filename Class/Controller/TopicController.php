@@ -39,6 +39,10 @@ class TopicController extends AbstractController
         $topicModel = new TopicModel($this->db);
         $topic = $topicModel->getTopicById($id_topic);
 
+        $forumModel = new ForumModel($this->db);
+        $forum = $forumModel->getForumById($topic->getIdForum());
+
+
         $postModel = new PostModel($this->db);
 
         /* Parametros para implementar la paginación. */
