@@ -205,6 +205,7 @@ class TopicModel extends AbstractModel
 
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
             $topicCount = $stmt->fetchAll();
+            var_dump($topicCount);
             return $topicCount[0]["id_topic"];
 
         } catch (PDOException $e) {

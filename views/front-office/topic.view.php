@@ -115,14 +115,13 @@ require 'partials/header_partial.php';
 			</div>
 			<div class="panel-body no-padding ">
 				<div class="row no-margin">
-				
 					<div class="col-md-3 col-xs-12 post-info post-info-left">
 						<dl id="profile108" class="no-margin-xs">
 							<dt class="avatar text-center rounded">
                                 <img width="100" height="100" src="<?php echo $target_dir.$post->getUser()->getAvatar(); ?> " alt="avatar">
 							</dt>
 							<dd class="text-center">
-								<a href="<?php echo $_SERVER["PHP_SELF"] . "?page=forum&id_user={$post->getIdUser()}"; ?>">
+								<a href="<?= $route->generateURL('Forum', 'getForumUser', ['id_user' => $post->getIdUser()]); ?>">
                                     <?php echo $post->getUser()->getUsername(); ?>
                                 </a>
 							</dd>
@@ -140,7 +139,7 @@ require 'partials/header_partial.php';
 					
 						<div class="row post-head hidden-xs no-margin-bottom">
 							<div class="col-md-6 col-xs-6 author">
-								by <strong><a href="<?php echo $_SERVER["PHP_SELF"]."?". "page=forum&id_user=" . $post->getIdUser(); ?>">
+								by <strong><a href="<?= $route->generateURL('Forum', 'getForumUser', ['id_user' => $post->getIdUser()]); ?>">
                                         <?php echo $post->getUser()->getUsername(); ?></a></strong> &raquo;
                                 <?php echo $post->getDateAdd()->format("Y-m-d H:i"); ?>
 							</div>

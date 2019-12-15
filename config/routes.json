@@ -18,6 +18,13 @@
       "id_forum": "number"
     }
   },
+  "Projecte_Bloc_1/topics/:id_user": {
+    "controller": "Forum",
+    "method": "getForumUser",
+    "params": {
+      "id_user": "number"
+    }
+  },
   "Projecte_Bloc_1/:id_category/:id_forum/:id_topic": {
     "controller": "Topic",
     "method": "getTopic",
