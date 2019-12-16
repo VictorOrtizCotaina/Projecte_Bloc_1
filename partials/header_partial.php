@@ -20,7 +20,7 @@
                 <?php } ?>
 
                 <?php
-                if (isset($_SESSION["user"])) {
+                if (isset($user)) {
                     ?>
                     <a class="navbar-form navbar-left ng-pristine ng-valid"
                        href="<?= $route->generateURL('User', 'getUser') ?>">
@@ -36,7 +36,8 @@
                         </a>
                     <?php } ?>
 
-                    <a class="btn navbar-form navbar-left ng-pristine ng-valid" href="<?= $route->generateURL('User', 'logout') ?>">
+                    <a class="btn navbar-form navbar-left ng-pristine ng-valid"
+                       href="<?= $route->generateURL('User', 'logout') ?>">
                         <i class="fas fa-power-off"></i>
                     </a>
                 <?php } ?>
@@ -62,7 +63,8 @@
                                 <?php
                                 foreach ($categoryNavbar->getForums() as $forumNavbar) {
                                     ?>
-                                    <li><a href="<?= $route->generateURL('Forum', 'getForum', ['id_category' => $categoryNavbar->getIdCategory(), 'id_forum' => $forumNavbar->getIdForum()]) ?>">
+                                    <li>
+                                        <a href="<?= $route->generateURL('Forum', 'getForum', ['id_category' => $categoryNavbar->getIdCategory(), 'id_forum' => $forumNavbar->getIdForum()]) ?>">
                                             <?php echo $forumNavbar->getTitle(); ?>
                                         </a></li>
                                     <li class="divider"></li>

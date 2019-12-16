@@ -118,7 +118,7 @@ require 'partials/header_partial.php';
 					<div class="col-md-3 col-xs-12 post-info post-info-left">
 						<dl id="profile108" class="no-margin-xs">
 							<dt class="avatar text-center rounded">
-                                <img width="100" height="100" src="<?php echo $target_dir.$post->getUser()->getAvatar(); ?> " alt="avatar">
+                                <img width="100" height="100" src="<?php echo '../../'.$target_dir.$post->getUser()->getAvatar(); ?> " alt="avatar">
 							</dt>
 							<dd class="text-center">
 								<a href="<?= $route->generateURL('Forum', 'getForumUser', ['id_user' => $post->getIdUser()]); ?>">

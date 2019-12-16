@@ -123,6 +123,8 @@ class ForumController extends AbstractController
         $userModel = new UserModel($this->db);
         $userTopic = $userModel->getUserById($id_user);
 
+        $forumModel = new ForumModel($this->db);
+
         $topicModel = new TopicModel($this->db);
 
         /* Parametros para implementar la paginación. */
