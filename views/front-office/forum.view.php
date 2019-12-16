@@ -184,7 +184,7 @@ require 'partials/header_partial.php';
                     <td class="topic-name " title="No unread posts">
                         <div class="pull-left forum-topic-icon">
 								<span>
-                                    <?php $forum = $forumModel->getForumById($topic->getIdForum()); ?>
+                                    <?php if (!isset($forum)) $forum = $forumModel->getForumById($topic->getIdForum()); ?>
                                     <a href="<?= $route->generateURL('Topic', 'getTopic', ['id_category' => $forum->getIdCategory(), 'id_forum' => $topic->getIdForum(), 'id_topic' => $topic->getIdTopic()]) ?>"
                                        class="btn btn-default btn-lg tooltip-link">
                                         <div class="">
