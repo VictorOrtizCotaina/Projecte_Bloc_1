@@ -126,8 +126,8 @@ require 'partials/header_partial.php';
 
         <div class="col-md-3 col-xs-12 pull-right">
             <form
-                action="<?php if (isset($forum)) echo $route->generateURL('Forum', 'getForum', ['id_category' => $forum->getIdCategory(), 'id_forum' => $forum->getIdForum()]) . "?page=" . $page;
-                if (isset($id_user)) echo $route->generateURL('Forum', 'getForumUser', ['id_user' => $id_user]) . "?page=" . $page;?>"
+                action="<?php if (isset($forum)) echo $route->generateURL('Forum', 'getForum', ['id_category' => $forum->getIdCategory(), 'id_forum' => $forum->getIdForum()], ["page" => $page]);
+                if (isset($id_user)) echo $route->generateURL('Forum', 'getForumUser', ['id_user' => $id_user], ["page" => $page]);?>"
                   method="GET" id="topic-search" class="topic-search pull-right" style="margin:0;">
                 <?php if (!empty($_GET["page"])) { ?>
                     <input type="hidden" name="page" value="<?php echo $_GET["page"]; ?>"/>
@@ -219,7 +219,7 @@ require 'partials/header_partial.php';
                         if (isset($user))
                             if ($user->getIdUser() === $topic->getUser()->getIdUser()) {
                                 ?>
-                                <a href="<?php echo $_SERVER["PHP_SELF"] . "?" . "page=topic_edit&id_topic=" . $topic->getIdTopic(); ?>"
+                                <a href="<?= $route->generateURL('Topic', 'adminTopicEdit', ["id_topic" => $topic->getIdTopic()]); ?>"
                                    class="topictitle">
                                     <strong>Editar</strong>
                                 </a>

@@ -114,7 +114,7 @@
 
                                     <div class="form-group">
                                         <form method="POST"
-                                              action="<?php echo $_SERVER["PHP_SELF"] . "?" . $_SERVER["QUERY_STRING"]; ?>"
+                                              action="<?= $route->generateURL('User', 'getUser'); ?>"
                                               enctype="multipart/form-data">
                                             <label class="control-label col-md-3">Password:</label>
                                             <div class="col-md-9">
@@ -127,7 +127,7 @@
 
                                     <div class="form-group">
                                         <form method="POST"
-                                              action="<?php echo $_SERVER["PHP_SELF"] . "?" . $_SERVER["QUERY_STRING"]; ?>"
+                                              action="<?= $route->generateURL('User', 'getUser'); ?>"
                                               enctype="multipart/form-data">
                                             <label class="control-label col-md-3">Upload a File:</label>
                                             <div class="col-md-9">

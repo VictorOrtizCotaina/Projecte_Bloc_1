@@ -74,22 +74,22 @@ require 'partials/header_partial.php';
                     <?php
                     if ($Previous>0){
                         ?>
-                        <li><?= $route->generateURL('Topic', 'getTopic', ['id_category' => $forum->getIdCategory(), 'id_forum' => $forum->getIdForum(), 'id_topic' => $topic->getIdTopic()]) . '?' . "num_page=" . $Previous;?>
-                            <a href="<?php echo $_SERVER["PHP_SELF"]."?". "page=topic&id_topic=" . $id_topic . "&num_page=" . $Previous; ?>" aria-label="Previous">
+                        <li>
+                            <a href="<?= $route->generateURL('Topic', 'getTopic', ['id_category' => $forum->getIdCategory(), 'id_forum' => $forum->getIdForum(), 'id_topic' => $topic->getIdTopic()], ["num_page" => $Previous]);?>" aria-label="Previous">
                                 <span aria-hidden="true">&laquo; Previous</span>
                             </a>
                         </li>
                     <?php } ?>
                     <?php for($i = 1; $i<= $pages; $i++) : ?>
                         <li>
-                            <a href="<?= $route->generateURL('Topic', 'getTopic', ['id_category' => $forum->getIdCategory(), 'id_forum' => $forum->getIdForum(), 'id_topic' => $topic->getIdTopic()]) . '?' . "num_page=" . $i;?>"><?= $i; ?></a>
+                            <a href="<?= $route->generateURL('Topic', 'getTopic', ['id_category' => $forum->getIdCategory(), 'id_forum' => $forum->getIdForum(), 'id_topic' => $topic->getIdTopic()], ["num_page" => $i]);?>"><?= $i; ?></a>
                         </li>
                     <?php endfor; ?>
                     <?php
                     if ($Next <= $pages){
                         ?>
                         <li>
-                            <a href="<?= $route->generateURL('Topic', 'getTopic', ['id_category' => $forum->getIdCategory(), 'id_forum' => $forum->getIdForum(), 'id_topic' => $topic->getIdTopic()]) . '?' . "num_page=" . $Next;?>" aria-label="Next">
+                            <a href="<?= $route->generateURL('Topic', 'getTopic', ['id_category' => $forum->getIdCategory(), 'id_forum' => $forum->getIdForum(), 'id_topic' => $topic->getIdTopic()], ["num_page" => $Next]);?>" aria-label="Next">
                                 <span aria-hidden="true">Next &raquo;</span>
                             </a>
                         </li>
@@ -169,22 +169,22 @@ require 'partials/header_partial.php';
                     <?php
                     if ($Previous>0){
                         ?>
-                        <li><?= $route->generateURL('Topic', 'getTopic', ['id_category' => $forum->getIdCategory(), 'id_forum' => $forum->getIdForum(), 'id_topic' => $topic->getIdTopic()]) . '?' . "num_page=" . $Previous;?>
-                            <a href="<?php echo $_SERVER["PHP_SELF"]."?". "page=topic&id_topic=" . $id_topic . "&num_page=" . $Previous; ?>" aria-label="Previous">
+                        <li>
+                            <a href="<?= $route->generateURL('Topic', 'getTopic', ['id_category' => $forum->getIdCategory(), 'id_forum' => $forum->getIdForum(), 'id_topic' => $topic->getIdTopic()], ["num_page" => $Previous]);?>" aria-label="Previous">
                                 <span aria-hidden="true">&laquo; Previous</span>
                             </a>
                         </li>
                     <?php } ?>
                     <?php for($i = 1; $i<= $pages; $i++) : ?>
                         <li>
-                            <a href="<?= $route->generateURL('Topic', 'getTopic', ['id_category' => $forum->getIdCategory(), 'id_forum' => $forum->getIdForum(), 'id_topic' => $topic->getIdTopic()]) . '?' . "num_page=" . $i;?>"><?= $i; ?></a>
+                            <a href="<?= $route->generateURL('Topic', 'getTopic', ['id_category' => $forum->getIdCategory(), 'id_forum' => $forum->getIdForum(), 'id_topic' => $topic->getIdTopic()], ["num_page" => $i]);?>"><?= $i; ?></a>
                         </li>
                     <?php endfor; ?>
                     <?php
                     if ($Next <= $pages){
                         ?>
                         <li>
-                            <a href="<?= $route->generateURL('Topic', 'getTopic', ['id_category' => $forum->getIdCategory(), 'id_forum' => $forum->getIdForum(), 'id_topic' => $topic->getIdTopic()]) . '?' . "num_page=" . $Next;?>" aria-label="Next">
+                            <a href="<?= $route->generateURL('Topic', 'getTopic', ['id_category' => $forum->getIdCategory(), 'id_forum' => $forum->getIdForum(), 'id_topic' => $topic->getIdTopic()], ["num_page" => $Next]);?>" aria-label="Next">
                                 <span aria-hidden="true">Next &raquo;</span>
                             </a>
                         </li>
