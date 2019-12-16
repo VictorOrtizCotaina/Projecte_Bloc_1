@@ -1,4 +1,9 @@
-<?php global $route; ?>
+<?php global $route;
+global $search;
+global $forum;
+global $dateIni;
+global $dateFin;
+?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-gb" xml:lang="en-gb" data-ng-app>
 
@@ -11,7 +16,7 @@
     <link rel="shortcut icon" href="./theme/images/favicon.ico"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
-    <title>Foro Programacion &bull; <?php echo $user->getUsername(); ?></title>
+    <title>Foro Programacion &bull; Topic</title>
 
     <link href="./theme/comboot/font-awesome.min.css" rel="stylesheet"/>
     <link href="./theme/comboot/colorpicker.min.css" rel="stylesheet"/>
@@ -51,9 +56,11 @@
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <h1 class="h2">Topics</h1></div>
-                <form action="<?= $route->generateURL('Topic', 'getAdminTopic') . "?num_page=" . $num_page; ?>"
+                <form action="<?= $route->generateURL('Topic', 'getAdminTopic', ['num_page' => $num_page]); ?>"
                       method="GET" id="topic-search" class="topic-search pull-left" style="margin:0;">
-                    <input type = "hidden" name="page" value="<?php echo $_GET["num_page"]; ?>" />
+                    <?php if (!empty($_GET["page"])) { ?>
+                        <input type="hidden" name="page" value="<?php echo $_GET["num_page"]; ?>"/>
+                    <?php } ?>
                     <input type = "hidden" name="num_page" value="<?php echo $num_page; ?>" />
                     <div class="input-group">
                         <select class="form-control" id="forums" name="forums">
@@ -158,7 +165,7 @@
                             if ($Previous > 0) {
                                 ?>
                                 <li>
-                                    <a href="<?= $route->generateURL('Topic', 'getAdminTopic') . '?' . "num_page=" . $Previous . $search . $dateIni . $dateFin;  ?>"
+                                    <a href="<?= $route->generateURL('Topic', 'getAdminTopic') . '?' . "num_page=" . $Previous . $id_forum . $search . $dateIni . $dateFin;  ?>"
                                        aria-label="Previous">
                                         <span aria-hidden="true">&laquo; Previous</span>
                                     </a>
@@ -166,14 +173,14 @@
                             <?php } ?>
                             <?php for ($i = 1; $i <= $pages; $i++) : ?>
                                 <li>
-                                    <a href="<?= $route->generateURL('Topic', 'getAdminTopic') . '?' . "num_page=" . $i . $search . $dateIni . $dateFin; ?>"><?= $i; ?></a>
+                                    <a href="<?= $route->generateURL('Topic', 'getAdminTopic') . '?' . "num_page=" . $i . $id_forum . $search . $dateIni . $dateFin; ?>"><?= $i; ?></a>
                                 </li>
                             <?php endfor; ?>
                             <?php
                             if ($Next <= $pages) {
                                 ?>
                                 <li>
-                                    <a href="<?= $route->generateURL('Topic', 'getAdminTopic') . '?' . "num_page=" . $Next . $search . $dateIni . $dateFin; ?>"
+                                    <a href="<?= $route->generateURL('Topic', 'getAdminTopic') . '?' . "num_page=" . $Next . $id_forum . $search . $dateIni . $dateFin; ?>"
                                        aria-label="Next">
                                         <span aria-hidden="true">Next &raquo;</span>
                                     </a>

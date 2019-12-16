@@ -114,6 +114,7 @@ class TopicController extends AbstractController
                 } else {
                     $forum = "";
                 }
+
                 if (!empty($search)) {
                     $search = "&search_keywords=" . $search;
                 } else {
@@ -132,13 +133,13 @@ class TopicController extends AbstractController
 
             } else {
                 /* Parametros de filtrado. */
-                $forum = filter_input(INPUT_GET, 'forums', FILTER_SANITIZE_NUMBER_INT);
+                $id_forum = filter_input(INPUT_GET, 'forums', FILTER_SANITIZE_NUMBER_INT);
                 $search = filter_input(INPUT_GET, 'search_keywords', FILTER_SANITIZE_STRING);
                 $dateIni = filter_input(INPUT_GET, 'dateIni', FILTER_SANITIZE_STRING);
                 $dateFin = filter_input(INPUT_GET, 'dateFin', FILTER_SANITIZE_STRING);
 
-                if (empty($forum)) {
-                    $forum = 0;
+                if (empty($id_forum)) {
+                    $id_forum = 0;
                 }
 
                 $search = htmlspecialchars(trim($search));
@@ -165,8 +166,8 @@ class TopicController extends AbstractController
                     Se recoge los topics según los parametros de paginación y, en caso de haber, de los filtros.
                     Se recoge el numero de paginas según los parametros de paginación y, en caso de haber, de los filtros.
                 */
-                $topics = $topicModel->getAllTopicsPage($forum, $start, $limit, $search, $dateIni, $dateFin, 0);
-                $topicCount = $topicModel->getPagesTopics($forum, $search, $dateIni, $dateFin, 0);
+                $topics = $topicModel->getAllTopicsPage($id_forum, $start, $limit, $search, $dateIni, $dateFin, 0);
+                $topicCount = $topicModel->getPagesTopics($id_forum, $search, $dateIni, $dateFin, 0);
 
                 /* Parametros de paginación. */
                 $total = $topicCount;
@@ -175,10 +176,10 @@ class TopicController extends AbstractController
                 $Next = $num_page + 1;
 
                 /* Parametros para la creación de la query. */
-                if (!empty($forum)) {
-                    $forum = "&id_forum=" . $forum;
+                if (!empty($id_forum)) {
+                    $id_forum = "&forums=" . $id_forum;
                 } else {
-                    $forum = "";
+                    $id_forum = "";
                 }
                 if (!empty($search)) {
                     $search = "&search_keywords=" . $search;
@@ -353,8 +354,8 @@ class TopicController extends AbstractController
                 $insert = $topicModel->updateTopic($topic);
 
                 if ($insert) {
-                    $url = $_SERVER["PHP_SELF"] . "?page=topic_list";
-                    header("Location: $url");
+                    global $route;
+                    header('Location: ' . $route->generateURL('Topic', 'getAdminTopic'));
                 }
             }
         }
