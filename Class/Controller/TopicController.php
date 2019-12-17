@@ -198,8 +198,8 @@ class TopicController extends AbstractController
                 }
             }
         } else {
-            $url = $_SERVER["PHP_SELF"] . "?page=login";
-            header("Location: $url");
+global $route;
+            $url = $route->generateURL('User', 'login');header("Location: $url");
         }
 
         require("views/back-office/topic_list.view.php");
@@ -211,6 +211,8 @@ class TopicController extends AbstractController
         session_start();
 
         $target_dir = $this->config->get('image')['src'];
+        global $route;
+        $pageForm = $route->generateURL('Topic', 'adminTopicAdd');
         $page = "topic_add";
 
         /* Se comprueba si hay una sessión de usuario creada (se crea al iniciar sessión) y de no ser así le envía al login. */
@@ -220,8 +222,8 @@ class TopicController extends AbstractController
             $user = $userModel->getUserById($id);
             $userGroup = $user->getIdUserGroup();
         } else {
-            $url = $_SERVER["PHP_SELF"] . "?page=login";
-            header("Location: $url");
+global $route;
+            $url = $route->generateURL('User', 'login');header("Location: $url");
         }
 
         /* Variables para los selectores. */
@@ -284,6 +286,8 @@ class TopicController extends AbstractController
         session_start();
 
         $target_dir = $this->config->get('image')['src'];
+        global $route;
+        $pageForm = $route->generateURL('Topic', 'adminTopicEdit', ["id_topic" => $id_topic]);
         $page = "topic_edit";
 
         /* Se comprueba si hay una sessión de usuario creada (se crea al iniciar sessión) y de no ser así le envía al login. */
@@ -293,8 +297,8 @@ class TopicController extends AbstractController
             $user = $userModel->getUserById($id);
             $userGroup = $user->getIdUserGroup();
         } else {
-            $url = $_SERVER["PHP_SELF"] . "?page=login";
-            header("Location: $url");
+global $route;
+            $url = $route->generateURL('User', 'login');header("Location: $url");
         }
         /* Variables para los selectores. */
         $forumModel = new ForumModel($this->db);
@@ -375,8 +379,8 @@ class TopicController extends AbstractController
             $user = $userModel->getUserById($id);
             $userGroup = $user->getIdUserGroup();
         } else {
-            $url = $_SERVER["PHP_SELF"] . "?page=login";
-            header("Location: $url");
+global $route;
+            $url = $route->generateURL('User', 'login');header("Location: $url");
         }
         /*
          * En caso de que se pulse sobre el botón de eliminar se comprobara que tiene un id para el topic.
@@ -403,8 +407,8 @@ class TopicController extends AbstractController
             $user = $userModel->getUserById($id);
             $userGroup = $user->getIdUserGroup();
         } else {
-            $url = $_SERVER["PHP_SELF"] . "?page=login";
-            header("Location: $url");
+global $route;
+            $url = $route->generateURL('User', 'login');header("Location: $url");
         }
         /*
          * En caso de que se pulse sobre el botón de eliminar se comprobara que tiene un id para el topic.

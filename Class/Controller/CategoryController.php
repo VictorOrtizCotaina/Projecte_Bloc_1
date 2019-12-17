@@ -93,8 +93,8 @@ class CategoryController extends AbstractController
                 $Next = $num_page + 1;
             }
         } else {
-            $url = $_SERVER["PHP_SELF"] . "?page=login";
-            header("Location: $url");
+global $route;
+            $url = $route->generateURL('User', 'login');header("Location: $url");
         }
 
         require("views/back-office/category_list.view.php");
@@ -107,6 +107,8 @@ class CategoryController extends AbstractController
 
         $target_dir = $this->config->get('image')['src'];
 
+        global $route;
+        $pageForm = $route->generateURL('Category', 'adminCategoryAdd');
         $page = "category_add";
 
         if (isset($_SESSION["user"])) {
@@ -119,8 +121,8 @@ class CategoryController extends AbstractController
                 header("Location: $url");
             }
         } else {
-            $url = $_SERVER["PHP_SELF"] . "?page=login";
-            header("Location: $url");
+global $route;
+            $url = $route->generateURL('User', 'login');header("Location: $url");
         }
 
 
@@ -171,6 +173,8 @@ class CategoryController extends AbstractController
         session_start();
 
         $target_dir = $this->config->get('image')['src'];
+        global $route;
+        $pageForm = $route->generateURL('Category', 'adminCategoryEdit', ["id_category" => $id_category]);
         $page = "category_edit";
 
         if (isset($_SESSION["user"])) {
@@ -183,8 +187,8 @@ class CategoryController extends AbstractController
                 header("Location: $url");
             }
         } else {
-            $url = $_SERVER["PHP_SELF"] . "?page=login";
-            header("Location: $url");
+global $route;
+            $url = $route->generateURL('User', 'login');header("Location: $url");
         }
 
 
@@ -253,8 +257,8 @@ class CategoryController extends AbstractController
                 header("Location: $url");
             }
         } else {
-            $url = $_SERVER["PHP_SELF"] . "?page=login";
-            header("Location: $url");
+global $route;
+            $url = $route->generateURL('User', 'login');header("Location: $url");
         }
         if (isset($id_category)) {
             $categoryModel = new CategoryModel($this->db);
@@ -280,8 +284,8 @@ class CategoryController extends AbstractController
                 header("Location: $url");
             }
         } else {
-            $url = $_SERVER["PHP_SELF"] . "?page=login";
-            header("Location: $url");
+global $route;
+            $url = $route->generateURL('User', 'login');header("Location: $url");
         }
         if (isset($id_category)) {
             $categoryModel = new CategoryModel($this->db);

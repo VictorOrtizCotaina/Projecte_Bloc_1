@@ -216,8 +216,8 @@ class ForumController extends AbstractController
                 $Next = $num_page + 1;
             }
         } else {
-            $url = $_SERVER["PHP_SELF"] . "?page=login";
-            header("Location: $url");
+global $route;
+            $url = $route->generateURL('User', 'login');header("Location: $url");
         }
 
         require("views/back-office/forum_list.view.php");
@@ -229,6 +229,8 @@ class ForumController extends AbstractController
         session_start();
 
         $target_dir = $this->config->get('image')['src'];
+        global $route;
+        $pageForm = $route->generateURL('Forum', 'adminForumAdd');
         $page = "forum_add";
 
         if (isset($_SESSION["user"])) {
@@ -241,8 +243,8 @@ class ForumController extends AbstractController
                 header("Location: $url");
             }
         } else {
-            $url = $_SERVER["PHP_SELF"] . "?page=login";
-            header("Location: $url");
+global $route;
+            $url = $route->generateURL('User', 'login');header("Location: $url");
         }
 
 
@@ -292,6 +294,8 @@ class ForumController extends AbstractController
         session_start();
 
         $target_dir = $this->config->get('image')['src'];
+        global $route;
+        $pageForm = $route->generateURL('Forum', 'adminForumEdit', ["id_forum" => $id_forum]);
         $page = "forum_edit";
 
         if (isset($_SESSION["user"])) {
@@ -304,8 +308,8 @@ class ForumController extends AbstractController
                 header("Location: $url");
             }
         } else {
-            $url = $_SERVER["PHP_SELF"] . "?page=login";
-            header("Location: $url");
+global $route;
+            $url = $route->generateURL('User', 'login');header("Location: $url");
         }
 
 
@@ -372,8 +376,8 @@ class ForumController extends AbstractController
                 header("Location: $url");
             }
         } else {
-            $url = $_SERVER["PHP_SELF"] . "?page=login";
-            header("Location: $url");
+global $route;
+            $url = $route->generateURL('User', 'login');header("Location: $url");
         }
         if (isset($id_forum)) {
             $forumModel = new ForumModel($this->db);
@@ -399,8 +403,8 @@ class ForumController extends AbstractController
                 header("Location: $url");
             }
         } else {
-            $url = $_SERVER["PHP_SELF"] . "?page=login";
-            header("Location: $url");
+global $route;
+            $url = $route->generateURL('User', 'login');header("Location: $url");
         }
         if (isset($id_forum)) {
             $forumModel = new ForumModel($this->db);

@@ -49,7 +49,8 @@ class PostController extends AbstractController
                 $Next = $num_page + 1;
             }
         } else {
-            $url = $_SERVER["PHP_SELF"] . "?page=login";
+                        global $route;
+            $url = $route->generateURL('User', 'login');
             header("Location: $url");
         }
 
@@ -63,6 +64,8 @@ class PostController extends AbstractController
         session_start();
 
         $target_dir = $this->config->get('image')['src'];
+        global $route;
+        $pageForm = $route->generateURL('Post', 'getAdminPost');
         $page = "post_add";
 
         if (isset($_SESSION["user"])) {
@@ -71,8 +74,8 @@ class PostController extends AbstractController
             $user = $userModel->getUserById($id);
             $userGroup = $user->getIdUserGroup();
         } else {
-            $url = $_SERVER["PHP_SELF"] . "?page=login";
-            header("Location: $url");
+global $route;
+            $url = $route->generateURL('User', 'login');header("Location: $url");
         }
 
 
@@ -122,6 +125,8 @@ class PostController extends AbstractController
         session_start();
 
         $target_dir = $this->config->get('image')['src'];
+        global $route;
+        $pageForm = $route->generateURL('Post', 'adminPostEdit', ["id_post" => $id_post]);
         $page = "post_edit";
 
         if (isset($_SESSION["user"])) {
@@ -130,8 +135,8 @@ class PostController extends AbstractController
             $user = $userModel->getUserById($id);
             $userGroup = $user->getIdUserGroup();
         } else {
-            $url = $_SERVER["PHP_SELF"] . "?page=login";
-            header("Location: $url");
+global $route;
+            $url = $route->generateURL('User', 'login');header("Location: $url");
         }
 
 
@@ -198,8 +203,8 @@ class PostController extends AbstractController
             $user = $userModel->getUserById($id);
             $userGroup = $user->getIdUserGroup();
         } else {
-            $url = $_SERVER["PHP_SELF"] . "?page=login";
-            header("Location: $url");
+global $route;
+            $url = $route->generateURL('User', 'login');header("Location: $url");
         }
         if (isset($id_post)) {
             $postModel = new PostModel($this->db);

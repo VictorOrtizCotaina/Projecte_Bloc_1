@@ -27,7 +27,7 @@
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <h1 class="h2">Post</h1></div>
                 <div class="table-responsive">
-                    <form action="<?php echo $_SERVER['PHP_SELF'] . "?" . $_SERVER["QUERY_STRING"]; ?>" method="post" enctype="multipart/form-data">
+                    <form action="<?= $pageForm; ?>" method="post" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="title" style="font-size: x-large;">Titulo</label>
                             <input type="text" class="form-control" id="title" name="title" value="<?php if (isset($title)) echo $title; ?>" >

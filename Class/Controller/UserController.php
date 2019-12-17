@@ -97,7 +97,8 @@ class UserController extends AbstractController
 
         /* Se comprueba si hay una sessión de usuario creada (se crea al iniciar sessión) y de no ser así le envía al login. */
         if (!isset($_SESSION["user"])) {
-            $url = $_SERVER["PHP_SELF"] . "?page=login";
+            global $route;
+            $url = $route->generateURL('User', 'login');
             header("Location: $url");
         }
 
