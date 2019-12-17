@@ -3,10 +3,10 @@
 namespace App\Controller;
 
 use App\Model\CategoryModel;
+use App\Model\ForumModel;
 use App\Model\PostModel;
 use App\Model\TopicModel;
 use App\Model\UserModel;
-use App\Model\ForumModel;
 
 
 class TopicController extends AbstractController
@@ -198,8 +198,9 @@ class TopicController extends AbstractController
                 }
             }
         } else {
-global $route;
-            $url = $route->generateURL('User', 'login');header("Location: $url");
+            global $route;
+            $url = $route->generateURL('User', 'login');
+            header("Location: $url");
         }
 
         require("views/back-office/topic_list.view.php");
@@ -222,8 +223,9 @@ global $route;
             $user = $userModel->getUserById($id);
             $userGroup = $user->getIdUserGroup();
         } else {
-global $route;
-            $url = $route->generateURL('User', 'login');header("Location: $url");
+            global $route;
+            $url = $route->generateURL('User', 'login');
+            header("Location: $url");
         }
 
         /* Variables para los selectores. */
@@ -297,8 +299,9 @@ global $route;
             $user = $userModel->getUserById($id);
             $userGroup = $user->getIdUserGroup();
         } else {
-global $route;
-            $url = $route->generateURL('User', 'login');header("Location: $url");
+            global $route;
+            $url = $route->generateURL('User', 'login');
+            header("Location: $url");
         }
         /* Variables para los selectores. */
         $forumModel = new ForumModel($this->db);
@@ -379,8 +382,9 @@ global $route;
             $user = $userModel->getUserById($id);
             $userGroup = $user->getIdUserGroup();
         } else {
-global $route;
-            $url = $route->generateURL('User', 'login');header("Location: $url");
+            global $route;
+            $url = $route->generateURL('User', 'login');
+            header("Location: $url");
         }
         /*
          * En caso de que se pulse sobre el botón de eliminar se comprobara que tiene un id para el topic.
@@ -407,8 +411,9 @@ global $route;
             $user = $userModel->getUserById($id);
             $userGroup = $user->getIdUserGroup();
         } else {
-global $route;
-            $url = $route->generateURL('User', 'login');header("Location: $url");
+            global $route;
+            $url = $route->generateURL('User', 'login');
+            header("Location: $url");
         }
         /*
          * En caso de que se pulse sobre el botón de eliminar se comprobara que tiene un id para el topic.

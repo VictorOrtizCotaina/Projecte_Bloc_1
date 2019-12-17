@@ -1,9 +1,8 @@
 <?php
+
 namespace App\Controller;
 
-use App\Model\CategoryModel;
 use App\Model\PostModel;
-use App\Model\TopicModel;
 use App\Model\UserModel;
 
 
@@ -49,7 +48,7 @@ class PostController extends AbstractController
                 $Next = $num_page + 1;
             }
         } else {
-                        global $route;
+            global $route;
             $url = $route->generateURL('User', 'login');
             header("Location: $url");
         }
@@ -74,8 +73,9 @@ class PostController extends AbstractController
             $user = $userModel->getUserById($id);
             $userGroup = $user->getIdUserGroup();
         } else {
-global $route;
-            $url = $route->generateURL('User', 'login');header("Location: $url");
+            global $route;
+            $url = $route->generateURL('User', 'login');
+            header("Location: $url");
         }
 
 
@@ -135,8 +135,9 @@ global $route;
             $user = $userModel->getUserById($id);
             $userGroup = $user->getIdUserGroup();
         } else {
-global $route;
-            $url = $route->generateURL('User', 'login');header("Location: $url");
+            global $route;
+            $url = $route->generateURL('User', 'login');
+            header("Location: $url");
         }
 
 
@@ -147,8 +148,6 @@ global $route;
         $image = $target_dir . $post->getImage();
         $date = $post->getDateAdd()->format('Y-m-d');
         $id_user = $post->getIdUser();
-        $id_category = $post->getIdCategory();
-        $id_forum = $post->getIdForum();
         $id_topic = $post->getIdTopic();
 
 
@@ -203,8 +202,9 @@ global $route;
             $user = $userModel->getUserById($id);
             $userGroup = $user->getIdUserGroup();
         } else {
-global $route;
-            $url = $route->generateURL('User', 'login');header("Location: $url");
+            global $route;
+            $url = $route->generateURL('User', 'login');
+            header("Location: $url");
         }
         if (isset($id_post)) {
             $postModel = new PostModel($this->db);

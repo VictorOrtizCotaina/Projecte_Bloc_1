@@ -43,9 +43,9 @@ class CategoryController extends AbstractController
         }
 
         /* Comprueba que exista un parametro get de id_category para recoger un objecto Categoría. */
-            $categoryModel = new CategoryModel($this->db);
-            $categoriesNavbar = $categoryModel->getAllCategories();
-            $category = $categoryModel->getCategoryById($id_category);
+        $categoryModel = new CategoryModel($this->db);
+        $categoriesNavbar = $categoryModel->getAllCategories();
+        $category = $categoryModel->getCategoryById($id_category);
 
         $propierties = ["category" => $category, "session" => $_SESSION, "user" => $user, "categoriesNavbar" => $categoriesNavbar, "target_dir" => $target_dir, 'title' => "Foro Programacion &bull; " . $category->getTitle()];
         return $this->render('show.category.twig', $propierties);
@@ -93,8 +93,9 @@ class CategoryController extends AbstractController
                 $Next = $num_page + 1;
             }
         } else {
-global $route;
-            $url = $route->generateURL('User', 'login');header("Location: $url");
+            global $route;
+            $url = $route->generateURL('User', 'login');
+            header("Location: $url");
         }
 
         require("views/back-office/category_list.view.php");
@@ -121,8 +122,9 @@ global $route;
                 header("Location: $url");
             }
         } else {
-global $route;
-            $url = $route->generateURL('User', 'login');header("Location: $url");
+            global $route;
+            $url = $route->generateURL('User', 'login');
+            header("Location: $url");
         }
 
 
@@ -187,8 +189,9 @@ global $route;
                 header("Location: $url");
             }
         } else {
-global $route;
-            $url = $route->generateURL('User', 'login');header("Location: $url");
+            global $route;
+            $url = $route->generateURL('User', 'login');
+            header("Location: $url");
         }
 
 
@@ -257,8 +260,9 @@ global $route;
                 header("Location: $url");
             }
         } else {
-global $route;
-            $url = $route->generateURL('User', 'login');header("Location: $url");
+            global $route;
+            $url = $route->generateURL('User', 'login');
+            header("Location: $url");
         }
         if (isset($id_category)) {
             $categoryModel = new CategoryModel($this->db);
@@ -284,8 +288,9 @@ global $route;
                 header("Location: $url");
             }
         } else {
-global $route;
-            $url = $route->generateURL('User', 'login');header("Location: $url");
+            global $route;
+            $url = $route->generateURL('User', 'login');
+            header("Location: $url");
         }
         if (isset($id_category)) {
             $categoryModel = new CategoryModel($this->db);

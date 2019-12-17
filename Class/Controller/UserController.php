@@ -2,11 +2,9 @@
 
 namespace App\Controller;
 
-use App\Model\CategoryModel;
-use App\Model\ForumModel;
-use App\Model\TopicModel;
-use App\Model\UserModel;
 use App\Core\Router;
+use App\Model\CategoryModel;
+use App\Model\UserModel;
 
 
 class UserController extends AbstractController
@@ -127,8 +125,7 @@ class UserController extends AbstractController
             $check = getimagesize($_FILES["image"]["tmp_name"]);
             if ($check === false) {
                 array_push($imageErrors, "La imagen no se ha podido subir.");
-            }
-            else {
+            } else {
                 if ($_FILES["image"]["size"] > 10) {
                     array_push($imageErrors, "La imagen no debe pesar mas de 10Kb.");
                 }
@@ -137,7 +134,7 @@ class UserController extends AbstractController
                 }
             }
             if (empty($imageErrors)) {
-                move_uploaded_file($_FILES["image"]["tmp_name"], $target_dir.$target_file);
+                move_uploaded_file($_FILES["image"]["tmp_name"], $target_dir . $target_file);
 //                    Intento de reescalar imagenes a 100px x 100px.
                 /*$source_properties = getimagesize($target_file);
                 if ($imageFileType == "jpg" || $imageFileType == "jpeg"){

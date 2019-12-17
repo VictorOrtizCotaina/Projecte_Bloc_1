@@ -216,8 +216,9 @@ class ForumController extends AbstractController
                 $Next = $num_page + 1;
             }
         } else {
-global $route;
-            $url = $route->generateURL('User', 'login');header("Location: $url");
+            global $route;
+            $url = $route->generateURL('User', 'login');
+            header("Location: $url");
         }
 
         require("views/back-office/forum_list.view.php");
@@ -243,8 +244,9 @@ global $route;
                 header("Location: $url");
             }
         } else {
-global $route;
-            $url = $route->generateURL('User', 'login');header("Location: $url");
+            global $route;
+            $url = $route->generateURL('User', 'login');
+            header("Location: $url");
         }
 
 
@@ -308,8 +310,9 @@ global $route;
                 header("Location: $url");
             }
         } else {
-global $route;
-            $url = $route->generateURL('User', 'login');header("Location: $url");
+            global $route;
+            $url = $route->generateURL('User', 'login');
+            header("Location: $url");
         }
 
 
@@ -376,8 +379,9 @@ global $route;
                 header("Location: $url");
             }
         } else {
-global $route;
-            $url = $route->generateURL('User', 'login');header("Location: $url");
+            global $route;
+            $url = $route->generateURL('User', 'login');
+            header("Location: $url");
         }
         if (isset($id_forum)) {
             $forumModel = new ForumModel($this->db);
@@ -403,8 +407,9 @@ global $route;
                 header("Location: $url");
             }
         } else {
-global $route;
-            $url = $route->generateURL('User', 'login');header("Location: $url");
+            global $route;
+            $url = $route->generateURL('User', 'login');
+            header("Location: $url");
         }
         if (isset($id_forum)) {
             $forumModel = new ForumModel($this->db);
