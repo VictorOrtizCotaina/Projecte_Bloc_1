@@ -36,8 +36,8 @@ class UserController extends AbstractController
                     if (password_verify($password, $user->getPassword())) {
                         $_SESSION["user"] = $user;
 
-                        $route = new Router($this->di);
-                        $url = $route->generateURL('User', 'getUser');
+                        global $route;
+                        $url = $route->generateURL('Category', 'getAdminCategory');
                         header("Location: $url");
                     } else {
                         $error = "El email o la contraseña no son correctos.";

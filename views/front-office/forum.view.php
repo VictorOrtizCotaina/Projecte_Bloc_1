@@ -126,9 +126,9 @@ require 'partials/header_partial.php';
 
         <div class="col-md-3 col-xs-12 pull-right">
             <form
-                action="<?php if (isset($forum)) echo $route->generateURL('Forum', 'getForum', ['id_category' => $forum->getIdCategory(), 'id_forum' => $forum->getIdForum()], ["page" => $page]);
-                if (isset($id_user)) echo $route->generateURL('Forum', 'getForumUser', ['id_user' => $id_user], ["page" => $page]);?>"
-                  method="GET" id="topic-search" class="topic-search pull-right" style="margin:0;">
+                    action="<?php if (isset($forum)) echo $route->generateURL('Forum', 'getForum', ['id_category' => $forum->getIdCategory(), 'id_forum' => $forum->getIdForum()], ["page" => $page]);
+                    if (isset($id_user)) echo $route->generateURL('Forum', 'getForumUser', ['id_user' => $id_user], ["page" => $page]); ?>"
+                    method="GET" id="topic-search" class="topic-search pull-right" style="margin:0;">
                 <?php if (!empty($_GET["page"])) { ?>
                     <input type="hidden" name="page" value="<?php echo $_GET["page"]; ?>"/>
                 <?php } ?>
@@ -189,7 +189,7 @@ require 'partials/header_partial.php';
                                        class="btn btn-default btn-lg tooltip-link">
                                         <div class="">
                                             <img width="32" height="32"
-                                                 src="<?php echo '../'. $target_dir . $topic->getImage(); ?>">
+                                                 src="<?php echo $target_dir . $topic->getImage(); ?>">
                                         </div>
                                         <!--										<i class="fa fa-file-text-o fa-fw"></i>-->
 								</a></span>

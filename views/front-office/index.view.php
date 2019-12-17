@@ -24,123 +24,96 @@
     <link href="./style.php?style=2&amp;id=2&amp;lang=en&amp;sid=16ded21954d6d0cebedcb072f1286d0b" rel="stylesheet"
           type="text/css" media="screen, projection"/>
 
-    <link href="./theme/comboot/comboot.css" rel="stylesheet"/>
-    <link href="./theme/comboot/font-awesome.min.css" rel="stylesheet"/>
-    <link href="./theme/comboot/colorpicker.min.css" rel="stylesheet"/>
-    <link href="./theme/comboot/lightbox.css" rel="stylesheet"/>
-    <link href="./theme/comboot/select.min.css" rel="stylesheet"/>
-    <link href="./theme/comboot/syntax-highlighting.css" rel="stylesheet"/>
-    <link href="./theme/css/bootstrap.min.css" rel="stylesheet">
-    <link href="./theme/bootstrap.min.css" rel="stylesheet">
 
-    <script src="./theme/comboot/jquery.min.js" type="text/javascript"></script>
-    <script src="./theme/editor.js" type="text/javascript"></script>
-    <script src="./theme/comboot/angular.min.js" type="text/javascript"></script>
-    <script src="./theme/comboot/progressbar.min.js" type="text/javascript"></script>
-    <script src="./theme/comboot/bootstrap.min.js" type="text/javascript"></script>
-    <script src="./theme/comboot/colorpicker.min.js" type="text/javascript"></script>
-    <script src="./theme/comboot/lightbox.min.js" type="text/javascript"></script>
-    <script src="./theme/comboot/select.min.js" type="text/javascript"></script>
-    <script src="./theme/comboot/syntax-highlighting.js" type="text/javascript"></script>
-    <script src="./theme/comboot/comboot.js" type="text/javascript"></script>
-
-
-    <link href="./theme/fontawesome/css/all.min.css" rel="stylesheet"/>
-    <script src="./theme/fontawesome/js/all.min.js" type="text/javascript"></script>
-
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-            crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-            crossorigin="anonymous"></script>
-
+    <?php
+    require 'partials/head_partial.php';
+    ?>
 
 </head>
 
 <body class="section-index ltr">
 
+<?php
+require 'partials/header_partial.php';
+?>
+
+<div class="container" id="content-wrapper">
+
     <?php
-    require 'partials/header_partial.php';
-    ?>
-    
-    <div class="container" id="content-wrapper">
+    //        if (!isset($categories)) ̣{
+    foreach ($categories as $category) {
 
-        <?php
-        //        if (!isset($categories)) ̣{
-        foreach ($categories as $category) {
+        ?>
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered">
+                <thead class="topiclist">
+                <tr>
+                    <th class="forum-name"><i class="fa fa-sitemap"></i> <a
+                                href="<?= $route->generateURL('Category', 'getCategory', ['id_category' => $category->getIdCategory()]) ?>">
+                            <?php echo $category->getTitle(); ?>
+                        </a></th>
+                    <th class="topics"><i class="fa fa-comments-o"></i> Topics</th>
+                    <th class="posts"><i class="fa fa-pencil-square-o"></i> Posts</th>
+                    <th class="lastpost"><i class="fa fa-history"></i> <span>Last post</span></th>
+                </tr>
+                </thead>
+                <tbody class="topiclist forums">
 
-            ?>
-            <div class="table-responsive">
-                <table class="table table-striped table-bordered">
-                    <thead class="topiclist">
-                    <tr>
-                        <th class="forum-name"><i class="fa fa-sitemap"></i> <a
-                                    href="<?= $route->generateURL('Category', 'getCategory', ['id_category' => $category->getIdCategory()]) ?>">
-                                <?php echo $category->getTitle(); ?>
-                            </a></th>
-                        <th class="topics"><i class="fa fa-comments-o"></i> Topics</th>
-                        <th class="posts"><i class="fa fa-pencil-square-o"></i> Posts</th>
-                        <th class="lastpost"><i class="fa fa-history"></i> <span>Last post</span></th>
-                    </tr>
-                    </thead>
-                    <tbody class="topiclist forums">
-
-                    <?php
-                    if (!empty($category->getForums())) {
-                        foreach ($category->getForums() as $key => $forum) {
-                                ?>
-                                <tr>
-                                    <td class="forum-name" title="No unread posts">
+                <?php
+                if (!empty($category->getForums())) {
+                    foreach ($category->getForums() as $key => $forum) {
+                        ?>
+                        <tr>
+                            <td class="forum-name" title="No unread posts">
 							<span class="pull-left forum-icon">
 								<a href="<?= $route->generateURL('Forum', 'getForum', ['id_category' => $category->getIdCategory(), 'id_forum' => $forum->getIdForum()]) ?>"
                                    class="btn btn-lg btn-default tooltip-link">
                                     <div class="">
-                                        <img width="32" height="32" src="<?php echo $target_dir.$forum->getImage(); ?>">
+                                        <img width="32" height="32"
+                                             src="<?php echo $target_dir . $forum->getImage(); ?>">
                                     </div>
                                     <!--									<i class="fa fa-folder fa-fw"></i>-->
 
 								</a>
 							</span>
-                                        <div class="forum-icon-mobile">
+                                <div class="forum-icon-mobile">
 
-                                            <i class="fa fa-folder fa-fw"></i>
+                                    <i class="fa fa-folder fa-fw"></i>
 
-                                        </div>
-                                        <a href="<?= $route->generateURL('Forum', 'getForum', ['id_category' => $category->getIdCategory(), 'id_forum' => $forum->getIdForum()]) ?>"
-                                           class="forumtitle"><?php echo $forum->getTitle(); ?></a><br/>
-                                        <small><?php echo $forum->getDescription(); ?></small>
+                                </div>
+                                <a href="<?= $route->generateURL('Forum', 'getForum', ['id_category' => $category->getIdCategory(), 'id_forum' => $forum->getIdForum()]) ?>"
+                                   class="forumtitle"><?php echo $forum->getTitle(); ?></a><br/>
+                                <small><?php echo $forum->getDescription(); ?></small>
 
-                                    </td>
-                                    <td ><span class="badge">No esta implementado</span></td>
-                                    <td ><span class="badge">No esta implementado</span></td>
-                                    <td ><span class="badge">No esta implementado</span></td>
-                                    <!--<td class="topics"><span class="badge">36</span></td>
-                                    <td class="posts"><span class="badge">84</span></td>
-                                    <td class="lastpost"><span>
-								<dfn>Last post</dfn> by <a
-                                                    href="./memberlist.php?style=2&amp;mode=viewprofile&amp;u=80&amp;sid=16ded21954d6d0cebedcb072f1286d0b">demo</a>
-								<a
-                                        href="./viewtopic.php?style=2&amp;f=2&amp;p=109&amp;sid=16ded21954d6d0cebedcb072f1286d0b#p109"><img
-                                            src="./imageset/icon_topic_latest.gif" width="11" height="9"
-                                            alt="View the latest post" title="View the latest post"/></a> <br/>Mon Dec 05,
-								2016 7:44 am</span>
-                                    </td>-->
+                            </td>
+                            <td><span class="badge">No esta implementado</span></td>
+                            <td><span class="badge">No esta implementado</span></td>
+                            <td><span class="badge">No esta implementado</span></td>
+                            <!--<td class="topics"><span class="badge">36</span></td>
+                            <td class="posts"><span class="badge">84</span></td>
+                            <td class="lastpost"><span>
+                        <dfn>Last post</dfn> by <a
+                                            href="./memberlist.php?style=2&amp;mode=viewprofile&amp;u=80&amp;sid=16ded21954d6d0cebedcb072f1286d0b">demo</a>
+                        <a
+                                href="./viewtopic.php?style=2&amp;f=2&amp;p=109&amp;sid=16ded21954d6d0cebedcb072f1286d0b#p109"><img
+                                    src="./imageset/icon_topic_latest.gif" width="11" height="9"
+                                    alt="View the latest post" title="View the latest post"/></a> <br/>Mon Dec 05,
+                        2016 7:44 am</span>
+                            </td>-->
 
-                                </tr>
-                            <?php
-                        }
+                        </tr>
+                        <?php
                     }
-                    ?>
+                }
+                ?>
 
-                    </tbody>
-                </table>
-            </div>
-            <?php
-        } ?>
+                </tbody>
+            </table>
         </div>
-    </div>
+        <?php
+    } ?>
+</div>
+</div>
 </body>
 
 </html>
