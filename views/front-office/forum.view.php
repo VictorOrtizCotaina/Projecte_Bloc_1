@@ -159,6 +159,11 @@ require 'partials/header_partial.php';
             </form>
         </div>
 
+
+        <div class="col-md-6"></div>
+        <div class="col-md-6 col-xs-12">
+            Informacion Filtrado
+        </div>
     </div>
 
     <div class="forumbg table-responsive ">

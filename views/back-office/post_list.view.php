@@ -51,7 +51,7 @@
                                 <tr>
                                     <td><?php echo $post->getIdPost(); ?></td>
                                     <td><?php echo $post->getTitle(); ?></td>
-                                    <td><?php echo $post->getText(); ?></td>
+                                    <td><?php echo htmlspecialchars($post->getText()); ?></td>
                                     <td><?php echo $post->getDateAdd()->format("d-m-Y"); ?></td>
                                     <td><?php echo (int)$post->getActive(); ?></td>
                                     <td><?php echo $post->getIdTopic(); ?></td>

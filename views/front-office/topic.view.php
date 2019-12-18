@@ -38,7 +38,14 @@ require 'partials/header_partial.php';
 
     <div class="row mobile-fix">
 
-        <div class="col-md-3"></div>
+        <div class="col-md-3 text-center col-xs-12">
+            <?php
+            if (isset($user)){
+                ?>
+                <input type="submit" class="btn btn-primary" name="seguir" value="Seguir Topic">
+            <?php } ?>
+
+        </div>
         <div class="col-md-6 text-center col-xs-12">
             <div class="btn-group forum-pagination">
                 <nav aria-label="Page navigation">
@@ -74,7 +81,6 @@ require 'partials/header_partial.php';
         </div>
 
     </div>
-    <div class="clearfix"></div>
 
 
     <?php
