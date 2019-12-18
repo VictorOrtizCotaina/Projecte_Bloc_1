@@ -6,6 +6,7 @@ use Exception;
 use PDO;
 use App\Entity\Forum;
 use App\Entity\AbstractEntity;
+use DateTime;
 
 
 class ForumModel extends AbstractModel
@@ -252,7 +253,7 @@ class ForumModel extends AbstractModel
         if (empty($description)){
             $errors["description"] = "La descripcion no puede estar vacia";
         }
-        $date_add = $forum->getDateAdd()->format('Y-m-d');
+        $date_add = $forum->getDateAdd()->format('d-m-Y');
         if (empty($date_add)){
             $errors["date_add"] = "La fecha no puede estar vacia";
         } elseif (DateTime::createFromFormat('d-m-Y', $date_add) === false) {

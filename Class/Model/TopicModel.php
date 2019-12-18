@@ -6,6 +6,7 @@ use Exception;
 use PDO;
 use App\Entity\Topic;
 use App\Entity\AbstractEntity;
+use DateTime;
 
 
 class TopicModel extends AbstractModel
@@ -333,12 +334,12 @@ class TopicModel extends AbstractModel
         if (empty($description)) {
             $errors["description"] = "La descripcion no puede estar vacia";
         }
-        $date_add = $topic->getDateAdd()->format('Y-m-d');
+        $date_add = $topic->getDateAdd()->format('d-m-Y');
         if (empty($date_add)) {
             $errors["date_add"] = "La fecha no puede estar vacia";
         } elseif ($date_add == "1910-01-01"){
             $errors["date_add"] = "No es una fecha valida.";
-        } elseif (DateTime::createFromFormat('Y-m-d', $date_add) === false) {
+        } elseif (DateTime::createFromFormat('d-m-Y', $date_add) === false) {
             $errors["date_add"] = "La fecha no es una fecha valida (Y-m-d).";
         }
         $user = $topic->getIdUser();

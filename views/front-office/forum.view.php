@@ -135,9 +135,6 @@ require 'partials/header_partial.php';
                 <?php if (!empty($id_forum)) { ?>
                     <input type="hidden" name="id_forum" value="<?php echo $id_forum; ?>"/>
                 <?php } ?>
-                <?php if (!empty($id_user)) { ?>
-                    <input type="hidden" name="id_user" value="<?php echo $id_user; ?>"/>
-                <?php } ?>
                 <input type="hidden" name="num_page" value="<?php echo $page; ?>"/>
                 <div class="input-group">
                     <input class="input-medium search form-control" type="text" name="search_keywords"

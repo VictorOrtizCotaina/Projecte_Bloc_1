@@ -159,8 +159,8 @@ class CategoryController extends AbstractController
                 $insert = $categoryModel->insertCategory($category);
 
                 if ($insert) {
-                    $url = $_SERVER["PHP_SELF"];
-                    header("Location: $url");
+                    global $route;
+                    header('Location: ' . $route->generateURL('Category', 'getAdminCategory'));
                 }
             }
         }
@@ -235,8 +235,8 @@ class CategoryController extends AbstractController
                 $insert = $categoryModel->updateCategory($category);
 
                 if ($insert) {
-                    $url = $_SERVER["PHP_SELF"];
-                    header("Location: $url");
+                    global $route;
+                    header('Location: ' . $route->generateURL('Category', 'getAdminCategory'));
                 }
             }
         }

@@ -273,8 +273,8 @@ class TopicController extends AbstractController
                 $insert = $topicModel->insertTopic($topic);
 
                 if ($insert) {
-                    $url = $_SERVER["PHP_SELF"] . "?page=topic_list";
-                    header("Location: $url");
+                    global $route;
+                    header('Location: ' . $route->generateURL('Topic', 'getAdminTopic'));
                 }
             }
         }

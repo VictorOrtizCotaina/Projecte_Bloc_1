@@ -85,11 +85,6 @@ class ForumController extends AbstractController
         } else {
             $dateFin = "";
         }
-        if (!empty($query_User)) {
-            $query_User = "&id_user=" . $id_user;
-        } else {
-            $query_User = "";
-        }
 
         require("views/front-office/forum.view.php");
     }
@@ -171,11 +166,7 @@ class ForumController extends AbstractController
         } else {
             $dateFin = "";
         }
-        if (!empty($query_User)) {
-            $query_User = "&id_user=" . $id_user;
-        } else {
-            $query_User = "";
-        }
+
 
         require("views/front-office/forum.view.php");
     }
@@ -240,8 +231,8 @@ class ForumController extends AbstractController
             $user = $userModel->getUserById($id);
             $userGroup = $user->getIdUserGroup();
             if ($userGroup != 1) {
-                $url = $_SERVER["PHP_SELF"];
-                header("Location: $url");
+                global $route;
+                header('Location: ' . $route->generateURL('Forum', 'getAdminForum'));
             }
         } else {
             global $route;
@@ -281,8 +272,8 @@ class ForumController extends AbstractController
                 $insert = $forumModel->insertForum($forum);
 
                 if ($insert) {
-                    $url = $_SERVER["PHP_SELF"] . "?page=forum_list";
-                    header("Location: $url");
+                    global $route;
+                    header('Location: ' . $route->generateURL('Forum', 'getAdminForum'));
                 }
             }
         }
@@ -355,8 +346,8 @@ class ForumController extends AbstractController
                 $insert = $forumModel->updateForum($forum);
 
                 if ($insert) {
-                    $url = $_SERVER["PHP_SELF"] . "?page=forum_list";
-                    header("Location: $url");
+                    global $route;
+                    header('Location: ' . $route->generateURL('Forum', 'getAdminForum'));
                 }
             }
         }

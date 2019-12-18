@@ -263,7 +263,7 @@ class CategoryModel extends AbstractModel
         if (empty($description)){
             $errors["description"] = "La descripcion no puede estar vacia";
         }
-        $date_add = $category->getDateAdd()->format('Y-m-d');
+        $date_add = $category->getDateAdd()->format('d-m-Y');
         if (empty($date_add)){
             $errors["date_add"] = "La fecha no puede estar vacia";
         } elseif (DateTime::createFromFormat('d-m-Y', $date_add) === false) {

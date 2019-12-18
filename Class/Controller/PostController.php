@@ -109,8 +109,8 @@ class PostController extends AbstractController
                 $insert = $postModel->insertPost($post);
 
                 if ($insert) {
-                    $url = $_SERVER["PHP_SELF"] . "?page=topic_list";
-                    header("Location: $url");
+                    global $route;
+                    header('Location: ' . $route->generateURL('Forum', 'getAdminForum'));
                 }
             }
         }
@@ -181,8 +181,8 @@ class PostController extends AbstractController
                 $insert = $postModel->updatePost($post);
 
                 if ($insert) {
-                    $url = $_SERVER["PHP_SELF"] . "?page=topic_list";
-                    header("Location: $url");
+                    global $route;
+                    header('Location: ' . $route->generateURL('Forum', 'getAdminForum'));
                 }
             }
         }
