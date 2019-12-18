@@ -65,7 +65,7 @@ class ForumController extends AbstractController
         $Next = $page + 1;
 
         /* Parametros para la creación de la query. */
-        if (!empty($query_Forum)) {
+/*        if (!empty($query_Forum)) {
             $query_Forum = "&id_forum=" . $id_forum;
         } else {
             $query_Forum = "";
@@ -81,10 +81,10 @@ class ForumController extends AbstractController
             $dateIni = "";
         }
         if (!empty($dateFin)) {
-            $dateFin = "&dateFin=" . $dateFin;
+            $dateFin = "&=" . $dateFin;
         } else {
             $dateFin = "";
-        }
+        }*/
 
         require("views/front-office/forum.view.php");
     }

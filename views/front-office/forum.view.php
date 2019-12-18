@@ -63,7 +63,7 @@ require 'partials/header_partial.php';
                             if ($id_forum !== 0) {
                                 ?>
                                 <li>
-                                    <a href="<?= $route->generateURL('Forum', 'getForum', ['id_category' => $forum->getIdCategory(), 'id_forum' => $forum->getIdForum()]) . '?' . "page=" . $Previous . $search . $dateIni . $dateFin; ?>"
+                                    <a href="<?= $route->generateURL('Forum', 'getForum', ['id_category' => $forum->getIdCategory(), 'id_forum' => $forum->getIdForum(), ["page" => $Previous, "search_keywords" => $search, "dateIni" => $dateIni, "dateFin" => $dateFin]]); ?>"
                                        aria-label="Previous">
                                         <span aria-hidden="true">&laquo; Previous</span>
                                     </a>
@@ -72,7 +72,7 @@ require 'partials/header_partial.php';
                             if ($id_user !== 0) {
                                 ?>
                                 <li>
-                                    <a href="<?= $route->generateURL('Forum', 'getForumUser', ['id_user' => $id_user]) . '?' . "page=" . $Previous . $search . $dateIni . $dateFin; ?>"
+                                    <a href="<?= $route->generateURL('Forum', 'getForumUser', ['id_user' => $id_user], ["page" => $Previous, "search_keywords" => $search, "dateIni" => $dateIni, "dateFin" => $dateFin]); ?>"
                                        aria-label="Previous">
                                         <span aria-hidden="true">&laquo; Previous</span>
                                     </a>
@@ -84,13 +84,13 @@ require 'partials/header_partial.php';
                             if ($id_forum != 0) {
                                 ?>
                                 <li>
-                                    <a href="<?= $route->generateURL('Forum', 'getForum', ['id_category' => $forum->getIdCategory(), 'id_forum' => $forum->getIdForum()]) . '?' . "page=" . $i . $search . $dateIni . $dateFin; ?>"><?= $i; ?></a>
+                                    <a href="<?= $route->generateURL('Forum', 'getForum', ['id_category' => $forum->getIdCategory(), 'id_forum' => $forum->getIdForum()], ["page" => $i, "search_keywords" => $search, "dateIni" => $dateIni, "dateFin" => $dateFin]); ?>"><?= $i; ?></a>
                                 </li>
                             <?php }
                             if ($id_user != 0) {
                                 ?>
                                 <li>
-                                    <a href="<?= $route->generateURL('Forum', 'getForumUser', ['id_user' => $id_user]) . '?' . "page=" . $i . $search . $dateIni . $dateFin; ?>"
+                                    <a href="<?= $route->generateURL('Forum', 'getForumUser', ['id_user' => $id_user], ["page" => $i, "search_keywords" => $search, "dateIni" => $dateIni, "dateFin" => $dateFin]); ?>"
                                        aria-label="Previous"><?= $i; ?></a>
                                 </li>
                             <?php } ?>
@@ -102,7 +102,7 @@ require 'partials/header_partial.php';
                             if ($id_forum != 0) {
                                 ?>
                                 <li>
-                                    <a href="<?= $route->generateURL('Forum', 'getForum', ['id_category' => $forum->getIdCategory(), 'id_forum' => $forum->getIdForum()]) . '?' . "page=" . $Next . $search . $dateIni . $dateFin; ?>"
+                                    <a href="<?= $route->generateURL('Forum', 'getForum', ['id_category' => $forum->getIdCategory(), 'id_forum' => $forum->getIdForum()], ["page" => $Next, "search_keywords" => $search, "dateIni" => $dateIni, "dateFin" => $dateFin]); ?>"
                                        aria-label="Next">
                                         <span aria-hidden="true">Next &raquo;</span>
                                     </a>
@@ -111,7 +111,7 @@ require 'partials/header_partial.php';
                             if ($id_user != 0) {
                                 ?>
                                 <li>
-                                    <a href="<?= $route->generateURL('Forum', 'getForumUser', ['id_user' => $id_user]) . '?' . "page=" . $Next . $search . $dateIni . $dateFin; ?>"
+                                    <a href="<?= $route->generateURL('Forum', 'getForumUser', ['id_user' => $id_user], ["page" => $Next, "search_keywords" => $search, "dateIni" => $dateIni, "dateFin" => $dateFin]); ?>"
                                        aria-label="Previous">
                                         <span aria-hidden="true">Next &raquo;</span>
                                     </a>
@@ -132,10 +132,6 @@ require 'partials/header_partial.php';
                 <?php if (!empty($_GET["page"])) { ?>
                     <input type="hidden" name="page" value="<?php echo $_GET["page"]; ?>"/>
                 <?php } ?>
-                <?php if (!empty($id_forum)) { ?>
-                    <input type="hidden" name="id_forum" value="<?php echo $id_forum; ?>"/>
-                <?php } ?>
-                <input type="hidden" name="num_page" value="<?php echo $page; ?>"/>
                 <div class="input-group">
                     <input class="input-medium search form-control" type="text" name="search_keywords"
                            id="search_keywords"
@@ -160,9 +156,19 @@ require 'partials/header_partial.php';
         </div>
 
 
-        <div class="col-md-6"></div>
         <div class="col-md-6 col-xs-12">
-            Informacion Filtrado
+            <p> Numero de Topics: <?= $topicCount ?>
+            <?php
+                if ($search) { ?>
+                    <p> Busqueda: <?= $search ?> </p>
+            <?php }
+                if ($dateIni) { ?>
+                    <p> Fecha Inicio: <?= $dateIni ?> </p>
+            <?php }
+                if ($dateFin) { ?>
+                    <p> Fecha Fin: <?= $dateFin ?> </p>
+            <?php } ?>
+
         </div>
     </div>
 
@@ -265,7 +271,7 @@ require 'partials/header_partial.php';
                             if ($id_forum !== 0) {
                                 ?>
                                 <li>
-                                    <a href="<?= $route->generateURL('Forum', 'getForum', ['id_category' => $forum->getIdCategory(), 'id_forum' => $forum->getIdForum()]) . '?' . "page=" . $Previous . $search . $dateIni . $dateFin; ?>"
+                                    <a href="<?= $route->generateURL('Forum', 'getForum', ['id_category' => $forum->getIdCategory(), 'id_forum' => $forum->getIdForum(), ["page" => $Previous, "search_keywords" => $search, "dateIni" => $dateIni, "dateFin" => $dateFin]]); ?>"
                                        aria-label="Previous">
                                         <span aria-hidden="true">&laquo; Previous</span>
                                     </a>
@@ -274,7 +280,7 @@ require 'partials/header_partial.php';
                             if ($id_user !== 0) {
                                 ?>
                                 <li>
-                                    <a href="<?= $route->generateURL('Forum', 'getForumUser', ['id_user' => $id_user]) . '?' . "page=" . $Previous . $search . $dateIni . $dateFin; ?>"
+                                    <a href="<?= $route->generateURL('Forum', 'getForumUser', ['id_user' => $id_user], ["page" => $Previous, "search_keywords" => $search, "dateIni" => $dateIni, "dateFin" => $dateFin]); ?>"
                                        aria-label="Previous">
                                         <span aria-hidden="true">&laquo; Previous</span>
                                     </a>
@@ -286,13 +292,13 @@ require 'partials/header_partial.php';
                             if ($id_forum != 0) {
                                 ?>
                                 <li>
-                                    <a href="<?= $route->generateURL('Forum', 'getForum', ['id_category' => $forum->getIdCategory(), 'id_forum' => $forum->getIdForum()]) . '?' . "page=" . $i . $search . $dateIni . $dateFin; ?>"><?= $i; ?></a>
+                                    <a href="<?= $route->generateURL('Forum', 'getForum', ['id_category' => $forum->getIdCategory(), 'id_forum' => $forum->getIdForum()], ["page" => $i, "search_keywords" => $search, "dateIni" => $dateIni, "dateFin" => $dateFin]); ?>"><?= $i; ?></a>
                                 </li>
                             <?php }
                             if ($id_user != 0) {
                                 ?>
                                 <li>
-                                    <a href="<?= $route->generateURL('Forum', 'getForumUser', ['id_user' => $id_user]) . '?' . "page=" . $i . $search . $dateIni . $dateFin; ?>"
+                                    <a href="<?= $route->generateURL('Forum', 'getForumUser', ['id_user' => $id_user], ["page" => $i, "search_keywords" => $search, "dateIni" => $dateIni, "dateFin" => $dateFin]); ?>"
                                        aria-label="Previous"><?= $i; ?></a>
                                 </li>
                             <?php } ?>
@@ -304,7 +310,7 @@ require 'partials/header_partial.php';
                             if ($id_forum != 0) {
                                 ?>
                                 <li>
-                                    <a href="<?= $route->generateURL('Forum', 'getForum', ['id_category' => $forum->getIdCategory(), 'id_forum' => $forum->getIdForum()]) . '?' . "page=" . $Next . $search . $dateIni . $dateFin; ?>"
+                                    <a href="<?= $route->generateURL('Forum', 'getForum', ['id_category' => $forum->getIdCategory(), 'id_forum' => $forum->getIdForum()], ["page" => $Next, "search_keywords" => $search, "dateIni" => $dateIni, "dateFin" => $dateFin]); ?>"
                                        aria-label="Next">
                                         <span aria-hidden="true">Next &raquo;</span>
                                     </a>
@@ -313,7 +319,7 @@ require 'partials/header_partial.php';
                             if ($id_user != 0) {
                                 ?>
                                 <li>
-                                    <a href="<?= $route->generateURL('Forum', 'getForumUser', ['id_user' => $id_user]) . '?' . "page=" . $Next . $search . $dateIni . $dateFin; ?>"
+                                    <a href="<?= $route->generateURL('Forum', 'getForumUser', ['id_user' => $id_user], ["page" => $Next, "search_keywords" => $search, "dateIni" => $dateIni, "dateFin" => $dateFin]); ?>"
                                        aria-label="Previous">
                                         <span aria-hidden="true">Next &raquo;</span>
                                     </a>

@@ -47,9 +47,6 @@ echo $route->route($request);
 
 $page = $_GET['action'] ?? "indexARR";
 
-
-require __DIR__ . "/Class/Controller/validateForm.php";
-
 $fichero = file_get_contents("./config/config.json", true);
 $imageConf = json_decode($fichero, true);
 $target_dir = $imageConf["image"]["src"];
