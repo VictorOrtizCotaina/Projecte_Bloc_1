@@ -70,7 +70,7 @@ class CategoryModel extends AbstractModel
             return $category;
 
         } catch (PDOException $e) {
-            echo $e->getMessage();
+            return $e->getMessage();
         }
     }
 

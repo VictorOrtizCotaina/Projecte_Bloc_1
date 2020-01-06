@@ -81,7 +81,7 @@ class TopicController extends AbstractController
             $forumModel = new ForumModel($this->db);
             $forums = $forumModel->getAllForums();
             if ($userGroup != 1) {
-                $forum = filter_input(INPUT_GET, 'forums', FILTER_SANITIZE_STRING);
+                $id_forum = filter_input(INPUT_GET, 'forums', FILTER_SANITIZE_NUMBER_INT);
                 $search = filter_input(INPUT_GET, 'search_keywords', FILTER_SANITIZE_STRING);
                 $dateIni = filter_input(INPUT_GET, 'dateIni', FILTER_SANITIZE_STRING);
                 $dateFin = filter_input(INPUT_GET, 'dateFin', FILTER_SANITIZE_STRING);
@@ -97,13 +97,13 @@ class TopicController extends AbstractController
                 $num_page = isset($num_page) ? $num_page : 1;
                 $start = ($num_page - 1) * $limit;
 
-                if (!empty($forum)) {
-                    $forum = 0;
+                if (empty($id_forum)) {
+                    $id_forum = 0;
                 }
 
                 $id_user = $user->getIdUser();
-                $topics = $topicModel->getAllTopicsPage($forum, $start, $limit, $search, $dateIni, $dateFin, $id_user);
-                $topicCount = $topicModel->getPagesTopics($forum, $search, $dateIni, $dateFin, $id_user);
+                $topics = $topicModel->getAllTopicsPage($id_forum, $start, $limit, $search, $dateIni, $dateFin, $id_user);
+                $topicCount = $topicModel->getPagesTopics($id_forum, $search, $dateIni, $dateFin, $id_user);
                 $total = $topicCount;
                 $pages = ceil($total / $limit);
                 $Previous = $num_page - 1;

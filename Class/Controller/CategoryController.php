@@ -65,7 +65,7 @@ class CategoryController extends AbstractController
             $userGroup = $user->getIdUserGroup();
             if ($userGroup != 1) {
                 $categoryModel = new CategoryModel($this->db);
-                $categories = $categoryModel->getCategoryByUser($id);
+//                $categories = $categoryModel->getCategoryByUser($id);
                 $limit = 2;
                 $num_page = isset($_GET['num_page']) ? $_GET['num_page'] : 1;
                 $start = ($num_page - 1) * $limit;
