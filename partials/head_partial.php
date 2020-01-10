@@ -1,26 +1,26 @@
 
-<link href="/Projecte_Bloc_1/theme/comboot/comboot.css" rel="stylesheet"/>
-<link href="/Projecte_Bloc_1/theme/comboot/font-awesome.min.css" rel="stylesheet"/>
-<link href="/Projecte_Bloc_1/theme/comboot/colorpicker.min.css" rel="stylesheet"/>
-<link href="/Projecte_Bloc_1/theme/comboot/lightbox.css" rel="stylesheet"/>
-<link href="/Projecte_Bloc_1/theme/comboot/select.min.css" rel="stylesheet"/>
-<link href="/Projecte_Bloc_1/theme/comboot/syntax-highlighting.css" rel="stylesheet"/>
-<link href="/Projecte_Bloc_1/theme/css/bootstrap.min.css" rel="stylesheet">
-<link href="/Projecte_Bloc_1/theme/bootstrap.min.css" rel="stylesheet">
+<link href="/theme/comboot/comboot.css" rel="stylesheet"/>
+<link href="/theme/comboot/font-awesome.min.css" rel="stylesheet"/>
+<link href="/theme/comboot/colorpicker.min.css" rel="stylesheet"/>
+<link href="/theme/comboot/lightbox.css" rel="stylesheet"/>
+<link href="/theme/comboot/select.min.css" rel="stylesheet"/>
+<link href="/theme/comboot/syntax-highlighting.css" rel="stylesheet"/>
+<link href="/theme/css/bootstrap.min.css" rel="stylesheet">
+<link href="/theme/bootstrap.min.css" rel="stylesheet">
 
-<script src="/Projecte_Bloc_1/theme/comboot/jquery.min.js" type="text/javascript"></script>
-<script src="/Projecte_Bloc_1/theme/editor.js" type="text/javascript"></script>
-<script src="/Projecte_Bloc_1/theme/comboot/angular.min.js" type="text/javascript"></script>
-<script src="/Projecte_Bloc_1/theme/comboot/progressbar.min.js" type="text/javascript"></script>
-<script src="/Projecte_Bloc_1/theme/comboot/bootstrap.min.js" type="text/javascript"></script>
-<script src="/Projecte_Bloc_1/theme/comboot/colorpicker.min.js" type="text/javascript"></script>
-<script src="/Projecte_Bloc_1/theme/comboot/lightbox.min.js" type="text/javascript"></script>
-<script src="/Projecte_Bloc_1/theme/comboot/select.min.js" type="text/javascript"></script>
-<script src="/Projecte_Bloc_1/theme/comboot/syntax-highlighting.js" type="text/javascript"></script>
-<script src="/Projecte_Bloc_1/theme/comboot/comboot.js" type="text/javascript"></script>
+<script src="/theme/comboot/jquery.min.js" type="text/javascript"></script>
+<script src="/theme/editor.js" type="text/javascript"></script>
+<script src="/theme/comboot/angular.min.js" type="text/javascript"></script>
+<script src="/theme/comboot/progressbar.min.js" type="text/javascript"></script>
+<script src="/theme/comboot/bootstrap.min.js" type="text/javascript"></script>
+<script src="/theme/comboot/colorpicker.min.js" type="text/javascript"></script>
+<script src="/theme/comboot/lightbox.min.js" type="text/javascript"></script>
+<script src="/theme/comboot/select.min.js" type="text/javascript"></script>
+<script src="/theme/comboot/syntax-highlighting.js" type="text/javascript"></script>
+<script src="/theme/comboot/comboot.js" type="text/javascript"></script>
 
-<link href="/Projecte_Bloc_1/theme/fontawesome/css/all.min.css" rel="stylesheet" />
-<script src="/Projecte_Bloc_1/theme/fontawesome/js/all.min.js" type="text/javascript"></script>
+<link href="/theme/fontawesome/css/all.min.css" rel="stylesheet" />
+<script src="/theme/fontawesome/js/all.min.js" type="text/javascript"></script>
 
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

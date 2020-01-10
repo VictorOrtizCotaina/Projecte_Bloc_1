@@ -1,16 +1,16 @@
 {
-  "Projecte_Bloc_1/": {
+  "": {
     "controller": "Category",
     "method": "index"
   },
-  "Projecte_Bloc_1/:id_category": {
+  ":id_category": {
     "controller": "Category",
     "method": "getCategory",
     "params": {
       "id_category": "number"
     }
   },
-  "Projecte_Bloc_1/:id_category/:id_forum": {
+  ":id_category/:id_forum": {
     "controller": "Forum",
     "method": "getForum",
     "params": {
@@ -18,14 +18,14 @@
       "id_forum": "number"
     }
   },
-  "Projecte_Bloc_1/topics_user/:id_user": {
+  "topics_user/:id_user": {
     "controller": "Forum",
     "method": "getForumUser",
     "params": {
       "id_user": "number"
     }
   },
-  "Projecte_Bloc_1/:id_category/:id_forum/:id_topic": {
+  ":id_category/:id_forum/:id_topic": {
     "controller": "Topic",
     "method": "getTopic",
     "params": {
@@ -34,46 +34,46 @@
       "id_topic": "number"
     }
   },
-  "Projecte_Bloc_1/logout": {
+  "logout": {
     "controller": "User",
     "method": "logout"
   },
-  "Projecte_Bloc_1/login": {
+  "login": {
     "controller": "User",
     "method": "login"
   },
-  "Projecte_Bloc_1/register": {
+  "register": {
     "controller": "User",
     "method": "register"
   },
-  "Projecte_Bloc_1/user": {
+  "user": {
     "controller": "User",
     "method": "getUser"
   },
 
-  "Projecte_Bloc_1/category_list": {
+  "category_list": {
     "controller": "Category",
     "method": "getAdminCategory"
   },
-  "Projecte_Bloc_1/category_add": {
+  "category_add": {
     "controller": "Category",
     "method": "adminCategoryAdd"
   },
-  "Projecte_Bloc_1/category_edit/:id_category": {
+  "category_edit/:id_category": {
     "controller": "Category",
     "method": "adminCategoryEdit",
     "params": {
       "id_category": "number"
     }
   },
-  "Projecte_Bloc_1/category_delete/:id_category": {
+  "category_delete/:id_category": {
     "controller": "Category",
     "method": "adminCategoryDelete",
     "params": {
       "id_category": "number"
     }
   },
-  "Projecte_Bloc_1/category_active/:id_category": {
+  "category_active/:id_category": {
     "controller": "Category",
     "method": "adminCategoryActive",
     "params": {
@@ -81,29 +81,29 @@
     }
   },
 
-  "Projecte_Bloc_1/forum_list": {
+  "forum_list": {
     "controller": "Forum",
     "method": "getAdminForum"
   },
-  "Projecte_Bloc_1/forum_add": {
+  "forum_add": {
     "controller": "Forum",
     "method": "adminForumAdd"
   },
-  "Projecte_Bloc_1/forum_edit/:id_forum": {
+  "forum_edit/:id_forum": {
     "controller": "Forum",
     "method": "adminForumEdit",
     "params": {
       "id_forum": "number"
     }
   },
-  "Projecte_Bloc_1/forum_delete/:id_forum": {
+  "forum_delete/:id_forum": {
     "controller": "Forum",
     "method": "adminForumDelete",
     "params": {
       "id_forum": "number"
     }
   },
-  "Projecte_Bloc_1/forum_active/:id_forum": {
+  "forum_active/:id_forum": {
     "controller": "Forum",
     "method": "adminForumActive",
     "params": {
@@ -112,29 +112,29 @@
   },
 
 
-  "Projecte_Bloc_1/topic_list": {
+  "topic_list": {
     "controller": "Topic",
     "method": "getAdminTopic"
   },
-  "Projecte_Bloc_1/topic_add": {
+  "topic_add": {
     "controller": "Topic",
     "method": "adminTopicAdd"
   },
-  "Projecte_Bloc_1/topic_edit/:id_topic": {
+  "topic_edit/:id_topic": {
     "controller": "Topic",
     "method": "adminTopicEdit",
     "params": {
       "id_topic": "number"
     }
   },
-  "Projecte_Bloc_1/topic_delete/:id_topic": {
+  "topic_delete/:id_topic": {
     "controller": "Topic",
     "method": "adminTopicDelete",
     "params": {
       "id_topic": "number"
     }
   },
-  "Projecte_Bloc_1/topic_active/:id_topic": {
+  "topic_active/:id_topic": {
     "controller": "Topic",
     "method": "adminTopicActive",
     "params": {
@@ -142,22 +142,22 @@
     }
   },
 
-  "Projecte_Bloc_1/post_list": {
+  "post_list": {
     "controller": "Post",
     "method": "getAdminPost"
   },
-  "Projecte_Bloc_1/post_add": {
+  "post_add": {
     "controller": "Post",
     "method": "adminPostAdd"
   },
-  "Projecte_Bloc_1/post_edit/:id_post": {
+  "post_edit/:id_post": {
     "controller": "Post",
     "method": "adminPostEdit",
     "params": {
       "id_post": "number"
     }
   },
-  "Projecte_Bloc_1/post_delete/:id_post": {
+  "post_delete/:id_post": {
     "controller": "Post",
     "method": "adminPostDelete",
     "params": {
