@@ -21,6 +21,9 @@ require __DIR__ . '/config/bootstrap.php';
 
 $di = new \App\Utils\DependencyInjector();
 
+ini_set( 'session.cookie_httponly', 1 );
+//https://stackoverflow.com/questions/520237/how-do-i-expire-a-php-session-after-30-minutes
+
 $db = new DBConnection();
 $di->set('PDO', $db->getConnection());
 
