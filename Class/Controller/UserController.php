@@ -70,22 +70,27 @@ class UserController extends AbstractController
             $surnames = filter_input(INPUT_POST, 'surnames', FILTER_SANITIZE_STRING);
             $province = filter_input(INPUT_POST, 'province', FILTER_SANITIZE_STRING);
             $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
+            $password_veri = filter_input(INPUT_POST, 'password_veri', FILTER_SANITIZE_STRING);
             if (!empty($email) && !empty($password) && !empty($username)) {
                 $userModel = new UserModel($this->db);
                 $user = $userModel->getUserByEmail($email);
-                if (!$user) {
-                    $password = password_hash($password, PASSWORD_DEFAULT);
-                    $register = $userModel->register($email, $password, $username,$name, $surnames, $province);
+                if ($password_veri === $password) {
+                    if (!$user) {
+                        $password = password_hash($password, PASSWORD_DEFAULT);
+                        $register = $userModel->register($email, $password, $username, $name, $surnames, $province);
 
-                    if ($register) {
-                        $user = $userModel->getUserByEmail($email);
-                        $_SESSION["user"] = $user;
-                        $route = new Router($this->di);
-                        $url = $route->generateURL('User', 'getUser');
-                        header("Location: $url");
+                        if ($register) {
+                            $user = $userModel->getUserByEmail($email);
+                            $_SESSION["user"] = $user;
+                            $route = new Router($this->di);
+                            $url = $route->generateURL('User', 'getUser');
+                            header("Location: $url");
+                        }
+                    } else {
+                        $error = "El email ya existe.";
                     }
                 } else {
-                    $error = "El email ya existe.";
+                    $error = "La contraseña no coincide.";
                 }
             } else {
                 $error = "El email, la contraseña o el nombre de usuario no pueden estar vacios.";

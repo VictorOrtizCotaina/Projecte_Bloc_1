@@ -112,6 +112,14 @@
                             </div> <!-- input-group.// -->
                         </div> <!-- form-group// -->
                         <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                                </div>
+                                <input class="form-control" placeholder="******" type="password" id="password_veri" name="password_veri">
+                            </div> <!-- input-group.// -->
+                        </div> <!-- form-group// -->
+                        <div class="form-group">
                             <button type="submit" class="btn btn-primary btn-block"> Registrar  </button>
                         </div> <!-- form-group// -->
                     </form>

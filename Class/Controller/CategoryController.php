@@ -37,6 +37,7 @@ class CategoryController extends AbstractController
         $target_dir = $this->config->get('image')['src'];
 
         /* Se comprueba si hay una sessión de usuario creada (se crea al iniciar sessión) y de ser así se añade un objecto usuario. */
+        $user = null;
         if (isset($_SESSION["user"])) {
             $userModel = new UserModel($this->db);
             $user = $userModel->getUserById($_SESSION["user"]->getIdUser());

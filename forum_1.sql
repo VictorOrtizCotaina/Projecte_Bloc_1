@@ -21,6 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `forum`
 --
+CREATE DATABASE IF NOT EXISTS forum CHARACTER SET utf8 COLLATE utf8_general_ci;
+GRANT SELECT, INSERT, UPDATE, DELETE, FILE ON *.* TO 'forum'@'localhost' IDENTIFIED BY PASSWORD '*D741B9CBA88F99274F71CB62FE633C00AF973DBC';
 
 -- --------------------------------------------------------
 
