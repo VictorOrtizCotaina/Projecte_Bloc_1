@@ -11,6 +11,9 @@ class User extends AbstractEntity {
     private $username;
     private $password;
     private $email;
+    private $name;
+    private $surnames;
+    private $province;
     private $lang;
     private $avatar;
     private $id_user_group;
@@ -72,6 +75,54 @@ class User extends AbstractEntity {
      */
     public function setEmail(string $email) {
         $this->email = $email;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName():string
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     */
+    public function setName($name): string
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSurnames():string
+    {
+        return $this->surnames;
+    }
+
+    /**
+     * @param string $surnames
+     */
+    public function setSurnames($surnames): string
+    {
+        $this->surnames = $surnames;
+    }
+
+    /**
+     * @return string
+     */
+    public function getProvince():string
+    {
+        return $this->province;
+    }
+
+    /**
+     * @param string $province
+     */
+    public function setProvince($province): string
+    {
+        $this->province = $province;
     }
 
     /**

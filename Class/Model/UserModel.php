@@ -51,15 +51,18 @@ class UserModel extends AbstractModel
     }
 
     /* Crea un nuevo usuario según los parametros. */
-    function register(string $email, string $password, string $username){
+    function register(string $email, string $password, string $username, string $name, string $surnames, string $province){
         $date_add = new DateTime();
         $date_add = $date_add->format('Y-m-d H:i:s');
         try {
             $stmt = $this->pdo->prepare("INSERT INTO user 
-                VALUES(NULL, :username, :password, :email, 'es', 'user_default.png', :date_add, 1, 2)");
+                VALUES(NULL, :username, :password, :email, :name, :surnames, :province, 'es', 'user_default.png', :date_add, 1, 2)");
             $stmt->bindParam(':username', $username, PDO::PARAM_STR);
             $stmt->bindParam(':password', $password, PDO::PARAM_STR);
             $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+            $stmt->bindParam(':name', $name, PDO::PARAM_STR);
+            $stmt->bindParam(':surnames', $surnames, PDO::PARAM_STR);
+            $stmt->bindParam(':province', $province, PDO::PARAM_STR);
             $stmt->bindParam(':date_add', $date_add, PDO::PARAM_STR);
             return $stmt->execute();
         } catch(PDOException $e) {

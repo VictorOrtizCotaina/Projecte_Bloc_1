@@ -66,17 +66,24 @@ class UserController extends AbstractController
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
             $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_STRING);
+            $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
+            $surnames = filter_input(INPUT_POST, 'surnames', FILTER_SANITIZE_STRING);
+            $province = filter_input(INPUT_POST, 'province', FILTER_SANITIZE_STRING);
             $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
             if (!empty($email) && !empty($password) && !empty($username)) {
                 $userModel = new UserModel($this->db);
                 $user = $userModel->getUserByEmail($email);
                 if (!$user) {
                     $password = password_hash($password, PASSWORD_DEFAULT);
-                    $register = $userModel->register($email, $password, $username);
+                    $register = $userModel->register($email, $password, $username,$name, $surnames, $province);
 
-                    $route = new Router($this->di);
-                    $url = $route->generateURL('User', 'getUser');
-                    header("Location: $url");
+                    if ($register) {
+                        $user = $userModel->getUserByEmail($email);
+                        $_SESSION["user"] = $user;
+                        $route = new Router($this->di);
+                        $url = $route->generateURL('User', 'getUser');
+                        header("Location: $url");
+                    }
                 } else {
                     $error = "El email ya existe.";
                 }
