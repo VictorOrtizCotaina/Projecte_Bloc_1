@@ -227,16 +227,17 @@ class PostModel extends AbstractModel
         $topic = $post->getIdTopic();
 
         try {
-            $stmt = $this->pdo->prepare('UPDATE post SET id_post = :id, title = :title,
+            $stmt = $this->pdo->prepare('UPDATE post SET id_post = :id_post, title = :title,
                     description = :description, image = :image, date_add = :date_add,
                     id_topic = :id_topic, id_user = :id_user WHERE id_post = :id');
-            $stmt->bindParam(':id', $id, PDO::PARAM_STR);
+            $stmt->bindParam(':id_post', $id, PDO::PARAM_STR);
             $stmt->bindParam(':title', $title, PDO::PARAM_STR);
             $stmt->bindParam(':text', $text, PDO::PARAM_STR);
             $stmt->bindParam(':image', $image, PDO::PARAM_STR);
             $stmt->bindParam(':date_add', $date_add, PDO::PARAM_STR);
             $stmt->bindParam(':id_user', $user, PDO::PARAM_INT);
             $stmt->bindParam(':id_topic', $topic, PDO::PARAM_INT);
+            $stmt->bindParam(':id', $id, PDO::PARAM_STR);
             return $stmt->execute();
         } catch(PDOException $e) {
             echo 'Error: ' . $e->getMessage();

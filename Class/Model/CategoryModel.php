@@ -183,14 +183,15 @@ class CategoryModel extends AbstractModel
         $user = $category->getIdUser();
 
         try {
-            $stmt = $this->pdo->prepare('UPDATE category SET id_category = :id, title = :title, description = :description, 
+            $stmt = $this->pdo->prepare('UPDATE category SET id_category = :id_category, title = :title, description = :description, 
                     image = :image, date_add = :date_add, id_user = :id_user WHERE id_category = :id');
-            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmt->bindParam(':id_category', $id, PDO::PARAM_INT);
             $stmt->bindParam(':title', $title, PDO::PARAM_STR);
             $stmt->bindParam(':description', $description, PDO::PARAM_STR);
             $stmt->bindParam(':image', $image, PDO::PARAM_STR);
             $stmt->bindParam(':date_add', $date_add, PDO::PARAM_STR);
             $stmt->bindParam(':id_user', $user, PDO::PARAM_STR);
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
             return $stmt->execute();
         } catch(PDOException $e) {
             echo 'Error: ' . $e->getMessage();

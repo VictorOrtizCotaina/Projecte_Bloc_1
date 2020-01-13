@@ -172,15 +172,16 @@ class ForumModel extends AbstractModel
         $category = $forum->getIdCategory();
 
         try {
-            $stmt = $this->pdo->prepare('UPDATE forum SET id_forum = :id, title = :title, description = :description, 
+            $stmt = $this->pdo->prepare('UPDATE forum SET id_forum = :id_forum, title = :title, description = :description, 
                         image = :image, date_add = :date_add, id_category = :id_category, id_user = :id_user WHERE id_forum = :id');
-            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmt->bindParam(':id_forum', $id, PDO::PARAM_INT);
             $stmt->bindParam(':title', $title, PDO::PARAM_STR);
             $stmt->bindParam(':description', $description, PDO::PARAM_STR);
             $stmt->bindParam(':image', $image, PDO::PARAM_STR);
             $stmt->bindParam(':date_add', $date_add, PDO::PARAM_STR);
             $stmt->bindParam(':id_category', $category, PDO::PARAM_INT);
             $stmt->bindParam(':id_user', $user, PDO::PARAM_STR);
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
             return $stmt->execute();
         } catch(PDOException $e) {
             echo 'Error: ' . $e->getMessage();

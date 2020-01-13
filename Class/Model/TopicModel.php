@@ -251,16 +251,17 @@ class TopicModel extends AbstractModel
 
         try {
 
-            $stmt = $this->pdo->prepare('UPDATE topic SET id_topic = :id, title = :title, 
+            $stmt = $this->pdo->prepare('UPDATE topic SET id_topic = :id_topic, title = :title, 
                 description = :description, image = :image, 
                 date_add = :date_add, id_forum = :id_forum, id_user = :id_user WHERE id_topic = :id ');
-            $stmt->bindParam(':id', $id, PDO::PARAM_STR);
+            $stmt->bindParam(':id_topic', $id, PDO::PARAM_STR);
             $stmt->bindParam(':title', $title, PDO::PARAM_STR);
             $stmt->bindParam(':description', $description, PDO::PARAM_STR);
             $stmt->bindParam(':image', $image, PDO::PARAM_STR);
             $stmt->bindParam(':date_add', $date_add, PDO::PARAM_STR);
             $stmt->bindParam(':id_forum', $forum, PDO::PARAM_INT);
             $stmt->bindParam(':id_user', $user, PDO::PARAM_INT);
+            $stmt->bindParam(':id', $id, PDO::PARAM_STR);
             return $stmt->execute();
         } catch(PDOException $e) {
             echo 'Error: ' . $e->getMessage();
