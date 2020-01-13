@@ -22,7 +22,7 @@
                         {{ user.username }}
                     </a>
 
-                    {% if user.idUserGroup == 1 %}
+                    {% if session.user %}
                         <a class="navbar-form navbar-left ng-pristine ng-valid"
                            href="{{ router.generateURL('Category', 'getAdminCategory') }}">
                             Back-Office

@@ -28,7 +28,7 @@
                     </a>
 
                     <?php
-                    if ($user->getIdUserGroup() === 1) {
+                    if (!isset($user)) {
                         ?>
                         <a class="navbar-form navbar-left ng-pristine ng-valid"
                            href="<?= $route->generateURL('Category', 'getAdminCategory') ?>">

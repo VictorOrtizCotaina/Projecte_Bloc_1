@@ -42,12 +42,16 @@
                             Posts
                         </a>
                     </li>
+                    <?php
+                    if ($user->getIdUserGroup() === 1) {
+                    ?>
                     <li class="nav-item">
                         <a class="nav-link" href="<?= $route->generateURL('User', 'getAdminUser'); ?>">
                             <span data-feather="bar-chart-2"></span>
                             Users
                         </a>
                     </li>
+                    <?php } ?>
                 </ul>
 
             </div>
