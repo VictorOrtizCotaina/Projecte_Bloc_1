@@ -174,4 +174,18 @@ class UserModel extends AbstractModel
         } else
             return false;
     }
+
+
+    /* Actualiza un post de la base de datos según el post pasado por parametro. */
+    public function updateUserGroup($id_user, $user_group):bool {
+        try {
+            $stmt = $this->pdo->prepare('UPDATE user SET id_user_group = :user_group WHERE id_user = :id_user');
+            $stmt->bindParam(':id_user', $id_user, PDO::PARAM_STR);
+            $stmt->bindParam(':user_group', $user_group, PDO::PARAM_STR);
+            return $stmt->execute();
+        } catch(PDOException $e) {
+            echo 'Error: ' . $e->getMessage();
+        }
+    }
+
 }

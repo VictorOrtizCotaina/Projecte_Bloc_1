@@ -101,11 +101,11 @@ global $dateFin;
                                             User
                                         <?php } ?>
                                     </td>
-                                    <td>edit
-                                        <!--<a class="btn navbar-form navbar-left ng-pristine ng-valid"
-                                           href="<?/*= $route->generateURL('Topic', 'adminTopicEdit', ["id_topic" => $user->getIdTopic()]); */?>">
+                                    <td>
+                                        <a class="btn navbar-form navbar-left ng-pristine ng-valid"
+                                           href="<?= $route->generateURL('User', 'adminUserEdit', ["id_user" => $user->getIdUser()]); ?>">
                                             <i class="fas fa-edit"></i>
-                                        </a>-->
+                                        </a>
                                     </td>
                                     <td>
                                         <?php

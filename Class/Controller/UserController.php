@@ -251,6 +251,58 @@ class UserController extends AbstractController
 
     }
 
+
+    public function adminUserEdit($id_user)
+    {
+        session_start();
+
+        $target_dir = $this->config->get('image')['src'];
+        global $route;
+
+        if (isset($_SESSION["user"])) {
+            $id = $_SESSION["user"]->getIdUser();
+            $userModel = new UserModel($this->db);
+            $user = $userModel->getUserById($id);
+            $userGroup = $user->getIdUserGroup();
+        } else {
+            global $route;
+            $url = $route->generateURL('User', 'login');
+            header("Location: $url");
+        }
+
+        $userModel = new UserModel($this->db);
+        $user = $userModel->getUserById($id_user);
+        $username = $user->getUsername();
+        $email = $user->getEmail();
+        $name = $user->getName();
+        $surnames = $user->getSurnames();
+        $province = $user->getProvince();
+        $lang = $user->getLang();
+        $date = $user->getDateAdd()->format('Y-m-d');;
+        $avatar = $target_dir . $user->getAvatar();
+        $user_group = $user->getIdUserGroup();
+
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $user_group = filter_input(INPUT_POST, 'user_group', FILTER_VALIDATE_INT);
+            if (empty($user_group)){
+                $errors["user_group"] = "El grupo del usuario no puede estar vacio";
+            }
+
+            if (empty($errors)) {
+                $insert = $userModel->updateUserGroup($id_user, $user_group);
+
+                if ($insert) {
+                    global $route;
+                    header('Location: ' . $route->generateURL('User', 'getAdminUser'));
+                }
+            }
+        }
+
+        require("views/back-office/forms/user_form.view.php");
+
+    }
+
+
     public function adminUserDelete($id_user)
     {
         session_start();

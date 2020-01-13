@@ -169,6 +169,13 @@
     "controller": "User",
     "method": "getAdminUser"
   },
+  "user_edit/:id_user": {
+    "controller": "User",
+    "method": "adminUserEdit",
+    "params": {
+      "id_user": "number"
+    }
+  },
   "user_delete/:id_user": {
     "controller": "User",
     "method": "adminUserDelete",

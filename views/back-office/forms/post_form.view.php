@@ -78,8 +78,8 @@
                             <label for="topic" style="font-size: x-large">Topic</label>
                             <input type="text" class="form-control" id="topic" name="topic" value="<?php if (isset($id_topic)) echo $id_topic; ?>">
                             <?php
-                            if (isset($errors["author"]) && $errors["author"]!==true){
-                                echo "<p style='color: #6c170c; font-weight: bold;'>".$errors["author"]."</p>";
+                            if (isset($errors["topic"]) && $errors["topic"]!==true){
+                                echo "<p style='color: #6c170c; font-weight: bold;'>".$errors["topic"]."</p>";
                             }
                             ?>
                         </div>
