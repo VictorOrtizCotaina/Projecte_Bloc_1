@@ -42,6 +42,12 @@
                             Posts
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= $route->generateURL('User', 'getAdminUser'); ?>">
+                            <span data-feather="bar-chart-2"></span>
+                            Users
+                        </a>
+                    </li>
                 </ul>
 
             </div>

@@ -50,6 +50,61 @@ class UserModel extends AbstractModel
         }
     }
 
+
+    /* Se recogen los topics según los parametros, que icluye la paginación y los filtros. */
+    function getAllUsersPage(int $id_user_group, int $start, int $limit):array{
+        $user_group = "";
+        if (!empty($id_user_group)){
+            $user_group = " WHERE id_user_group = :user_group ";
+        }
+        $sql = "SELECT * FROM user " . $user_group . " ORDER BY date_add DESC LIMIT :start, :limit";
+
+        $stmt = $this->pdo->prepare($sql);
+        try {
+            $stmt->bindParam(':start', $start, PDO::PARAM_INT);
+            $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+            if (!empty($id_user_group)){
+                $stmt->bindParam(':user_group', $id_user_group, PDO::PARAM_INT);
+            }
+
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, $this->className);
+            $users = $stmt->fetchAll();
+            return $users;
+
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
+
+    /*  Se recoge el numero total de topics según los parametros, que icluye la paginación y los filtros. */
+    function getPagesUsers(int $id_user_group):int{
+        $user_group = "";
+        if (!empty($id_user_group)){
+            $user_group = " WHERE id_user_group = :user_group ";
+        }
+        $sql = "SELECT count(id_user) AS id_user FROM user " . $user_group;
+
+        $stmt = $this->pdo->prepare($sql);
+        try {
+            if (!empty($id_user_group)){
+                $stmt->bindParam(':user_group', $id_user_group, PDO::PARAM_INT);
+            }
+
+            $stmt->execute();
+
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            $topicCount = $stmt->fetchAll();
+            return $topicCount[0]["id_user"];
+
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
+
+
     /* Crea un nuevo usuario según los parametros. */
     function register(string $email, string $password, string $username, string $name, string $surnames, string $province){
         $date_add = new DateTime();

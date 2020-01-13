@@ -194,4 +194,60 @@ class UserController extends AbstractController
         global $route;
         header('Location: ' . $route->generateURL('User', 'login'));
     }
+
+
+    public function getAdminUser()
+    {
+        session_start();
+
+        /* Se comprueba si hay una sessión de usuario creada (se crea al iniciar sessión) y de no ser así le envía al login. */
+        if (isset($_SESSION["user"])) {
+            /* Se recoge el usuario para saber el tipo de usuario. */
+            $id = $_SESSION["user"]->getIdUser();
+            $userModel = new UserModel($this->db);
+            $user = $userModel->getUserById($id);
+            $userGroup = $user->getIdUserGroup();
+
+            if ($userGroup == 1) {
+                /* Parametros de filtrado. */
+                $id_user_group = filter_input(INPUT_GET, 'user_group', FILTER_SANITIZE_NUMBER_INT);
+
+                if (empty($id_user_group)) {
+                    $id_user_group = 0;
+                }
+
+                $userModel = new UserModel($this->db);
+
+                /* Parametros para implementar la paginación. */
+                $limit = 2;
+                $num_page = filter_input(INPUT_GET, 'num_page', FILTER_SANITIZE_STRING);
+
+                $num_page = isset($num_page) ? $num_page : 1;
+
+                $start = ($num_page - 1) * $limit;
+
+                /*
+                    Se recoge los topics según los parametros de paginación y, en caso de haber, de los filtros.
+                    Se recoge el numero de paginas según los parametros de paginación y, en caso de haber, de los filtros.
+                */
+                $users = $userModel->getAllUsersPage($id_user_group, $start, $limit);
+                $userCount = $userModel->getPagesUsers($id_user_group);
+
+                /* Parametros de paginación. */
+                $total = $userCount;
+                $pages = ceil($total / $limit);
+                $Previous = $num_page - 1;
+                $Next = $num_page + 1;
+
+
+            }
+        } else {
+            global $route;
+            $url = $route->generateURL('User', 'login');
+            header("Location: $url");
+        }
+
+        require("views/back-office/user_list.view.php");
+
+    }
 }

@@ -163,5 +163,10 @@
     "params": {
       "id_post": "number"
     }
+  },
+
+  "user_list": {
+    "controller": "User",
+    "method": "getAdminUser"
   }
 }
