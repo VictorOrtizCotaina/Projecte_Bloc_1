@@ -101,27 +101,22 @@ global $dateFin;
                                             User
                                         <?php } ?>
                                     </td>
-                                    <!--<td>
-                                        <a class="btn navbar-form navbar-left ng-pristine ng-valid"
+                                    <td>edit
+                                        <!--<a class="btn navbar-form navbar-left ng-pristine ng-valid"
                                            href="<?/*= $route->generateURL('Topic', 'adminTopicEdit', ["id_topic" => $user->getIdTopic()]); */?>">
                                             <i class="fas fa-edit"></i>
-                                        </a>
+                                        </a>-->
                                     </td>
                                     <td>
                                         <?php
-/*                                        if ($user->getActive() === true) {
-                                            */?>
+                                        if (empty($postModel->getPostsByUser($user->getIdUser()))) {
+                                            ?>
                                             <a class="btn navbar-form navbar-left ng-pristine ng-valid"
-                                               href="<?/*= $route->generateURL('Topic', 'adminTopicDelete', ["id_topic" => $user->getIdTopic()]); */?>">
+                                               href="<?= $route->generateURL('User', 'adminUserDelete', ["id_user" => $user->getIdUser()]); ?>">
                                                 <i class="fas fa-trash-alt"></i>
                                             </a>
-                                        <?php /*} else { */?>
-                                            <a class="btn navbar-form navbar-left ng-pristine ng-valid"
-                                               href="<?/*= $route->generateURL('Topic', 'adminTopicActive', ["id_topic" => $user->getIdTopic()]); */?>">
-                                                <i class="fas fa-unlock-alt"></i>
-                                            </a>
-                                        <?php /*} */?>
-                                    </td>-->
+                                        <?php } ?>
+                                    </td>
                                 </tr>
 
                             <?php } ?>

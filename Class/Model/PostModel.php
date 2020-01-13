@@ -170,6 +170,28 @@ class PostModel extends AbstractModel
     }
 
 
+    /* Se recogen los posts del usuario. */
+    function getPostsByUser(int $idUser):array{
+        $stmt = $this->pdo->prepare('SELECT * from post WHERE id_user = :id_user');
+        try {
+            $stmt->bindParam(':id_user', $idUser, PDO::PARAM_INT);
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, $this->className);
+            $posts = $stmt->fetchAll();
+
+            foreach ($posts as $post) {
+                $uM = new UserModel($this->pdo);
+                $post->setUser($uM->getUserById($post->getIdUser()));
+            }
+
+            return $posts;
+
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
+
     /* Inserta un post de la base de datos según el post pasado por parametro. */
     public function insertPost(Post $post):bool {
         $title = $post->getTitle();

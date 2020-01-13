@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Core\Router;
 use App\Model\CategoryModel;
+use App\Model\PostModel;
 use App\Model\UserModel;
 
 
@@ -221,9 +222,7 @@ class UserController extends AbstractController
                 /* Parametros para implementar la paginación. */
                 $limit = 2;
                 $num_page = filter_input(INPUT_GET, 'num_page', FILTER_SANITIZE_STRING);
-
                 $num_page = isset($num_page) ? $num_page : 1;
-
                 $start = ($num_page - 1) * $limit;
 
                 /*
@@ -239,7 +238,8 @@ class UserController extends AbstractController
                 $Previous = $num_page - 1;
                 $Next = $num_page + 1;
 
-
+                /**/
+                $postModel = new PostModel($this->db);
             }
         } else {
             global $route;
@@ -250,4 +250,28 @@ class UserController extends AbstractController
         require("views/back-office/user_list.view.php");
 
     }
+
+    public function adminUserDelete($id_user)
+    {
+        session_start();
+
+        if (isset($_SESSION["user"])) {
+            $id = $_SESSION["user"]->getIdUser();
+            $userModel = new UserModel($this->db);
+            $user = $userModel->getUserById($id);
+            $userGroup = $user->getIdUserGroup();
+        } else {
+            global $route;
+            $url = $route->generateURL('User', 'login');
+            header("Location: $url");
+        }
+        if (isset($id_user)) {
+            $userModel = new UserModel($this->db);
+            $user = $userModel->getUserById($id_user);
+            $delete = $userModel->deleteUser($user);
+            global $route;
+            header('Location: ' . $route->generateURL('User', 'getAdminUser'));
+        }
+    }
+
 }

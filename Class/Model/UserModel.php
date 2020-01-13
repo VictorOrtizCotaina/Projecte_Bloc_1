@@ -51,7 +51,7 @@ class UserModel extends AbstractModel
     }
 
 
-    /* Se recogen los topics según los parametros, que icluye la paginación y los filtros. */
+    /* Se recogen los usuarios según los parametros, que icluye la paginación y el grupo de usuario. */
     function getAllUsersPage(int $id_user_group, int $start, int $limit):array{
         $user_group = "";
         if (!empty($id_user_group)){
@@ -78,7 +78,7 @@ class UserModel extends AbstractModel
     }
 
 
-    /*  Se recoge el numero total de topics según los parametros, que icluye la paginación y los filtros. */
+    /*  Se recoge el numero total de usuarios según los parametros, que icluye la paginación y el grupo de usuario. */
     function getPagesUsers(int $id_user_group):int{
         $user_group = "";
         if (!empty($id_user_group)){
@@ -151,5 +151,27 @@ class UserModel extends AbstractModel
         {
             'Error : ' .$e->getMessage();
         }
+    }
+
+
+    public function deleteUser(User $user):bool {
+        try {
+            $this->pdo->beginTransaction();
+
+            $sql = "DELETE FROM user WHERE id_user = :id";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->bindValue(':id', $user->getIdUser(), PDO::PARAM_INT);
+            $stmt->execute();
+
+            $this->pdo->commit();
+
+        } catch (Exception $e) {
+            $this->pdo->rollBack();
+            throw new \PDOException($e->getMessage());
+        }
+        if ($stmt->rowCount() == 1) {
+            return true;
+        } else
+            return false;
     }
 }
