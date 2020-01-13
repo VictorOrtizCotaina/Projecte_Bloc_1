@@ -36,7 +36,7 @@ class UserController extends AbstractController
                         $_SESSION["user"] = $user;
 
                         global $route;
-                        $url = $route->generateURL('Category', 'getAdminCategory');
+                        $url = $route->generateURL('User', 'getUser');
                         header("Location: $url");
                     } else {
                         $error = "El email o la contraseña no son correctos.";
