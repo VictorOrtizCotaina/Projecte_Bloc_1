@@ -191,6 +191,7 @@ class UserController extends AbstractController
 
         /* En caso de que se pase el parametro para cerrar sesion, se hace un unset de la sesion y se elimina. */
         session_unset();
+        setcookie(session_name(), "0",time()-2000);
         session_destroy();
         global $route;
         header('Location: ' . $route->generateURL('User', 'login'));
