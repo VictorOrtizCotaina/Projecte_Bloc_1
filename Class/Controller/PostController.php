@@ -11,8 +11,6 @@ class PostController extends AbstractController
 
     public function getAdminPost()
     {
-        session_start();
-
         if (isset($_SESSION["user"])) {
             $id = $_SESSION["user"]->getIdUser();
 
@@ -60,8 +58,6 @@ class PostController extends AbstractController
 
     public function adminPostAdd()
     {
-        session_start();
-
         $target_dir = $this->config->get('image')['src'];
         global $route;
         $pageForm = $route->generateURL('Post', 'getAdminPost');
@@ -122,8 +118,6 @@ class PostController extends AbstractController
 
     public function adminPostEdit($id_post)
     {
-        session_start();
-
         $target_dir = $this->config->get('image')['src'];
         global $route;
         $pageForm = $route->generateURL('Post', 'adminPostEdit', ["id_post" => $id_post]);
@@ -194,8 +188,6 @@ class PostController extends AbstractController
 
     public function adminPostDelete($id_post)
     {
-        session_start();
-
         if (isset($_SESSION["user"])) {
             $id = $_SESSION["user"]->getIdUser();
             $userModel = new UserModel($this->db);

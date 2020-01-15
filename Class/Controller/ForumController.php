@@ -12,8 +12,6 @@ class ForumController extends AbstractController
 {
     public function getForum($id_category, $id_forum)
     {
-        session_start();
-
         $target_dir = $this->config->get('image')['src'];
 
         /* Se comprueba si hay una sessión de usuario creada (se crea al iniciar sessión) y de ser así se añade un objecto usuario. */
@@ -91,8 +89,6 @@ class ForumController extends AbstractController
 
     public function getForumUser($id_user)
     {
-        session_start();
-
         $target_dir = $this->config->get('image')['src'];
 
         /* Se comprueba si hay una sessión de usuario creada (se crea al iniciar sessión) y de ser así se añade un objecto usuario. */
@@ -174,8 +170,6 @@ class ForumController extends AbstractController
 
     public function getAdminForum()
     {
-        session_start();
-
         if (isset($_SESSION["user"])) {
             $id = $_SESSION["user"]->getIdUser();
             $userModel = new UserModel($this->db);
@@ -218,8 +212,6 @@ class ForumController extends AbstractController
 
     public function adminForumAdd()
     {
-        session_start();
-
         $target_dir = $this->config->get('image')['src'];
         global $route;
         $pageForm = $route->generateURL('Forum', 'adminForumAdd');
@@ -284,8 +276,6 @@ class ForumController extends AbstractController
 
     public function adminForumEdit($id_forum)
     {
-        session_start();
-
         $target_dir = $this->config->get('image')['src'];
         global $route;
         $pageForm = $route->generateURL('Forum', 'adminForumEdit', ["id_forum" => $id_forum]);
@@ -358,8 +348,6 @@ class ForumController extends AbstractController
 
     public function adminForumDelete($id_forum)
     {
-        session_start();
-
         if (isset($_SESSION["user"])) {
             $id = $_SESSION["user"]->getIdUser();
             $userModel = new UserModel($this->db);
@@ -386,8 +374,6 @@ class ForumController extends AbstractController
 
     public function adminForumActive($id_forum)
     {
-        session_start();
-
         if (isset($_SESSION["user"])) {
             $id = $_SESSION["user"]->getIdUser();
             $userModel = new UserModel($this->db);

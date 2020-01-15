@@ -11,8 +11,6 @@ class CategoryController extends AbstractController
 {
     public function index()
     {
-        session_start();
-
         $target_dir = $this->config->get('image')['src'];
 
         /* Se comprueba si hay una sessión de usuario creada (se crea al iniciar sessión) y de ser así se añade un objecto usuario. */
@@ -32,8 +30,6 @@ class CategoryController extends AbstractController
 
     public function getCategory($id_category)
     {
-        session_start();
-
         $target_dir = $this->config->get('image')['src'];
 
         /* Se comprueba si hay una sessión de usuario creada (se crea al iniciar sessión) y de ser así se añade un objecto usuario. */
@@ -56,8 +52,6 @@ class CategoryController extends AbstractController
 
     public function getAdminCategory()
     {
-        session_start();
-
         if (isset($_SESSION["user"])) {
             $id = $_SESSION["user"]->getIdUser();
 
@@ -105,8 +99,6 @@ class CategoryController extends AbstractController
 
     public function adminCategoryAdd()
     {
-        session_start();
-
         $target_dir = $this->config->get('image')['src'];
 
         global $route;
@@ -173,8 +165,6 @@ class CategoryController extends AbstractController
 
     public function adminCategoryEdit($id_category)
     {
-        session_start();
-
         $target_dir = $this->config->get('image')['src'];
         global $route;
         $pageForm = $route->generateURL('Category', 'adminCategoryEdit', ["id_category" => $id_category]);
@@ -249,8 +239,6 @@ class CategoryController extends AbstractController
 
     public function adminCategoryDelete($id_category)
     {
-        session_start();
-
         if (isset($_SESSION["user"])) {
             $id = $_SESSION["user"]->getIdUser();
             $userModel = new UserModel($this->db);
@@ -277,8 +265,6 @@ class CategoryController extends AbstractController
 
     public function adminCategoryActive($id_category)
     {
-        session_start();
-
         if (isset($_SESSION["user"])) {
             $id = $_SESSION["user"]->getIdUser();
             $userModel = new UserModel($this->db);

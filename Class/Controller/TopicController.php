@@ -13,9 +13,6 @@ class TopicController extends AbstractController
 {
     public function getTopic($id_category, $id_forum, $id_topic)
     {
-        /*Futuro cambio en la base de datos para que el topic tenga una descripcion completa, y los posts sean las respuestas al topic.*/
-        session_start();
-
         $target_dir = $this->config->get('image')['src'];
 
         /* Se comprueba si hay una sessión de usuario creada (se crea al iniciar sessión) y de ser así se añade un objecto usuario. */
@@ -68,8 +65,6 @@ class TopicController extends AbstractController
 
     public function getAdminTopic()
     {
-        session_start();
-
         /* Se comprueba si hay una sessión de usuario creada (se crea al iniciar sessión) y de no ser así le envía al login. */
         if (isset($_SESSION["user"])) {
             /* Se recoge el usuario para saber el tipo de usuario. */
@@ -209,8 +204,6 @@ class TopicController extends AbstractController
 
     public function adminTopicAdd()
     {
-        session_start();
-
         $target_dir = $this->config->get('image')['src'];
         global $route;
         $pageForm = $route->generateURL('Topic', 'adminTopicAdd');
@@ -285,8 +278,6 @@ class TopicController extends AbstractController
 
     public function adminTopicEdit($id_topic)
     {
-        session_start();
-
         $target_dir = $this->config->get('image')['src'];
         global $route;
         $pageForm = $route->generateURL('Topic', 'adminTopicEdit', ["id_topic" => $id_topic]);
@@ -373,8 +364,6 @@ class TopicController extends AbstractController
 
     public function adminTopicDelete($id_topic)
     {
-        session_start();
-
         /* Se comprueba si hay una sessión de usuario creada (se crea al iniciar sessión) y de no ser así le envía al login. */
         if (isset($_SESSION["user"])) {
             $id = $_SESSION["user"]->getIdUser();
@@ -402,8 +391,6 @@ class TopicController extends AbstractController
 
     public function adminTopicActive($id_topic)
     {
-        session_start();
-
         /* Se comprueba si hay una sessión de usuario creada (se crea al iniciar sessión) y de no ser así le envía al login. */
         if (isset($_SESSION["user"])) {
             $id = $_SESSION["user"]->getIdUser();

@@ -4,6 +4,17 @@ namespace App;
 
 use PDO;
 
+session_start();
+$inactividad = 900;
+// Comprobar si $_SESSION["timeout"] está establecida
+if(isset($_SESSION["timeout"])){
+    $sessionTTL = time() - $_SESSION["timeout"];
+    if($sessionTTL > $inactividad){
+        session_regenerate_id();
+    }
+}
+$_SESSION["timeout"] = time();
+
 class DBConnection {
 
     private $connection;

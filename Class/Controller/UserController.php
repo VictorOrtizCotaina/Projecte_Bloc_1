@@ -12,9 +12,6 @@ class UserController extends AbstractController
 {
     public function login()
     {
-
-        session_start();
-
         /* Se recogen las categorias para el menú. */
         $categoryModel = new CategoryModel($this->db);
         $categoriesNavbar = $categoryModel->getAllCategories();
@@ -54,8 +51,6 @@ class UserController extends AbstractController
 
     public function register()
     {
-        session_start();
-
         /* Se recogen las categorias para el menú. */
         $categoryModel = new CategoryModel($this->db);
         $categoriesNavbar = $categoryModel->getAllCategories();
@@ -104,8 +99,6 @@ class UserController extends AbstractController
 
     public function getUser()
     {
-        session_start();
-
         /* Se comprueba si hay una sessión de usuario creada (se crea al iniciar sessión) y de no ser así le envía al login. */
         if (!isset($_SESSION["user"])) {
             global $route;
@@ -187,8 +180,6 @@ class UserController extends AbstractController
 
     public function logout()
     {
-        session_start();
-
         /* En caso de que se pase el parametro para cerrar sesion, se hace un unset de la sesion y se elimina. */
         session_unset();
         setcookie(session_name(), "0",time()-2000);
@@ -200,8 +191,6 @@ class UserController extends AbstractController
 
     public function getAdminUser()
     {
-        session_start();
-
         /* Se comprueba si hay una sessión de usuario creada (se crea al iniciar sessión) y de no ser así le envía al login. */
         if (isset($_SESSION["user"])) {
             /* Se recoge el usuario para saber el tipo de usuario. */
@@ -255,8 +244,6 @@ class UserController extends AbstractController
 
     public function adminUserEdit($id_user)
     {
-        session_start();
-
         $target_dir = $this->config->get('image')['src'];
         global $route;
 
@@ -306,8 +293,6 @@ class UserController extends AbstractController
 
     public function adminUserDelete($id_user)
     {
-        session_start();
-
         if (isset($_SESSION["user"])) {
             $id = $_SESSION["user"]->getIdUser();
             $userModel = new UserModel($this->db);
