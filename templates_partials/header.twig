@@ -3,7 +3,7 @@
         <div class="container-fluid">
 
             <div id="search-menu">
-                <a class="navbar-brand" href="{{ router.generateURL('Category', 'index') }}">Foro Programacion</a>
+                <a class="navbar-brand" href="{{ router.generateURL('Category', 'index') }}">{% trans "Foro Programacion" %}</a>
 
                 {% if not session.user %}
                     <a class="btn navbar-form navbar-left ng-pristine ng-valid"
