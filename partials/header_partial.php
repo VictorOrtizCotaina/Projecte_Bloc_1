@@ -4,7 +4,7 @@
         <div class="container-fluid">
 
             <div id="search-menu">
-                <a class="navbar-brand" href="<?= $route->generateURL('Category', 'index') ?>">gettext(Foro Programacion)</a>
+                <a class="navbar-brand" href="<?= $route->generateURL('Category', 'index') ?>">Foro Programacion</a>
 
                 <?php
                 if (!isset($_SESSION["user"])) {
@@ -27,23 +27,15 @@
                         <?php echo $user->getUsername(); ?>
                     </a>
 
-                    <?php
-                    if (!isset($user)) {
-                        ?>
                         <a class="navbar-form navbar-left ng-pristine ng-valid"
                            href="<?= $route->generateURL('Category', 'getAdminCategory') ?>">
                             Back-Office
                         </a>
-                    <?php } ?>
 
                     <a class="btn navbar-form navbar-left ng-pristine ng-valid"
                        href="<?= $route->generateURL('User', 'logout') ?>">
                         <i class="fas fa-power-off"></i>
                     </a>
-                <?php } ?>
-                <?php
-                if (isset($_SESSION["user"])) {
-                    ?>
                 <?php } ?>
 
                 <?php
