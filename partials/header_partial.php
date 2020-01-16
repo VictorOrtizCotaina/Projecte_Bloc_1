@@ -4,7 +4,7 @@
         <div class="container-fluid">
 
             <div id="search-menu">
-                <a class="navbar-brand" href="<?= $route->generateURL('Category', 'index') ?>">Foro Programacion</a>
+                <a class="navbar-brand" href="<?= $route->generateURL('Category', 'index') ?>"><?= gettext("Foro Programacion") ?></a>
 
                 <?php
                 if (!isset($_SESSION["user"])) {

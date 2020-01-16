@@ -2,11 +2,11 @@
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 
-require('../config/bootstrap.php');
+require('config/bootstrap.php');
 
 
-$tplDir = dirname(__FILE__).'/../templates';
-$tmpDir = dirname(__FILE__).'/../templates.php';
+$tplDir = dirname(__FILE__).'/templates';
+$tmpDir = dirname(__FILE__).'/templates.php';
 $loader = new FilesystemLoader($tplDir);
 
 // force auto-reload to always have the latest version of the template
@@ -16,7 +16,6 @@ $twig = new Environment($loader, array(
 ));
 $twig->addExtension(new Twig_Extensions_Extension_I18n());
 $twig->addExtension(new Twig_Extensions_Extension_Intl());
-$twig->addExtension(new \Twig\Extra\Markdown\MarkdownExtension());
 
 // configure Twig the way you want
 

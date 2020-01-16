@@ -22,7 +22,18 @@ require __DIR__ . '/config/bootstrap.php';
 $di = new \App\Utils\DependencyInjector();
 
 ini_set( 'session.cookie_httponly', 1 );
-//https://stackoverflow.com/questions/520237/how-do-i-expire-a-php-session-after-30-minutes
+
+
+// Set language to German
+putenv("LANGUAGE=es");
+putenv("LC_ALL=es");
+putenv("LANG=ca");
+// Specify location of translation tables
+bindtextdomain('main', __DIR__ . '/../locales');
+bind_textdomain_codeset('main', 'UTF-8');
+// Choose domain
+textdomain('main');
+
 
 $db = new DBConnection();
 $di->set('PDO', $db->getConnection());
