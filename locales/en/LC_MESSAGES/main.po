@@ -1,14 +1,36 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2020-01-17 11:55-0500\n"
-"PO-Revision-Date: 2020-01-17 11:58-0500\n"
+"POT-Creation-Date: 2020-01-17 12:25-0500\n"
+"PO-Revision-Date: 2020-01-17 12:25-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
+"Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.0.6\n"
-"X-Poedit-Basepath: .\n"
+"X-Poedit-Basepath: ../../..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Language: en\n"
+"X-Poedit-SearchPath-0: templates\n"
+"X-Poedit-SearchPath-1: templates.php\n"
+"X-Poedit-SearchPath-2: partials\n"
+"X-Poedit-SearchPath-3: views\n"
+"X-Poedit-SearchPath-4: index.php\n"
+
+#: partials/header_partial.php:7
+#: templates.php/fa/fa47848992a6a05205afe55e5dac943f9970a6ab58ebeafcc705d638064460a5.php:46
+msgid "Foro Programacion"
+msgstr "Programming Forum"
+
+#: templates.php/fa/fa47848992a6a05205afe55e5dac943f9970a6ab58ebeafcc705d638064460a5.php:61
+msgid "Iniciar Sesión"
+msgstr "Login"
+
+#: templates.php/fa/fa47848992a6a05205afe55e5dac943f9970a6ab58ebeafcc705d638064460a5.php:72
+msgid "Registro"
+msgstr "Register"
+
+#: templates.php/fa/fa47848992a6a05205afe55e5dac943f9970a6ab58ebeafcc705d638064460a5.php:179
+msgid "Idioma"
+msgstr "Language"
