@@ -59,33 +59,14 @@
                     </div>
                 {% endfor %}
 
-                <div class="btn-group">
-                    <div class="btn-group dropright">
-                        <a type="button" class="btn btn-secondary"
-                           href="">
-                            {% trans "Idioma" %}
-                        </a>
-                        <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="sr-only">Toggle Dropright</span>
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="">
-                                    Español
-                                </a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    Catalan
-                                </a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    Ingles
-                                </a>
-                            </li>
-                        </ul>
+                <div class="btn-group dropright">
+                    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {% trans "Idioma" %}
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Español</a>
+                        <a class="dropdown-item" href="#">Catalan</a>
+                        <a class="dropdown-item" href="#">Ingles</a>
                     </div>
                 </div>
 

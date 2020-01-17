@@ -29,7 +29,7 @@ putenv("LANGUAGE=es");
 putenv("LC_ALL=es");
 putenv("LANG=ca");
 // Specify location of translation tables
-bindtextdomain('main', __DIR__ . '/../locales');
+bindtextdomain('main', __DIR__ . '/locales');
 bind_textdomain_codeset('main', 'UTF-8');
 // Choose domain
 textdomain('main');
