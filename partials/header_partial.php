@@ -7,6 +7,7 @@
                 <a class="navbar-brand" href="<?= $route->generateURL('Category', 'index') ?>"><?= gettext("Foro Programacion") ?></a>
 
                 <?php
+
                 if (!isset($_SESSION["user"])) {
                     ?>
                     <a class="btn navbar-form navbar-left ng-pristine ng-valid"

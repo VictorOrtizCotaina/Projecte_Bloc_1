@@ -51,6 +51,8 @@ $twig->addExtension(new \Twig\Extension\DebugExtension());
 // La utilitzarem en les plantilles per a generar URL.
 $twig->addGlobal('router', new Router(new \App\Utils\DependencyInjector()));
 //l'incloem al contenidor de serveis
+$twig->addExtension(new Twig_Extensions_Extension_I18n());
+
 $di->set('Twig', $twig);
 
 

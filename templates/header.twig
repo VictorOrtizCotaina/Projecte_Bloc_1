@@ -9,10 +9,12 @@
                     <a class="btn navbar-form navbar-left ng-pristine ng-valid"
                        href="<{{ router.generateURL('User', 'login') }}">
                         <i class="fa fa-user"></i>
+                        {% trans "Iniciar Sesión" %}
                     </a>
                     <a class="btn navbar-form navbar-left ng-pristine ng-valid"
                        href="{{ router.generateURL('User', 'register') }}">
                         <i class="fa fa-user-plus"></i>
+                        {% trans "Registro" %}
                     </a>
                 {% endif %}
 
