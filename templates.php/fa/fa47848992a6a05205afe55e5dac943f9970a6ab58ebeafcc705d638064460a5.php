@@ -169,7 +169,41 @@ class __TwigTemplate_2489263a955b9ed59dd236c8d0dba98cd4b7ad420bee1002b371cb5a04b
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['categoryNavbar'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
         // line 61
-        echo "            </div>
+        echo "
+                <div class=\"btn-group\">
+                    <div class=\"btn-group dropright\">
+                        <a type=\"button\" class=\"btn btn-secondary\"
+                           href=\"\">
+                            ";
+        // line 66
+        echo gettext("Idioma");
+        // line 67
+        echo "                        </a>
+                        <button type=\"button\" class=\"btn btn-secondary dropdown-toggle dropdown-toggle-split\"
+                                data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">
+                            <span class=\"sr-only\">Toggle Dropright</span>
+                        </button>
+                        <ul class=\"dropdown-menu\">
+                            <li>
+                                <a href=\"\">
+                                    Español
+                                </a>
+                            </li>
+                            <li>
+                                <a href=\"\">
+                                    Catalan
+                                </a>
+                            </li>
+                            <li>
+                                <a href=\"\">
+                                    Ingles
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
 
         </div>
     </nav>
@@ -177,8 +211,8 @@ class __TwigTemplate_2489263a955b9ed59dd236c8d0dba98cd4b7ad420bee1002b371cb5a04b
     <div class=\"jumbotron no-margin-bottom no-padding-bottom\">
         <div class=\"container text-center\">
             <div id=\"site-logo\"><a href=\"";
-        // line 68
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["router"] ?? null), "generateURL", [0 => "Category", 1 => "index"], "method", false, false, false, 68), "html", null, true);
+        // line 99
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["router"] ?? null), "generateURL", [0 => "Category", 1 => "index"], "method", false, false, false, 99), "html", null, true);
         echo "\"
                                    title=\"Board index\"><h2>Foro Programacion</h2></a></div>
 
@@ -199,7 +233,7 @@ class __TwigTemplate_2489263a955b9ed59dd236c8d0dba98cd4b7ad420bee1002b371cb5a04b
 
     public function getDebugInfo()
     {
-        return array (  181 => 68,  172 => 61,  163 => 57,  153 => 53,  148 => 52,  144 => 51,  134 => 44,  130 => 43,  125 => 40,  121 => 39,  118 => 38,  111 => 34,  108 => 33,  101 => 29,  98 => 28,  96 => 27,  90 => 24,  86 => 23,  83 => 22,  81 => 21,  78 => 20,  74 => 18,  72 => 17,  67 => 15,  63 => 13,  61 => 12,  56 => 10,  53 => 9,  51 => 8,  44 => 6,  37 => 1,);
+        return array (  215 => 99,  181 => 67,  179 => 66,  172 => 61,  163 => 57,  153 => 53,  148 => 52,  144 => 51,  134 => 44,  130 => 43,  125 => 40,  121 => 39,  118 => 38,  111 => 34,  108 => 33,  101 => 29,  98 => 28,  96 => 27,  90 => 24,  86 => 23,  83 => 22,  81 => 21,  78 => 20,  74 => 18,  72 => 17,  67 => 15,  63 => 13,  61 => 12,  56 => 10,  53 => 9,  51 => 8,  44 => 6,  37 => 1,);
     }
 
     public function getSourceContext()
