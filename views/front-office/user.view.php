@@ -147,6 +147,10 @@ require 'partials/header_partial.php';
                         </div>
 
                     </div>
+                    <a class="btn btn-default" href="<?= $route->generateURL('User', 'getUserPDF'); ?>"
+                       aria-label="Generar PDF">
+                        Generar PDF
+                    </a>
                 </div>
             </div>
         </div>

@@ -50,6 +50,10 @@
     "controller": "User",
     "method": "getUser"
   },
+  "user/pdf": {
+    "controller": "User",
+    "method": "getUserPDF"
+  },
 
   "category_list": {
     "controller": "Category",

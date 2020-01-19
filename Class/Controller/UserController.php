@@ -182,7 +182,7 @@ class UserController extends AbstractController
     {
         /* En caso de que se pase el parametro para cerrar sesion, se hace un unset de la sesion y se elimina. */
         session_unset();
-        setcookie(session_name(), "0",time()-2000);
+        setcookie(session_name(), "0", time() - 2000);
         session_destroy();
         global $route;
         header('Location: ' . $route->generateURL('User', 'login'));
@@ -266,13 +266,13 @@ class UserController extends AbstractController
         $surnames = $user->getSurnames();
         $province = $user->getProvince();
         $lang = $user->getLang();
-        $date = $user->getDateAdd()->format('Y-m-d');;
+        $date = $user->getDateAdd()->format('Y-m-d');
         $avatar = $target_dir . $user->getAvatar();
         $user_group = $user->getIdUserGroup();
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $user_group = filter_input(INPUT_POST, 'user_group', FILTER_VALIDATE_INT);
-            if (empty($user_group)){
+            if (empty($user_group)) {
                 $errors["user_group"] = "El grupo del usuario no puede estar vacio";
             }
 
@@ -312,4 +312,111 @@ class UserController extends AbstractController
         }
     }
 
+
+    public function getUserPDF()
+    {
+        /* Se comprueba si hay una sessión de usuario creada (se crea al iniciar sessión) y de no ser así le envía al login. */
+        if (!isset($_SESSION["user"])) {
+            global $route;
+            $url = $route->generateURL('User', 'login');
+            header("Location: $url");
+        }
+
+        $target_dir = $this->config->get('image')['src'];
+
+        /* Se recoge el usuario de la sesión y se hace una busqueda en la base de datos. */
+        $id = $_SESSION["user"]->getIdUser();
+
+        $userModel = new UserModel($this->db);
+        $user = $userModel->getUserById($id);
+
+
+        // create new PDF document
+        $pdf = new \TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+
+        // set document information
+        $pdf->SetCreator(PDF_CREATOR);
+        $pdf->SetAuthor($user->getName());
+        $pdf->SetTitle($user->getUsername());
+        $pdf->SetSubject('Foro Programacion');
+        $pdf->SetKeywords('Foro Programacion, PDF, user');
+
+        // set default header data
+        $PDF_HEADER_TITLE = $user->getUsername()." information";
+        $pdf->SetHeaderData("", 0, $PDF_HEADER_TITLE, "foro_programacion.test");
+        $pdf->setPrintFooter(false);
+
+        // set header and footer fonts
+        $pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
+        $pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
+
+        // set default monospaced font
+        $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
+
+        // set margins
+        $pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
+        $pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
+        $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
+
+        // set auto page breaks
+        $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+
+        // set image scale factor
+        $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
+
+        // ---------------------------------------------------------
+
+        // set font
+        $pdf->SetFont('dejavusans', '', 10);
+
+        // add a page
+        $pdf->AddPage();
+
+        // create some HTML content
+        $html =
+            '
+            <style>
+                div.content {
+                    text-align: center;
+                }
+                h1 {
+                    font-family: times;
+                    font-size: 24pt;
+                }
+            </style>
+
+            <div class="content">
+                <h1>' . $user->getUsername() . '</h1>
+                <img src="' . $target_dir.$user->getAvatar() . '" alt="avatar" width="100" height="100" border="0" />
+                <h2>Información del usuario:</h2>
+                <dl>
+                    <dt><strong>Nombre:</strong></dt>
+                    <dd><p>' . $user->getName() . '</p></dd>
+                    
+                    <dt><strong>Apellidos:</strong></dt>
+                    <dd><p>' . $user->getSurnames() . '</p></dd>
+                    
+                    <dt><strong>Email:</strong></dt>
+                    <dd><p>' . $user->getEmail() . '</p></dd>
+                    
+                    <dt><strong>Provincia:</strong></dt>
+                    <dd><p>' . $user->getProvince() . '</p></dd>
+                    
+                    <dt><strong>Fecha de ingreso:</strong></dt>
+                    <dd><p>' . $user->getDateAdd()->format("d-m-Y") . '</p></dd>
+                </dl>
+            </div>
+            ';
+
+
+        // print a block of text using Write()
+        $pdf->writeHTML($html, true, false, true, false, '');
+
+        // ---------------------------------------------------------
+
+        //Close and output PDF document
+        $pdf->Output($user->getUsername().'.pdf', 'I');
+
+
+    }
 }
