@@ -13,10 +13,12 @@
                     <a class="btn navbar-form navbar-left ng-pristine ng-valid"
                        href="<?= $route->generateURL('User', 'login') ?>">
                         <i class="fa fa-user"></i>
+                        <?= gettext("Iniciar Sesión") ?>
                     </a>
                     <a class="btn navbar-form navbar-left ng-pristine ng-valid"
                        href="<?= $route->generateURL('User', 'register') ?>">
                         <i class="fa fa-user-plus"></i>
+                        <?= gettext("Registro") ?>
                     </a>
                 <?php } ?>
 
@@ -36,6 +38,7 @@
                     <a class="btn navbar-form navbar-left ng-pristine ng-valid"
                        href="<?= $route->generateURL('User', 'logout') ?>">
                         <i class="fas fa-power-off"></i>
+                        <?= gettext("Cerrar Sesión") ?>
                     </a>
                 <?php } ?>
 
@@ -66,6 +69,18 @@
                         </div>
                     </div>
                 <?php } ?>
+
+                <div class="btn-group dropright">
+                    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <?= gettext("Idioma") ?>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="<?= $route->generateURL('Language', 'changeLanguage', [], ["lang" => "es", "url" => $_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"]]) ?>">Español</a>
+                        <a class="dropdown-item" href="<?= $route->generateURL('Language', 'changeLanguage', [], ["lang" => "ca", "url" => $_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"]]) ?>">Catalan</a>
+                        <a class="dropdown-item" href="<?= $route->generateURL('Language', 'changeLanguage', [], ["lang" => "en", "url" => $_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"]]) ?>">Ingles</a>
+                    </div>
+                </div>
+
             </div>
 
         </div>

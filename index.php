@@ -24,7 +24,6 @@ $di = new \App\Utils\DependencyInjector();
 ini_set( 'session.cookie_httponly', 1 );
 
 
-//https://mlocati.github.io/articles/gettext-iconv-windows.html
 if (!isset($_COOKIE['lang'])) {
     setcookie("lang", "es");
     putenv("LANGUAGE=es");
