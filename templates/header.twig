@@ -64,9 +64,9 @@
                         {% trans "Idioma" %}
                     </button>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Español</a>
-                        <a class="dropdown-item" href="#">Catalan</a>
-                        <a class="dropdown-item" href="#">Ingles</a>
+                        <a class="dropdown-item" href="{{ router.generateURL('Language', 'changeLanguage', {}, {"lang":"es", "url":url}) }}">Español</a>
+                        <a class="dropdown-item" href="{{ router.generateURL('Language', 'changeLanguage', {}, {"lang":"ca", "url":url}) }}">Catalan</a>
+                        <a class="dropdown-item" href="{{ router.generateURL('Language', 'changeLanguage', {}, {"lang":"en", "url":url}) }}">Ingles</a>
                     </div>
                 </div>
 

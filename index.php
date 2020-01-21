@@ -24,10 +24,22 @@ $di = new \App\Utils\DependencyInjector();
 ini_set( 'session.cookie_httponly', 1 );
 
 
-// Set language to German
-putenv("LANGUAGE=es");
-putenv("LC_ALL=es");
-putenv("LANG=ca");
+//https://mlocati.github.io/articles/gettext-iconv-windows.html
+if (!isset($_COOKIE['lang'])) {
+    setcookie("lang", "es");
+    putenv("LANGUAGE=es");
+    putenv("LC_ALL=es");
+    putenv("LANG=es");
+    setlocale(LC_ALL, "es");
+
+}
+if (isset($_COOKIE['lang'])){
+    var_dump($_COOKIE['lang']);
+    putenv("LANGUAGE=" . $_COOKIE['lang']);
+    putenv("LC_ALL=" . $_COOKIE['lang']);
+    putenv("LANG=" . $_COOKIE['lang']);
+    setlocale(LC_ALL, $_COOKIE['lang']);
+}
 // Specify location of translation tables
 bindtextdomain('main', __DIR__ . '/locales');
 bind_textdomain_codeset('main', 'UTF-8');

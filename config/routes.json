@@ -54,6 +54,10 @@
     "controller": "User",
     "method": "getUserPDF"
   },
+  "changeLanguage": {
+    "controller": "Language",
+    "method": "changeLanguage"
+  },
 
   "category_list": {
     "controller": "Category",
