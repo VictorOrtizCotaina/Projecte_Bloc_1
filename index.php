@@ -34,7 +34,6 @@ if (!isset($_COOKIE['lang'])) {
 
 }
 if (isset($_COOKIE['lang'])){
-    var_dump($_COOKIE['lang']);
     putenv("LANGUAGE=" . $_COOKIE['lang']);
     putenv("LC_ALL=" . $_COOKIE['lang']);
     putenv("LANG=" . $_COOKIE['lang']);
