@@ -33,10 +33,11 @@ if (!isset($_COOKIE['lang'])) {
 
 }
 if (isset($_COOKIE['lang'])){
-    putenv("LANGUAGE=" . $_COOKIE['lang']);
-    putenv("LC_ALL=" . $_COOKIE['lang']);
-    putenv("LANG=" . $_COOKIE['lang']);
-    setlocale(LC_ALL, $_COOKIE['lang']);
+    $lang = $_COOKIE['lang'];
+    putenv("LANGUAGE=".$lang);
+    putenv("LC_ALL=".$lang);
+    putenv("LANG=".$lang);
+    setlocale(LC_ALL, $lang);
 }
 // Specify location of translation tables
 bindtextdomain('main', __DIR__ . '/locales');
