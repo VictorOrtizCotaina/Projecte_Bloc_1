@@ -51,7 +51,7 @@ class __TwigTemplate_2489263a955b9ed59dd236c8d0dba98cd4b7ad420bee1002b371cb5a04b
         if ( !twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "user", [], "any", false, false, false, 8)) {
             // line 9
             echo "                    <a class=\"btn navbar-form navbar-left ng-pristine ng-valid\"
-                       href=\"<";
+                       href=\"";
             // line 10
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["router"] ?? null), "generateURL", [0 => "User", 1 => "login"], "method", false, false, false, 10), "html", null, true);
             echo "\">
@@ -111,27 +111,31 @@ class __TwigTemplate_2489263a955b9ed59dd236c8d0dba98cd4b7ad420bee1002b371cb5a04b
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["router"] ?? null), "generateURL", [0 => "User", 1 => "logout"], "method", false, false, false, 34), "html", null, true);
             echo "\">
                         <i class=\"fas fa-power-off\"></i>
-                    </a>
+                        ";
+            // line 36
+            echo gettext("Cerrar Sesión");
+            // line 37
+            echo "                    </a>
                 ";
         }
-        // line 38
+        // line 39
         echo "
                 ";
-        // line 39
+        // line 40
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["categoriesNavbar"] ?? null));
         foreach ($context['_seq'] as $context["_key"] => $context["categoryNavbar"]) {
-            // line 40
+            // line 41
             echo "                    <div class=\"btn-group\">
                         <div class=\"btn-group dropright\">
                             <a type=\"button\" class=\"btn btn-secondary\"
                                href=\"";
-            // line 43
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["router"] ?? null), "generateURL", [0 => "Category", 1 => "getCategory", 2 => ["id_category" => twig_get_attribute($this->env, $this->source, $context["categoryNavbar"], "idCategory", [], "any", false, false, false, 43)]], "method", false, false, false, 43), "html", null, true);
+            // line 44
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["router"] ?? null), "generateURL", [0 => "Category", 1 => "getCategory", 2 => ["id_category" => twig_get_attribute($this->env, $this->source, $context["categoryNavbar"], "idCategory", [], "any", false, false, false, 44)]], "method", false, false, false, 44), "html", null, true);
             echo "\">
                                 ";
-            // line 44
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["categoryNavbar"], "title", [], "any", false, false, false, 44), "html", null, true);
+            // line 45
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["categoryNavbar"], "title", [], "any", false, false, false, 45), "html", null, true);
             echo "
                             </a>
                             <button type=\"button\" class=\"btn btn-secondary dropdown-toggle dropdown-toggle-split\"
@@ -140,17 +144,17 @@ class __TwigTemplate_2489263a955b9ed59dd236c8d0dba98cd4b7ad420bee1002b371cb5a04b
                             </button>
                             <ul class=\"dropdown-menu\">
                                 ";
-            // line 51
+            // line 52
             $context['_parent'] = $context;
-            $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, $context["categoryNavbar"], "forums", [], "any", false, false, false, 51));
+            $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, $context["categoryNavbar"], "forums", [], "any", false, false, false, 52));
             foreach ($context['_seq'] as $context["_key"] => $context["forumNavbar"]) {
-                // line 52
+                // line 53
                 echo "                                    <li><a href=\"";
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["router"] ?? null), "generateURL", [0 => "Forum", 1 => "getForum", 2 => ["id_category" => twig_get_attribute($this->env, $this->source, $context["categoryNavbar"], "idCategory", [], "any", false, false, false, 52), "forumNavbar" => twig_get_attribute($this->env, $this->source, ($context["forum"] ?? null), "idForum", [], "any", false, false, false, 52)]], "method", false, false, false, 52), "html", null, true);
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["router"] ?? null), "generateURL", [0 => "Forum", 1 => "getForum", 2 => ["id_category" => twig_get_attribute($this->env, $this->source, $context["categoryNavbar"], "idCategory", [], "any", false, false, false, 53), "forumNavbar" => twig_get_attribute($this->env, $this->source, ($context["forum"] ?? null), "idForum", [], "any", false, false, false, 53)]], "method", false, false, false, 53), "html", null, true);
                 echo "\">
                                             ";
-                // line 53
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["forumNavbar"], "title", [], "any", false, false, false, 53), "html", null, true);
+                // line 54
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["forumNavbar"], "title", [], "any", false, false, false, 54), "html", null, true);
                 echo "
                                         </a></li>
                                     <li class=\"divider\"></li>
@@ -159,7 +163,7 @@ class __TwigTemplate_2489263a955b9ed59dd236c8d0dba98cd4b7ad420bee1002b371cb5a04b
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['forumNavbar'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 57
+            // line 58
             echo "                            </ul>
                         </div>
                     </div>
@@ -168,38 +172,28 @@ class __TwigTemplate_2489263a955b9ed59dd236c8d0dba98cd4b7ad420bee1002b371cb5a04b
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['categoryNavbar'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 61
+        // line 62
         echo "
-                <div class=\"btn-group\">
-                    <div class=\"btn-group dropright\">
-                        <a type=\"button\" class=\"btn btn-secondary\"
-                           href=\"\">
-                            ";
-        // line 66
+                <div class=\"btn-group dropright\">
+                    <button type=\"button\" class=\"btn btn-secondary dropdown-toggle\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">
+                        ";
+        // line 65
         echo gettext("Idioma");
-        // line 67
-        echo "                        </a>
-                        <button type=\"button\" class=\"btn btn-secondary dropdown-toggle dropdown-toggle-split\"
-                                data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">
-                            <span class=\"sr-only\">Toggle Dropright</span>
-                        </button>
-                        <ul class=\"dropdown-menu\">
-                            <li>
-                                <a href=\"\">
-                                    Español
-                                </a>
-                            </li>
-                            <li>
-                                <a href=\"\">
-                                    Catalan
-                                </a>
-                            </li>
-                            <li>
-                                <a href=\"\">
-                                    Ingles
-                                </a>
-                            </li>
-                        </ul>
+        // line 66
+        echo "                    </button>
+                    <div class=\"dropdown-menu\">
+                        <a class=\"dropdown-item\" href=\"";
+        // line 68
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["router"] ?? null), "generateURL", [0 => "Language", 1 => "changeLanguage", 2 => [], 3 => ["lang" => "es", "url" => ($context["url"] ?? null)]], "method", false, false, false, 68), "html", null, true);
+        echo "\">Español</a>
+                        <a class=\"dropdown-item\" href=\"";
+        // line 69
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["router"] ?? null), "generateURL", [0 => "Language", 1 => "changeLanguage", 2 => [], 3 => ["lang" => "ca", "url" => ($context["url"] ?? null)]], "method", false, false, false, 69), "html", null, true);
+        echo "\">Catalan</a>
+                        <a class=\"dropdown-item\" href=\"";
+        // line 70
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["router"] ?? null), "generateURL", [0 => "Language", 1 => "changeLanguage", 2 => [], 3 => ["lang" => "en", "url" => ($context["url"] ?? null)]], "method", false, false, false, 70), "html", null, true);
+        echo "\">Ingles</a>
                     </div>
                 </div>
 
@@ -211,8 +205,8 @@ class __TwigTemplate_2489263a955b9ed59dd236c8d0dba98cd4b7ad420bee1002b371cb5a04b
     <div class=\"jumbotron no-margin-bottom no-padding-bottom\">
         <div class=\"container text-center\">
             <div id=\"site-logo\"><a href=\"";
-        // line 99
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["router"] ?? null), "generateURL", [0 => "Category", 1 => "index"], "method", false, false, false, 99), "html", null, true);
+        // line 81
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["router"] ?? null), "generateURL", [0 => "Category", 1 => "index"], "method", false, false, false, 81), "html", null, true);
         echo "\"
                                    title=\"Board index\"><h2>Foro Programacion</h2></a></div>
 
@@ -233,7 +227,7 @@ class __TwigTemplate_2489263a955b9ed59dd236c8d0dba98cd4b7ad420bee1002b371cb5a04b
 
     public function getDebugInfo()
     {
-        return array (  215 => 99,  181 => 67,  179 => 66,  172 => 61,  163 => 57,  153 => 53,  148 => 52,  144 => 51,  134 => 44,  130 => 43,  125 => 40,  121 => 39,  118 => 38,  111 => 34,  108 => 33,  101 => 29,  98 => 28,  96 => 27,  90 => 24,  86 => 23,  83 => 22,  81 => 21,  78 => 20,  74 => 18,  72 => 17,  67 => 15,  63 => 13,  61 => 12,  56 => 10,  53 => 9,  51 => 8,  44 => 6,  37 => 1,);
+        return array (  209 => 81,  195 => 70,  191 => 69,  187 => 68,  183 => 66,  181 => 65,  176 => 62,  167 => 58,  157 => 54,  152 => 53,  148 => 52,  138 => 45,  134 => 44,  129 => 41,  125 => 40,  122 => 39,  118 => 37,  116 => 36,  111 => 34,  108 => 33,  101 => 29,  98 => 28,  96 => 27,  90 => 24,  86 => 23,  83 => 22,  81 => 21,  78 => 20,  74 => 18,  72 => 17,  67 => 15,  63 => 13,  61 => 12,  56 => 10,  53 => 9,  51 => 8,  44 => 6,  37 => 1,);
     }
 
     public function getSourceContext()

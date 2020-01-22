@@ -110,7 +110,7 @@ class __TwigTemplate_c5df7e4304a8b9e6a852b19f411f02d0faf91a8d86ff88f1d22e9f3b1e7
     public function block_title($context, array $blocks = [])
     {
         $macros = $this->macros;
-        echo "Foro Programacion &bull; - Categoria";
+        echo "Foro Programacion • Categoria";
     }
 
     // line 55
