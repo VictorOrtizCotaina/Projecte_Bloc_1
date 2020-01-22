@@ -32,13 +32,6 @@ if (!isset($_COOKIE['lang'])) {
     setlocale(LC_ALL, "es");
 
 }
-if (isset($_COOKIE['lang'])){
-    $lang = $_COOKIE['lang'];
-    putenv("LANGUAGE=".$lang);
-    putenv("LC_ALL=".$lang);
-    putenv("LANG=".$lang);
-    setlocale(LC_ALL, $lang);
-}
 // Specify location of translation tables
 bindtextdomain('main', __DIR__ . '/locales');
 bind_textdomain_codeset('main', 'UTF-8');
