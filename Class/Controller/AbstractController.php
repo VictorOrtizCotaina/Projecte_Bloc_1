@@ -40,7 +40,7 @@ abstract class AbstractController {
     {
         $getLang = filter_input(INPUT_GET, 'lang', FILTER_SANITIZE_STRING);
         if (!empty($getLang)){
-            setcookie("lang", $getLang,  time()+60*60*24*30*12, "/");
+            setcookie("lang", $getLang,  time()+60*60*24*365, "/");
         } elseif (!empty($_COOKIE['lang'])){
             $getLang = $_COOKIE['lang'];
         }
