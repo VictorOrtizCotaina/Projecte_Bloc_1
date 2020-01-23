@@ -75,9 +75,9 @@
                         <?= gettext("Idioma") ?>
                     </button>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="<?= $route->generateURL('Language', 'changeLanguage', [], ["lang" => "es", "url" => $_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"]]) ?>">Español</a>
-                        <a class="dropdown-item" href="<?= $route->generateURL('Language', 'changeLanguage', [], ["lang" => "ca", "url" => $_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"]]) ?>">Catalan</a>
-                        <a class="dropdown-item" href="<?= $route->generateURL('Language', 'changeLanguage', [], ["lang" => "en", "url" => $_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"]]) ?>">Ingles</a>
+                        <a class="dropdown-item" href="?lang=es">Español</a>
+                        <a class="dropdown-item" href="?lang=va">Catalan</a>
+                        <a class="dropdown-item" href="?lang=gb">Ingles</a>
                     </div>
                 </div>
 

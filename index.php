@@ -24,21 +24,6 @@ $di = new \App\Utils\DependencyInjector();
 ini_set( 'session.cookie_httponly', 1 );
 
 
-if (!isset($_COOKIE['lang'])) {
-    setcookie("lang", "es");
-    putenv("LANGUAGE=es");
-    putenv("LC_ALL=es");
-    putenv("LANG=es");
-    setlocale(LC_ALL, "es");
-
-}
-// Specify location of translation tables
-bindtextdomain('main', __DIR__ . '/locales');
-bind_textdomain_codeset('main', 'UTF-8');
-// Choose domain
-textdomain('main');
-
-
 $db = new DBConnection();
 $di->set('PDO', $db->getConnection());
 

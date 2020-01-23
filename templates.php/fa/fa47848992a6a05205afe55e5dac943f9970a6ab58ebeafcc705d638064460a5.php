@@ -182,18 +182,9 @@ class __TwigTemplate_2489263a955b9ed59dd236c8d0dba98cd4b7ad420bee1002b371cb5a04b
         // line 66
         echo "                    </button>
                     <div class=\"dropdown-menu\">
-                        <a class=\"dropdown-item\" href=\"";
-        // line 68
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["router"] ?? null), "generateURL", [0 => "Language", 1 => "changeLanguage", 2 => [], 3 => ["lang" => "es", "url" => ($context["url"] ?? null)]], "method", false, false, false, 68), "html", null, true);
-        echo "\">Español</a>
-                        <a class=\"dropdown-item\" href=\"";
-        // line 69
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["router"] ?? null), "generateURL", [0 => "Language", 1 => "changeLanguage", 2 => [], 3 => ["lang" => "ca", "url" => ($context["url"] ?? null)]], "method", false, false, false, 69), "html", null, true);
-        echo "\">Catalan</a>
-                        <a class=\"dropdown-item\" href=\"";
-        // line 70
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["router"] ?? null), "generateURL", [0 => "Language", 1 => "changeLanguage", 2 => [], 3 => ["lang" => "en", "url" => ($context["url"] ?? null)]], "method", false, false, false, 70), "html", null, true);
-        echo "\">Ingles</a>
+                        <a class=\"dropdown-item\" href=\"?lang=es\">Español</a>
+                        <a class=\"dropdown-item\" href=\"?lang=ca\">Catalan</a>
+                        <a class=\"dropdown-item\" href=\"?lang=en\">Ingles</a>
                     </div>
                 </div>
 
@@ -227,7 +218,7 @@ class __TwigTemplate_2489263a955b9ed59dd236c8d0dba98cd4b7ad420bee1002b371cb5a04b
 
     public function getDebugInfo()
     {
-        return array (  209 => 81,  195 => 70,  191 => 69,  187 => 68,  183 => 66,  181 => 65,  176 => 62,  167 => 58,  157 => 54,  152 => 53,  148 => 52,  138 => 45,  134 => 44,  129 => 41,  125 => 40,  122 => 39,  118 => 37,  116 => 36,  111 => 34,  108 => 33,  101 => 29,  98 => 28,  96 => 27,  90 => 24,  86 => 23,  83 => 22,  81 => 21,  78 => 20,  74 => 18,  72 => 17,  67 => 15,  63 => 13,  61 => 12,  56 => 10,  53 => 9,  51 => 8,  44 => 6,  37 => 1,);
+        return array (  200 => 81,  183 => 66,  181 => 65,  176 => 62,  167 => 58,  157 => 54,  152 => 53,  148 => 52,  138 => 45,  134 => 44,  129 => 41,  125 => 40,  122 => 39,  118 => 37,  116 => 36,  111 => 34,  108 => 33,  101 => 29,  98 => 28,  96 => 27,  90 => 24,  86 => 23,  83 => 22,  81 => 21,  78 => 20,  74 => 18,  72 => 17,  67 => 15,  63 => 13,  61 => 12,  56 => 10,  53 => 9,  51 => 8,  44 => 6,  37 => 1,);
     }
 
     public function getSourceContext()

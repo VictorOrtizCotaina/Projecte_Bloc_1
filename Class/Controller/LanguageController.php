@@ -8,7 +8,14 @@ class LanguageController extends AbstractController
 {
     public function changeLanguage()
     {
-        switch ($_GET["lang"]){
+        $getLang = filter_input(INPUT_GET, 'lang', FILTER_SANITIZE_STRING);
+        if (!empty($getLang)){
+            setcookie("lang", $getLang);
+        } elseif (!empty($_COOKIE['lang'])){
+            $getLang = $_COOKIE['lang'];
+        }
+
+        switch ($getLang){
             case "es":
                 $lang = "es.UTF-8";
                 break;
@@ -21,8 +28,6 @@ class LanguageController extends AbstractController
             default:
                 $lang = "es.UTF-8";
         }
-        $_COOKIE['lang'] = $lang;
-        setcookie("lang", $lang);
 
         putenv("LANGUAGE=".$lang);
         putenv("LC_ALL=".$lang);
