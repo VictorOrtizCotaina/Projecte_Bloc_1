@@ -7,6 +7,6 @@
     }
   },
   "image": {
-    "src": "/config/img/"
+    "src": "/img/"
   }
 }
