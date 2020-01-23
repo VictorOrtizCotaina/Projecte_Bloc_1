@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2020-01-21 13:16+0100\n"
-"PO-Revision-Date: 2020-01-21 13:17+0100\n"
+"POT-Creation-Date: 2020-01-23 05:28-0500\n"
+"PO-Revision-Date: 2020-01-23 05:28-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ca_ES\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.4\n"
+"X-Generator: Poedit 2.0.6\n"
 "X-Poedit-Basepath: ../../..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SearchPath-0: templates\n"
@@ -34,9 +34,23 @@ msgid "Registro"
 msgstr "Registre"
 
 #: partials/header_partial.php:41
+#: templates.php/fa/fa47848992a6a05205afe55e5dac943f9970a6ab58ebeafcc705d638064460a5.php:116
 msgid "Cerrar Sesión"
 msgstr "Tancar Sessió"
 
-#: templates.php/fa/fa47848992a6a05205afe55e5dac943f9970a6ab58ebeafcc705d638064460a5.php:179
+#: partials/header_partial.php:75
+#: templates.php/fa/fa47848992a6a05205afe55e5dac943f9970a6ab58ebeafcc705d638064460a5.php:181
 msgid "Idioma"
 msgstr "Idioma"
+
+#: partials/header_partial.php:78
+msgid "Español"
+msgstr "Espanyol"
+
+#: partials/header_partial.php:79
+msgid "Catalán"
+msgstr "Català"
+
+#: partials/header_partial.php:80
+msgid "Inglés"
+msgstr "Anglès"

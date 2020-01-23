@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2020-01-21 13:16+0100\n"
-"PO-Revision-Date: 2020-01-23 09:37-0500\n"
+"POT-Creation-Date: 2020-01-23 11:31-0500\n"
+"PO-Revision-Date: 2020-01-23 11:31-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_GB\n"
@@ -34,9 +34,23 @@ msgid "Registro"
 msgstr "Register"
 
 #: partials/header_partial.php:41
+#: templates.php/fa/fa47848992a6a05205afe55e5dac943f9970a6ab58ebeafcc705d638064460a5.php:116
 msgid "Cerrar Sesión"
 msgstr "Log Out"
 
-#: templates.php/fa/fa47848992a6a05205afe55e5dac943f9970a6ab58ebeafcc705d638064460a5.php:179
+#: partials/header_partial.php:75
+#: templates.php/fa/fa47848992a6a05205afe55e5dac943f9970a6ab58ebeafcc705d638064460a5.php:181
 msgid "Idioma"
 msgstr "Language"
+
+#: partials/header_partial.php:78
+msgid "Español"
+msgstr "Spanish"
+
+#: partials/header_partial.php:79
+msgid "Catalán"
+msgstr "Catalan"
+
+#: partials/header_partial.php:80
+msgid "Inglés"
+msgstr "English"

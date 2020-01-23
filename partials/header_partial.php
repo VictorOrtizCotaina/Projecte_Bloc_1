@@ -30,10 +30,10 @@
                         <?php echo $user->getUsername(); ?>
                     </a>
 
-                        <a class="navbar-form navbar-left ng-pristine ng-valid"
-                           href="<?= $route->generateURL('Category', 'getAdminCategory') ?>">
-                            Back-Office
-                        </a>
+                    <a class="navbar-form navbar-left ng-pristine ng-valid"
+                       href="<?= $route->generateURL('Category', 'getAdminCategory') ?>">
+                        Back-Office
+                    </a>
 
                     <a class="btn navbar-form navbar-left ng-pristine ng-valid"
                        href="<?= $route->generateURL('User', 'logout') ?>">
@@ -75,9 +75,9 @@
                         <?= gettext("Idioma") ?>
                     </button>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="?lang=es">Español</a>
-                        <a class="dropdown-item" href="?lang=va">Catalan</a>
-                        <a class="dropdown-item" href="?lang=gb">Ingles</a>
+                        <a class="dropdown-item" href="?lang=es"><?= gettext("Español")?></a>
+                        <a class="dropdown-item" href="?lang=va"><?= gettext("Catalán")?></a>
+                        <a class="dropdown-item" href="?lang=gb"><?= gettext("Inglés")?></a>
                     </div>
                 </div>
 

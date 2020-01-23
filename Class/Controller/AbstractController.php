@@ -61,8 +61,6 @@ abstract class AbstractController {
         }
 
         putenv("LANGUAGE=".$lang);
-        putenv("LC_ALL=".$lang);
-        putenv("LANG=".$lang);
         setlocale(LC_ALL, $lang);
 
         // Specify location of translation tables
