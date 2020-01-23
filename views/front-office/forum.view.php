@@ -13,7 +13,7 @@
     <title>Foro Programacion &bull; <?php if (isset($forum)) echo $forum->getTitle(); ?></title>
 
     <?php
-    require 'partials/head_partial.php';
+    require '../partials/head_partial.php';
     ?>
 
 
@@ -22,7 +22,7 @@
 <body class="section-viewforum ltr">
 
 <?php
-require 'partials/header_partial.php';
+require '../partials/header_partial.php';
 ?>
 
 <div class="container" id="content-wrapper">

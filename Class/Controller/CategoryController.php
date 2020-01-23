@@ -24,8 +24,7 @@ class CategoryController extends AbstractController
         $categories = $categoryModel->getAllCategories();
         $categoriesNavbar = $categories;
 
-        require("views/front-office/index.view.php");
-        return "";
+        require("../views/front-office/index.view.php");
     }
 
     public function getCategory($id_category)
@@ -46,7 +45,7 @@ class CategoryController extends AbstractController
 
         $propierties = ["category" => $category, "session" => $_SESSION, "user" => $user, "url" => $_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"], "categoriesNavbar" => $categoriesNavbar, "target_dir" => $target_dir, 'title' => "Foro Programacion • " . $category->getTitle()];
         return $this->render('show.category.twig', $propierties);
-//        require("views/front-office/category.view.php");
+//        require("../views/front-office/category.view.php");
 
     }
 
@@ -93,7 +92,7 @@ class CategoryController extends AbstractController
             header("Location: $url");
         }
 
-        require("views/back-office/category_list.view.php");
+        require("../views/back-office/category_list.view.php");
     }
 
 
@@ -158,7 +157,7 @@ class CategoryController extends AbstractController
             }
         }
 
-        require("views/back-office/forms/category_form.view.php");
+        require("../views/back-office/forms/category_form.view.php");
 
     }
 
@@ -232,7 +231,7 @@ class CategoryController extends AbstractController
             }
         }
 
-        require("views/back-office/forms/category_form.view.php");
+        require("../views/back-office/forms/category_form.view.php");
 
     }
 

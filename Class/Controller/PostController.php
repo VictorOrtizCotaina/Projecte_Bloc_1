@@ -51,7 +51,7 @@ class PostController extends AbstractController
             header("Location: $url");
         }
 
-        require("views/back-office/post_list.view.php");
+        require("../views/back-office/post_list.view.php");
 
     }
 
@@ -111,7 +111,7 @@ class PostController extends AbstractController
             }
         }
 
-        require("views/back-office/forms/post_form.view.php");
+        require("../views/back-office/forms/post_form.view.php");
 
     }
 
@@ -181,7 +181,7 @@ class PostController extends AbstractController
             }
         }
 
-        require("views/back-office/forms/post_form.view.php");
+        require("../views/back-office/forms/post_form.view.php");
 
     }
 

@@ -58,7 +58,7 @@ class TopicController extends AbstractController
         $Previous = $num_page - 1;
         $Next = $num_page + 1;
 
-        require("views/front-office/topic.view.php");
+        require("../views/front-office/topic.view.php");
 
     }
 
@@ -198,7 +198,7 @@ class TopicController extends AbstractController
             header("Location: $url");
         }
 
-        require("views/back-office/topic_list.view.php");
+        require("../views/back-office/topic_list.view.php");
 
     }
 
@@ -272,7 +272,7 @@ class TopicController extends AbstractController
             }
         }
 
-        require("views/back-office/forms/topic_form.view.php");
+        require("../views/back-office/forms/topic_form.view.php");
 
     }
 
@@ -358,7 +358,7 @@ class TopicController extends AbstractController
             }
         }
 
-        require("views/back-office/forms/topic_form.view.php");
+        require("../views/back-office/forms/topic_form.view.php");
 
     }
 

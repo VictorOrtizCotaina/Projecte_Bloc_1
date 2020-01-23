@@ -84,7 +84,7 @@ class ForumController extends AbstractController
             $dateFin = "";
         }*/
 
-        require("views/front-office/forum.view.php");
+        require("../views/front-office/forum.view.php");
     }
 
     public function getForumUser($id_user)
@@ -164,7 +164,7 @@ class ForumController extends AbstractController
         }
 
 
-        require("views/front-office/forum.view.php");
+        require("../views/front-office/forum.view.php");
     }
 
 
@@ -206,7 +206,7 @@ class ForumController extends AbstractController
             header("Location: $url");
         }
 
-        require("views/back-office/forum_list.view.php");
+        require("../views/back-office/forum_list.view.php");
     }
 
 
@@ -270,7 +270,7 @@ class ForumController extends AbstractController
             }
         }
 
-        require("views/back-office/forms/forum_form.view.php");
+        require("../views/back-office/forms/forum_form.view.php");
     }
 
 
@@ -342,7 +342,7 @@ class ForumController extends AbstractController
             }
         }
 
-        require("views/back-office/forms/forum_form.view.php");
+        require("../views/back-office/forms/forum_form.view.php");
     }
 
 

@@ -40,7 +40,7 @@
 
 <body class="section-index ltr">
     <?php
-    require 'partials/header_partial.php';
+    require '../partials/header_partial.php';
     ?>
 
     <div class="container">

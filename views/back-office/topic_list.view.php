@@ -19,13 +19,13 @@ global $dateFin;
     <title>Foro Programacion &bull; Topic</title>
 
     <?php
-    require 'partials/admin_head_partial.php';
+    require '../partials/admin_head_partial.php';
     ?>
 
 </head>
 <body>
     <?php
-    require 'partials/admin_header_partial.php';
+    require '../partials/admin_header_partial.php';
     ?>
 
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">

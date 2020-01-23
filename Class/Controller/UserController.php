@@ -46,7 +46,7 @@ class UserController extends AbstractController
             }
         }
 
-        require("views/front-office/login.view.php");
+        require("../views/front-office/login.view.php");
     }
 
     public function register()
@@ -93,7 +93,7 @@ class UserController extends AbstractController
             }
         }
 
-        require("views/front-office/register.view.php");
+        require("../views/front-office/register.view.php");
     }
 
 
@@ -174,7 +174,7 @@ class UserController extends AbstractController
         }
 
 
-        require("views/front-office/user.view.php");
+        require("../views/front-office/user.view.php");
     }
 
 
@@ -237,7 +237,7 @@ class UserController extends AbstractController
             header("Location: $url");
         }
 
-        require("views/back-office/user_list.view.php");
+        require("../views/back-office/user_list.view.php");
 
     }
 
@@ -286,7 +286,7 @@ class UserController extends AbstractController
             }
         }
 
-        require("views/back-office/forms/user_form.view.php");
+        require("../views/back-office/forms/user_form.view.php");
 
     }
 

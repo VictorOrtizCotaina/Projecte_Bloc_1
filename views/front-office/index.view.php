@@ -26,7 +26,7 @@
 
 
     <?php
-    require 'partials/head_partial.php';
+    require '../partials/head_partial.php';
     ?>
 
 </head>
@@ -34,7 +34,7 @@
 <body class="section-index ltr">
 
 <?php
-require 'partials/header_partial.php';
+require '../partials/header_partial.php';
 ?>
 
 <div class="container" id="content-wrapper">
