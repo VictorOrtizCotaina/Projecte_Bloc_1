@@ -109,10 +109,6 @@ class CategoryController extends AbstractController
             $userModel = new UserModel($this->db);
             $user = $userModel->getUserById($id);
             $userGroup = $user->getIdUserGroup();
-            if ($userGroup != 1) {
-                $url = $_SERVER["PHP_SELF"];
-                header("Location: $url");
-            }
         } else {
             global $route;
             $url = $route->generateURL('User', 'login');
@@ -174,10 +170,6 @@ class CategoryController extends AbstractController
             $userModel = new UserModel($this->db);
             $user = $userModel->getUserById($id);
             $userGroup = $user->getIdUserGroup();
-            if ($userGroup != 1) {
-                $url = $_SERVER["PHP_SELF"];
-                header("Location: $url");
-            }
         } else {
             global $route;
             $url = $route->generateURL('User', 'login');
@@ -243,10 +235,6 @@ class CategoryController extends AbstractController
             $userModel = new UserModel($this->db);
             $user = $userModel->getUserById($id);
             $userGroup = $user->getIdUserGroup();
-            if ($userGroup != 1) {
-                $url = $_SERVER["PHP_SELF"];
-                header("Location: $url");
-            }
         } else {
             global $route;
             $url = $route->generateURL('User', 'login');
@@ -269,10 +257,6 @@ class CategoryController extends AbstractController
             $userModel = new UserModel($this->db);
             $user = $userModel->getUserById($id);
             $userGroup = $user->getIdUserGroup();
-            if ($userGroup != 1) {
-                $url = $_SERVER["PHP_SELF"];
-                header("Location: $url");
-            }
         } else {
             global $route;
             $url = $route->generateURL('User', 'login');
