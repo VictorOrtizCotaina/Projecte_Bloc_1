@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-11-2019 a las 19:45:09
+-- Tiempo de generación: 12-01-2020 a las 20:32:14
 -- Versión del servidor: 10.4.8-MariaDB
 -- Versión de PHP: 7.3.11
 
@@ -23,6 +23,7 @@ SET time_zone = "+00:00";
 --
 CREATE DATABASE IF NOT EXISTS forum CHARACTER SET utf8 COLLATE utf8_general_ci;
 GRANT SELECT, INSERT, UPDATE, DELETE, FILE ON *.* TO 'forum'@'localhost' IDENTIFIED BY PASSWORD '*D741B9CBA88F99274F71CB62FE633C00AF973DBC';
+
 -- --------------------------------------------------------
 
 --
@@ -141,6 +142,9 @@ CREATE TABLE `user` (
   `username` varchar(150) DEFAULT NULL,
   `password` varchar(100) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
+  `name` varchar(125) NOT NULL,
+  `surnames` varchar(255) NOT NULL,
+  `province` varchar(125) NOT NULL,
   `lang` varchar(30) DEFAULT NULL,
   `avatar` varchar(255) DEFAULT NULL,
   `date_add` datetime DEFAULT NULL,
@@ -152,8 +156,10 @@ CREATE TABLE `user` (
 -- Volcado de datos para la tabla `user`
 --
 
-INSERT INTO `user` (`id_user`, `username`, `password`, `email`, `lang`, `avatar`, `date_add`, `active`, `id_user_group`) VALUES
-(1, 'admin', '$2y$10$jsDHNACAbEabtr7Dcin2uOvFrTskpjykOPzBqiU1eklve88rgYn86', 'admin@admin.org', 'es', 'user_default.png', '2019-09-10 12:26:26', 1, 1);
+INSERT INTO `user` (`id_user`, `username`, `password`, `email`, `name`, `surnames`, `province`, `lang`, `avatar`, `date_add`, `active`, `id_user_group`) VALUES
+(1, 'admin', '$2y$10$jsDHNACAbEabtr7Dcin2uOvFrTskpjykOPzBqiU1eklve88rgYn86', 'admin@admin.org', '', '', '', 'es', 'user_default.png', '2019-09-10 12:26:26', 1, 1),
+(2, 'user', '$2y$10$Bo4hoLCi9Mi.PouqA4jS7OsVIA.n88VtjhXrxzW4aVhhcA9PqBujy', 'user@user.com', '', '', '', 'es', 'user_default.png', '2019-12-27 17:31:14', 1, 2),
+(6, 'a', '$2y$10$PGeJ3fGDNjuB4TuLzrj5OeFlPYj4hpGIO6rCBn17nivOgMnTXo.be', 'useer@user.com', 'a', 'a', 'a', 'es', 'user_default.png', '2020-01-12 20:29:36', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -174,7 +180,8 @@ CREATE TABLE `user_group` (
 --
 
 INSERT INTO `user_group` (`id_user_group`, `name`, `description`, `avatar`, `date_add`) VALUES
-(1, 'admin', 'admin', NULL, '2019-09-10 12:13:26');
+(1, 'admin', 'admin', NULL, '2019-09-10 12:13:26'),
+(2, 'user', 'normal user', NULL, '2019-12-17 17:16:09');
 
 --
 -- Índices para tablas volcadas
@@ -256,13 +263,13 @@ ALTER TABLE `topic`
 -- AUTO_INCREMENT de la tabla `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `user_group`
 --
 ALTER TABLE `user_group`
-  MODIFY `id_user_group` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_user_group` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restricciones para tablas volcadas
