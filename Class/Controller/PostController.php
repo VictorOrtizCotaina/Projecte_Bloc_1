@@ -60,7 +60,7 @@ class PostController extends AbstractController
     {
         $target_dir = $this->config->get('image')['src'];
         global $route;
-        $pageForm = $route->generateURL('Post', 'getAdminPost');
+        $pageForm = $route->generateURL('Post', 'adminPostAdd');
         $page = "post_add";
 
         if (isset($_SESSION["user"])) {
@@ -101,7 +101,7 @@ class PostController extends AbstractController
             $post = $postModel->getData();
             $errors = $postModel->validate($post);
 
-            if (!empty($errors)) {
+            if (empty($errors)) {
                 $insert = $postModel->insertPost($post);
 
                 if ($insert) {

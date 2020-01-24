@@ -155,7 +155,6 @@ class PostModel extends AbstractModel
 
     /* Se recoge el numero total de posts del usuario. */
     function getPagesPostsByUser(int $idUser):int{
-        $active = true;
         $stmt = $this->pdo->prepare('SELECT count(id_post) AS id_post from post WHERE id_user = :id');
         try {
             $stmt->bindParam(':id', $idUser, PDO::PARAM_INT);
