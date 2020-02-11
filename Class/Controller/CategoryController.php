@@ -14,6 +14,7 @@ class CategoryController extends AbstractController
         $target_dir = $this->config->get('image')['src'];
 
         /* Se comprueba si hay una sessión de usuario creada (se crea al iniciar sessión) y de ser así se añade un objecto usuario. */
+        $user = null;
         if (isset($_SESSION["user"])) {
             $userModel = new UserModel($this->db);
             $user = $userModel->getUserById($_SESSION["user"]->getIdUser());
@@ -24,7 +25,9 @@ class CategoryController extends AbstractController
         $categories = $categoryModel->getAllCategories();
         $categoriesNavbar = $categories;
 
-        require("../views/front-office/index.view.php");
+        $propierties = ["categories" => $categories, "session" => $_SESSION, "user" => $user, "url" => $_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"], "categoriesNavbar" => $categoriesNavbar, "target_dir" => $target_dir, 'title' => "Foro Programacion • Home"];
+        return $this->render('index/show.index.twig', $propierties);
+//        require("../views/front-office/index.view.php");
     }
 
     public function getCategory($id_category)
@@ -44,7 +47,7 @@ class CategoryController extends AbstractController
         $category = $categoryModel->getCategoryById($id_category);
 
         $propierties = ["category" => $category, "session" => $_SESSION, "user" => $user, "url" => $_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"], "categoriesNavbar" => $categoriesNavbar, "target_dir" => $target_dir, 'title' => "Foro Programacion • " . $category->getTitle()];
-        return $this->render('show.category.twig', $propierties);
+        return $this->render('category/show.category.twig', $propierties);
 //        require("../views/front-office/category.view.php");
 
     }
