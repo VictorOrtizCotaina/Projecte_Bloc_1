@@ -16,6 +16,7 @@ class TopicController extends AbstractController
         $target_dir = $this->config->get('image')['src'];
 
         /* Se comprueba si hay una sessión de usuario creada (se crea al iniciar sessión) y de ser así se añade un objecto usuario. */
+        $user = null;
         if (isset($_SESSION["user"])) {
             $userModel = new UserModel($this->db);
             $user = $userModel->getUserById($_SESSION["user"]->getIdUser());
@@ -58,8 +59,10 @@ class TopicController extends AbstractController
         $Previous = $num_page - 1;
         $Next = $num_page + 1;
 
-        require("../views/front-office/topic.view.php");
+        $propierties = ["topic" => $topic, "forum" => $forum, "pages" => $pages, "Previous" => $Previous, "Next" => $Next, "session" => $_SESSION, "user" => $user, "url" => $_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"], "categoriesNavbar" => $categoriesNavbar, "target_dir" => $target_dir, 'title' => "Foro Programacion • " . $topic->getTitle()];
+        return $this->render('topic/show.topic.twig', $propierties);
 
+//        require("../views/front-office/topic.view.php");
     }
 
 
