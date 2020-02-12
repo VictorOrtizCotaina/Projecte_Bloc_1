@@ -116,6 +116,7 @@ class UserController extends AbstractController
 
         /* Se recoge el usuario de la sesión y se hace una busqueda en la base de datos. */
         $id = $_SESSION["user"]->getIdUser();
+        $user = null;
 
         $userModel = new UserModel($this->db);
         $user = $userModel->getUserById($id);
@@ -129,9 +130,9 @@ class UserController extends AbstractController
          * Una vez dentro se comprueba que el fichero no ocupe mas de 10Kb, que sea de formato jpg o png, y que exista.
          * Una vez echas las comprobaciones se añade la imagen al fichero, y se añade a la base de datos del usuario.
          */
+        $imageErrors = [];
         if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["imageBtn"])) {
             $target_file = basename($_FILES["image"]["name"]);
-            $imageErrors = [];
             $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
             $check = getimagesize($_FILES["image"]["tmp_name"]);
@@ -179,8 +180,9 @@ class UserController extends AbstractController
             $passVal = $userModel->editUserPass($id, $password);
         }
 
-
-        require("../views/front-office/user.view.php");
+        $propierties = [ "user" => $user, "imageErrors" => $imageErrors, "session" => $_SESSION, "url" => $_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"], "categoriesNavbar" => $categoriesNavbar, "target_dir" => $target_dir, 'title' => "Foro Programacion • " . $user->getUsername()];
+        return $this->render('user/show.user.twig', $propierties);
+//        require("../views/front-office/user.view.php");
     }
 
 
