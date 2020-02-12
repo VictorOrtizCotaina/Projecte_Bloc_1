@@ -22,6 +22,7 @@ class UserController extends AbstractController
          * Se comprueba que el email o el password no estén vacíos.
          * Se recoge el usuario según el email, y se comprueba que las contraseñas son la misma, de ser así se crea una sesión con el usuario.
          */
+        $error = null;
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_STRING);
             $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
@@ -46,7 +47,9 @@ class UserController extends AbstractController
             }
         }
 
-        require("../views/front-office/login.view.php");
+        $propierties = ["session" => $_SESSION, "error" => $error, "url" => $_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"], "categoriesNavbar" => $categoriesNavbar, 'title' => "Foro Programacion • Login"];
+        return $this->render('login/show.login.twig', $propierties);
+//        require("../views/front-office/login.view.php");
     }
 
     public function register()
@@ -59,6 +62,7 @@ class UserController extends AbstractController
          * Se recogen los diferentes datos para el registro de un usuario.
          * Se comprueba que no estén vacíos y se comprueba que no exista, en caso de no existir se registra.
          */
+        $error = null;
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
             $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_STRING);
@@ -93,7 +97,9 @@ class UserController extends AbstractController
             }
         }
 
-        require("../views/front-office/register.view.php");
+        $propierties = ["session" => $_SESSION, "error" => $error, "url" => $_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"], "categoriesNavbar" => $categoriesNavbar, 'title' => "Foro Programacion • Register"];
+        return $this->render('register/show.register.twig', $propierties);
+//        require("../views/front-office/register.view.php");
     }
 
 
