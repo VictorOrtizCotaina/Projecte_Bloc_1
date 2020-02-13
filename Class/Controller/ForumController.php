@@ -15,6 +15,7 @@ class ForumController extends AbstractController
         $target_dir = $this->config->get('image')['src'];
 
         /* Se comprueba si hay una sessión de usuario creada (se crea al iniciar sessión) y de ser así se añade un objecto usuario. */
+        $user = null;
         if (isset($_SESSION["user"])) {
             $userModel = new UserModel($this->db);
             $user = $userModel->getUserById($_SESSION["user"]->getIdUser());
@@ -83,8 +84,28 @@ class ForumController extends AbstractController
         } else {
             $dateFin = "";
         }*/
-
-        require("../views/front-office/forum.view.php");
+        $propierties =
+            [
+                "forum" => $forum,
+                "topics" => $topics,
+                "id_user" => $id_user,
+                "search" => $search,
+                "dateIni" => $dateIni,
+                "dateFin" => $dateFin,
+                "topicCount" => $topicCount,
+                "page" => $page,
+                "pages" => $pages,
+                "Previous" => $Previous,
+                "Next" => $Next,
+                "session" => $_SESSION,
+                "user" => $user,
+                "url" => $_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"],
+                "categoriesNavbar" => $categoriesNavbar,
+                "target_dir" => $target_dir,
+                'title' => "Foro Programacion • " . $forum->getTitle()
+            ];
+        return $this->render('forum/show.forum.twig', $propierties);
+//        require("../views/front-office/forum.view.php");
     }
 
     public function getForumUser($id_user)
@@ -163,8 +184,9 @@ class ForumController extends AbstractController
             $dateFin = "";
         }
 
-
-        require("../views/front-office/forum.view.php");
+//        $propierties = ["forum" => $forum, "topics" => $topics,"forum" => $forum, "pages" => $pages, "Previous" => $Previous, "Next" => $Next, "session" => $_SESSION, "user" => $user, "url" => $_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"], "categoriesNavbar" => $categoriesNavbar, "target_dir" => $target_dir, 'title' => "Foro Programacion • " . $topic->getTitle()];
+//        return $this->render('category/show.category.twig', $propierties);
+//        require("../views/front-office/forum.view.php");
     }
 
 
