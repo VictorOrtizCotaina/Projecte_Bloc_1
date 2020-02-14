@@ -1,4 +1,4 @@
-{% extends "user/user.twig" %}
+{% extends "front-office/user/user.twig" %}
 {% block title %}
     {{ title }}
 {% endblock %}
@@ -10,11 +10,11 @@
         <p>{{ forum.description }}</p>
     </div>
     {% endif %}
-   {# <?php if (isset($userTopic)) { ?>
+    {% if userTopic %}
     <div class="page-header">
-        <h2><?php echo $userTopic->getUserName(); ?></h2>
+        <h2>{{ userTopic.userName }}</h2>
     </div>
-    <?php } ?>#}
+    {% endif %}
 
     <div>
         <!-- NOTE: remove the style="display: none" when you want to have the forum description on the forum body -->
@@ -28,6 +28,7 @@
                                     class="btn-label"><i class="fa fa-pencil-square-o"></i></span> Post a new topic</a>
                     </div>
         -->
+
         <div class="col-md-3 col-xs-12"></div>
         <div class="col-md-6 text-center col-xs-12">
             <div class="btn-group forum-pagination">
@@ -150,6 +151,7 @@
             </thead>
             <tbody class="topiclist topics">
 
+            {{ dump(topics) }}
             {% for topic in topics %}
             <tr class="t-row">
                 <td class="topic-name " title="No unread posts">

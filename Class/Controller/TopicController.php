@@ -60,7 +60,7 @@ class TopicController extends AbstractController
         $Next = $num_page + 1;
 
         $propierties = ["topic" => $topic, "posts" => $posts,"forum" => $forum, "pages" => $pages, "Previous" => $Previous, "Next" => $Next, "session" => $_SESSION, "user" => $user, "url" => $_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"], "categoriesNavbar" => $categoriesNavbar, "target_dir" => $target_dir, 'title' => "Foro Programacion • " . $topic->getTitle()];
-        return $this->render('topic/show.topic.twig', $propierties);
+        return $this->render('front-office/topic/show.topic.twig', $propierties);
 
 //        require("../views/front-office/topic.view.php");
     }

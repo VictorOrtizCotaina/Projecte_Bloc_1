@@ -48,7 +48,7 @@ class UserController extends AbstractController
         }
 
         $propierties = ["session" => $_SESSION, "error" => $error, "url" => $_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"], "categoriesNavbar" => $categoriesNavbar, 'title' => "Foro Programacion • Login"];
-        return $this->render('login/show.login.twig', $propierties);
+        return $this->render('front-office/login/show.login.twig', $propierties);
 //        require("../views/front-office/login.view.php");
     }
 
@@ -98,7 +98,7 @@ class UserController extends AbstractController
         }
 
         $propierties = ["session" => $_SESSION, "error" => $error, "url" => $_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"], "categoriesNavbar" => $categoriesNavbar, 'title' => "Foro Programacion • Register"];
-        return $this->render('register/show.register.twig', $propierties);
+        return $this->render('front-office/register/show.register.twig', $propierties);
 //        require("../views/front-office/register.view.php");
     }
 
@@ -181,7 +181,7 @@ class UserController extends AbstractController
         }
 
         $propierties = [ "user" => $user, "imageErrors" => $imageErrors, "session" => $_SESSION, "url" => $_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"], "categoriesNavbar" => $categoriesNavbar, "target_dir" => $target_dir, 'title' => "Foro Programacion • " . $user->getUsername()];
-        return $this->render('user/show.user.twig', $propierties);
+        return $this->render('front-office/user/show.user.twig', $propierties);
 //        require("../views/front-office/user.view.php");
     }
 

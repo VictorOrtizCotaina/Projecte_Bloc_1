@@ -26,7 +26,7 @@ class CategoryController extends AbstractController
         $categoriesNavbar = $categories;
 
         $propierties = ["categories" => $categories, "session" => $_SESSION, "user" => $user, "url" => $_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"], "categoriesNavbar" => $categoriesNavbar, "target_dir" => $target_dir, 'title' => "Foro Programacion • Home"];
-        return $this->render('index/show.index.twig', $propierties);
+        return $this->render('front-office/index/show.index.twig', $propierties);
 //        require("../views/front-office/index.view.php");
     }
 
@@ -47,7 +47,7 @@ class CategoryController extends AbstractController
         $category = $categoryModel->getCategoryById($id_category);
 
         $propierties = ["category" => $category, "session" => $_SESSION, "user" => $user, "url" => $_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"], "categoriesNavbar" => $categoriesNavbar, "target_dir" => $target_dir, 'title' => "Foro Programacion • " . $category->getTitle()];
-        return $this->render('category/show.category.twig', $propierties);
+        return $this->render('front-office/category/show.category.twig', $propierties);
 //        require("../views/front-office/category.view.php");
 
     }
