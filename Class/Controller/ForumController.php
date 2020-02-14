@@ -203,7 +203,7 @@ class ForumController extends AbstractController
                 "target_dir" => $target_dir,
                 'title' => "Foro Programacion • " . $userTopic->getUsername()
             ];
-        return $this->render('front-office/category/show.category.twig', $propierties);
+        return $this->render('front-office/forum/show.forum.twig', $propierties);
 //        require("../views/front-office/forum.view.php");
     }
 
